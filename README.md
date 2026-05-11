@@ -14,7 +14,7 @@ This repo hosts weekly Japanese quizzes as simple HTML pages.
 It will:
 - copy the quiz into `quizzes/YYYY/MM/YYYY-MM-DD/index.html`
 - run basic validation checks
-- regenerate the homepage `index.html` (This week / Last week / Archive grouped by year/month)
+- regenerate the homepage `index.html` (Current quiz, previous quizzes grouped by year/month)
 
 ### GitHub Pages setup (one time)
 

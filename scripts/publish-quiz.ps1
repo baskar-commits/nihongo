@@ -108,13 +108,18 @@ function Build-HomePage($RepoRoot, $SiteTitle) {
   } | Sort-Object Date -Descending
 
   $latest = $items | Select-Object -First 1
-  $lastWeek = $items | Select-Object -Skip 1 -First 1
+  $archiveItems = @()
+  if ($null -ne $latest) {
+    $archiveItems = @($items | Where-Object { $_.Date -ne $latest.Date })
+  } else {
+    $archiveItems = @($items)
+  }
 
   $archiveHtml = ""
-  if ($items.Count -eq 0) {
+  if ($archiveItems.Count -eq 0) {
     $archiveHtml = "<p class=""meta"">Older quizzes will appear here.</p>"
   } else {
-    $groupYear = $items | Group-Object Year
+    $groupYear = $archiveItems | Group-Object Year
     foreach ($yGroup in ($groupYear | Sort-Object Name -Descending)) {
       $archiveHtml += "<h3>$($yGroup.Name)</h3>`n"
       $byMonth = $yGroup.Group | Group-Object Month
@@ -134,10 +139,6 @@ function Build-HomePage($RepoRoot, $SiteTitle) {
   if ($null -ne $latest) {
     $safeLatestTitle = [System.Security.SecurityElement]::Escape($latest.Title)
     $latestHtml = "<a class=""primary"" href=""$($latest.Url)"">Start Quiz</a><div class=""meta"">$safeLatestTitle<br>$($latest.Date)</div>"
-    if ($null -ne $lastWeek) {
-      $safeLastWeekTitle = [System.Security.SecurityElement]::Escape($lastWeek.Title)
-      $latestHtml += "<div class=""meta"">Last week: <a href=""$($lastWeek.Url)"">$safeLastWeekTitle</a> ($($lastWeek.Date))</div>"
-    }
   }
 
   $homeHtml = @"
@@ -178,7 +179,7 @@ function Build-HomePage($RepoRoot, $SiteTitle) {
     </header>
 
     <div class="card">
-      <h2>This Week</h2>
+      <h2>Current</h2>
       $latestHtml
     </div>
 
