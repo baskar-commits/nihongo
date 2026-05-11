@@ -40,6 +40,32 @@ function Validate-QuizHtml($Html) {
   if (-not ($Html -match "</html>")) { Fail "Missing closing </html> tag." }
 }
 
+function Validate-QuizSecurity($Html) {
+  # Block risky patterns that are unnecessary for this static quiz site.
+  $blockedRules = @(
+    @{ Pattern = "<script[^>]+src\s*=\s*[""']https?://"; Message = "External remote <script> is not allowed." },
+    @{ Pattern = "<link[^>]+href\s*=\s*[""']https?://"; Message = "External remote stylesheet is not allowed." },
+    @{ Pattern = "<iframe\b"; Message = "<iframe> is not allowed in quiz files." },
+    @{ Pattern = "<object\b|<embed\b"; Message = "<object>/<embed> is not allowed in quiz files." },
+    @{ Pattern = "eval\s*\("; Message = "eval() is not allowed." },
+    @{ Pattern = "new\s+Function\s*\("; Message = "new Function() is not allowed." },
+    @{ Pattern = "document\.write\s*\("; Message = "document.write() is not allowed." },
+    @{ Pattern = "fetch\s*\(|XMLHttpRequest|WebSocket"; Message = "Network calls are not allowed in quiz files." },
+    @{ Pattern = "href\s*=\s*[""']\s*javascript:"; Message = "javascript: URLs are not allowed." }
+  )
+
+  foreach ($rule in $blockedRules) {
+    if ([regex]::IsMatch($Html, $rule.Pattern, "IgnoreCase")) {
+      Fail "Security check failed: $($rule.Message)"
+    }
+  }
+
+  # Informational warning only: inline handlers are currently used by this quiz engine.
+  if ([regex]::IsMatch($Html, "\son[a-z]+\s*=", "IgnoreCase")) {
+    Write-Host "Security note: inline event handlers detected (allowed for current quiz format)." -ForegroundColor Yellow
+  }
+}
+
 function Ensure-Dir($Path) {
   if (-not (Test-Path -LiteralPath $Path)) {
     New-Item -ItemType Directory -Path $Path | Out-Null
@@ -180,6 +206,7 @@ if (-not (Test-Path -LiteralPath $src)) { Fail "SourceHtml not found: $src" }
 
 $html = Read-FileUtf8 $src
 Validate-QuizHtml $html
+Validate-QuizSecurity $html
 
 $year = $QuizDate.Substring(0,4)
 $month = $QuizDate.Substring(5,2)

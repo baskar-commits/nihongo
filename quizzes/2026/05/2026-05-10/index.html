@@ -1,0 +1,1163 @@
+<!-- VALIDATION PASSED: 40 questions, Q20+Q40 conversation, L89=20 L17=20, 6 time/number questions, 3 WOTD questions, no em-dashes, no personal refs, chip banks shuffled -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>40-Question Japanese Quiz — Sunday, May 10, 2026</title>
+<style>
+:root{--bg:#f8f6f1;--card:#fff;--accent:#c0392b;--accent2:#2980b9;--green:#27ae60;--red:#e74c3c;--text:#2c3e50;--muted:#7f8c8d;--border:#ddd;--hint-bg:#fef9e7;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;padding:16px 16px 120px;}
+.container{max-width:860px;margin:0 auto;}
+header{text-align:center;padding:26px 20px;background:linear-gradient(135deg,var(--accent),#e74c3c);color:#fff;border-radius:16px;margin-bottom:22px;}
+header h1{font-size:1.5em;margin-bottom:6px;}
+header p{font-size:.9em;opacity:.9;}
+/* Mode screen */
+#modeScreen{background:var(--card);border-radius:16px;padding:36px 28px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.12);max-width:520px;margin:0 auto 30px;}
+#modeScreen h2{font-size:1.25em;margin-bottom:10px;color:var(--accent);}
+#modeScreen p{color:#555;margin-bottom:22px;font-size:.96em;}
+.mode-btn{display:block;width:100%;padding:15px 18px;margin:10px 0;border:2px solid var(--accent2);border-radius:10px;background:#fff;color:var(--accent2);font-size:.97em;font-weight:700;cursor:pointer;transition:all .2s;text-align:left;}
+.mode-btn:hover,.mode-btn.selected{background:var(--accent2);color:#fff;}
+#startBtn{display:none;margin-top:18px;padding:13px 40px;background:linear-gradient(135deg,var(--accent),#e74c3c);color:#fff;border:none;border-radius:10px;font-size:1.05em;font-weight:700;cursor:pointer;}
+#quizBody{display:none;}
+/* Nav dots */
+#navDots{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-bottom:16px;padding:12px;background:var(--card);border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.dot{width:24px;height:24px;border-radius:50%;background:#ddd;cursor:pointer;font-size:.65em;font-weight:700;display:flex;align-items:center;justify-content:center;color:#999;transition:all .2s;}
+.dot.answered{background:#aad4f5;color:#1a5a8c;}
+.dot.correct{background:var(--green);color:#fff;}
+.dot.incorrect{background:var(--red);color:#fff;}
+.dot.current{box-shadow:0 0 0 3px var(--accent2);}
+/* Bucket nav */
+#bucketNav{display:flex;gap:8px;justify-content:center;margin-bottom:16px;flex-wrap:wrap;}
+.bucket-btn{padding:7px 16px;border:2px solid var(--border);border-radius:8px;background:#fff;font-weight:700;cursor:pointer;font-size:.88em;transition:all .2s;}
+.bucket-btn.active{background:var(--accent2);color:#fff;border-color:var(--accent2);}
+/* Cards */
+.question-card{background:var(--card);border-radius:12px;padding:20px 22px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,.06);border-left:4px solid var(--accent2);transition:border-color .3s;}
+.question-card.correct{border-left-color:var(--green);}
+.question-card.incorrect{border-left-color:var(--red);}
+.q-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.q-num{font-weight:700;color:var(--accent);font-size:.88em;}
+.badges{display:flex;gap:5px;}
+.q-section{background:#fce4ec;padding:2px 8px;border-radius:12px;font-size:.72em;color:#880e4f;font-weight:600;}
+.q-type{background:#eee;padding:2px 10px;border-radius:12px;font-size:.72em;color:var(--muted);font-weight:600;}
+.q-text{font-size:1.02em;margin-bottom:10px;}
+.jp{font-size:1.2em;display:block;margin:6px 0;color:#1a1a2e;}
+.hint{background:var(--hint-bg);border-left:3px solid #f39c12;padding:8px 12px;margin:10px 0 12px;font-size:.85em;color:#7d6608;border-radius:0 6px 6px 0;cursor:pointer;user-select:none;}
+.hint::before{content:'Hint: ';}
+.hint .hint-text{display:none;}
+.hint.open .hint-text{display:inline;}
+/* Options */
+.option-group{margin:8px 0;}
+.option-label{display:block;padding:9px 14px;margin:5px 0;border:2px solid var(--border);border-radius:8px;cursor:pointer;transition:all .2s;font-size:.93em;}
+.option-label:hover{border-color:var(--accent2);background:#ebf5fb;}
+.option-label input{margin-right:8px;}
+.option-label.correct-opt{border-color:var(--green);background:#eafaf1;}
+.option-label.incorrect-opt{border-color:var(--red);background:#fdedec;}
+.option-label.missed-opt{border-color:#f39c12;background:#fef9e7;}
+/* Type word */
+.text-input{width:100%;padding:10px 14px;border:2px solid var(--border);border-radius:8px;font-size:1em;font-family:inherit;transition:border-color .3s;}
+.text-input:focus{outline:none;border-color:var(--accent2);}
+.text-input.correct-input{border-color:var(--green);background:#eafaf1;}
+.text-input.incorrect-input{border-color:var(--red);background:#fdedec;}
+/* Particles */
+.particle-sentence{font-size:1.08em;line-height:2.2;margin:8px 0;}
+.particle-sentence select{padding:4px 8px;border:2px solid var(--accent2);border-radius:6px;font-size:.95em;font-family:inherit;cursor:pointer;}
+.particle-sentence select.correct-input{border-color:var(--green);background:#eafaf1;}
+.particle-sentence select.incorrect-input{border-color:var(--red);background:#fdedec;}
+.translation-note{font-size:.84em;color:var(--muted);margin:4px 0 10px;font-style:italic;}
+/* Matching */
+.matching-grid{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;align-items:center;margin:8px 0;}
+.matching-grid label{font-size:.93em;}
+.matching-grid select{padding:6px 10px;border:2px solid var(--border);border-radius:6px;font-size:.93em;font-family:inherit;}
+.matching-grid select.correct-input{border-color:var(--green);background:#eafaf1;}
+.matching-grid select.incorrect-input{border-color:var(--red);background:#fdedec;}
+/* Chips */
+.chip-bank{display:flex;flex-wrap:wrap;gap:7px;padding:11px;background:#f4f6f7;border-radius:8px;min-height:46px;margin:6px 0;}
+.chip{padding:6px 12px;background:#eaf0fb;border:2px solid #c3d8f5;border-radius:20px;cursor:pointer;font-size:.91em;transition:all .2s;user-select:none;}
+.chip:hover{background:#d0e8ff;border-color:var(--accent2);}
+.chip.used{opacity:.3;pointer-events:none;}
+.answer-slots{display:flex;flex-wrap:wrap;gap:7px;padding:11px;background:#fff;border:2px dashed var(--border);border-radius:8px;min-height:50px;margin:5px 0;}
+.slot-chip{padding:6px 12px;background:var(--accent2);color:#fff;border-radius:20px;cursor:pointer;font-size:.91em;}
+.slot-chip:hover{background:#1a6fa0;}
+.seq-label{font-size:.8em;color:var(--muted);margin-top:3px;}
+/* Conversation */
+.conv-wrap{margin:10px 0;}
+.conv-turn{margin:10px 0;}
+.conv-speaker{font-size:.78em;font-weight:700;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.05em;}
+.conv-line{background:#f4f6f7;padding:10px 14px;border-radius:10px;font-size:1.05em;}
+.conv-line.you-turn{background:#fff;border:2px dashed var(--border);padding:8px 12px;}
+.conv-correct-ans{margin-top:6px;font-size:.85em;color:var(--green);font-weight:600;}
+.conv-correct-ans span{display:inline-block;background:#eafaf1;border:1px solid var(--green);border-radius:14px;padding:3px 10px;margin:2px;}
+/* Check Answer button */
+.check-btn{display:none;width:100%;padding:12px;margin-top:12px;background:var(--accent2);color:#fff;border:none;border-radius:8px;font-size:1em;font-weight:700;cursor:pointer;transition:all .2s;}
+.check-btn:hover{background:#1a6fa0;}
+.check-btn.visible{display:block;}
+/* Feedback */
+.feedback{margin-top:12px;padding:12px 14px;border-radius:8px;font-size:.9em;display:none;}
+.feedback.show{display:block;}
+.feedback.correct-fb{background:#eafaf1;border:1px solid var(--green);}
+.feedback.incorrect-fb{background:#fdedec;border:1px solid var(--red);}
+.feedback .answer-line{font-weight:600;margin-bottom:4px;}
+.feedback .explanation{color:#555;margin-top:4px;}
+.feedback .example{color:var(--green);margin-top:6px;font-style:italic;}
+/* Footer */
+#fixedFooter{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid var(--border);padding:11px 18px;display:none;justify-content:space-between;align-items:center;z-index:100;box-shadow:0 -4px 12px rgba(0,0,0,.08);}
+#fixedFooter.show{display:flex;}
+#footerCount{font-weight:700;color:var(--muted);font-size:.9em;}
+#submitBtn{padding:10px 26px;background:linear-gradient(135deg,var(--accent),#e74c3c);color:#fff;border:none;border-radius:8px;font-size:.93em;font-weight:700;cursor:pointer;}
+#nextBucketBtn{padding:10px 22px;background:var(--accent2);color:#fff;border:none;border-radius:8px;font-size:.93em;font-weight:700;cursor:pointer;}
+/* Top progress */
+.top-progress{position:fixed;top:0;left:0;height:3px;background:var(--accent);transition:width .3s;z-index:999;}
+/* Score */
+.score-section{background:var(--card);border-radius:16px;padding:26px;margin-top:26px;box-shadow:0 4px 16px rgba(0,0,0,.1);display:none;text-align:center;}
+.score-section.show{display:block;}
+.score-big{font-size:3em;font-weight:800;color:var(--accent);margin:10px 0;}
+.score-bar-container{width:100%;background:#eee;border-radius:10px;height:18px;margin:14px 0;overflow:hidden;}
+.score-bar{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--green),#2ecc71);transition:width 1s ease;width:0%;}
+.breakdown{text-align:left;margin-top:16px;}
+.breakdown h3{margin:12px 0 6px;color:var(--accent2);font-size:1em;}
+.breakdown-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.breakdown-item{background:#f4f6f7;padding:8px 12px;border-radius:8px;font-size:.87em;}
+.breakdown-item span{font-weight:700;float:right;}
+.post-submit-btns{display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap;}
+.copy-btn,.print-btn{padding:10px 22px;border:none;border-radius:8px;cursor:pointer;font-size:.9em;font-weight:600;}
+.copy-btn{background:#555;color:#fff;}
+.print-btn{background:var(--accent2);color:#fff;}
+/* Modal */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;align-items:center;justify-content:center;}
+.modal-overlay.show{display:flex;}
+.modal-box{background:#fff;border-radius:14px;padding:26px;max-width:380px;width:90%;text-align:center;}
+.modal-box h3{margin-bottom:10px;color:var(--accent);}
+.modal-box p{color:#555;margin-bottom:18px;}
+.modal-btns{display:flex;gap:10px;justify-content:center;}
+.modal-btns button{padding:10px 22px;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:.93em;}
+.modal-cancel{background:#eee;color:#555;}
+.modal-confirm{background:var(--accent);color:#fff;}
+@media(max-width:600px){.breakdown-grid{grid-template-columns:1fr;}#fixedFooter{flex-direction:column;gap:8px;padding:10px 14px;}}
+@media print{
+  #fixedFooter,#navDots,#bucketNav,#modeScreen,.hint,.check-btn{display:none!important;}
+  .feedback{display:block!important;}
+  .question-card{break-inside:avoid;box-shadow:none;border:1px solid #ccc;margin-bottom:10px;}
+  .score-section{display:block!important;box-shadow:none;}
+  body{padding:10px;}
+}
+</style>
+</head>
+<body>
+<div class="top-progress" id="topProgress"></div>
+<div class="container">
+<header>
+  <h1>40-Question Japanese Quiz</h1>
+  <p>Sunday, May 10, 2026</p>
+  <p style="margin-top:4px;font-size:.84em;">Lesson 9 + Review of Lessons 1-8 | がんばって！</p>
+</header>
+
+<div id="modeScreen">
+  <h2>How would you like to see answers?</h2>
+  <p>Choose your feedback mode. You cannot change this once the quiz starts.</p>
+  <button class="mode-btn" id="modeImmediate" onclick="selectMode('immediate')">After each question — I will click Check Answer to reveal feedback one question at a time</button>
+  <button class="mode-btn" id="modeEnd" onclick="selectMode('end')">All at the end — feedback shown only after I submit all 40 questions</button>
+  <button id="startBtn" onclick="startQuiz()">Start Quiz</button>
+</div>
+
+<div id="quizBody">
+  <div id="navDots"></div>
+  <div id="bucketNav"></div>
+  <div id="questionArea"></div>
+  <div class="score-section" id="scoreSection"></div>
+</div>
+</div>
+
+<div id="fixedFooter">
+  <span id="footerCount">0 / 40 answered</span>
+  <div style="display:flex;gap:8px;">
+    <button id="submitBtn" onclick="attemptSubmit()">Submit All 40 Questions</button>
+    <button id="nextBucketBtn" onclick="nextBucket()">Next</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="warnModal">
+  <div class="modal-box">
+    <h3>Unanswered Questions</h3>
+    <p id="warnMsg">You have unanswered questions. Submit anyway?</p>
+    <div class="modal-btns">
+      <button class="modal-cancel" onclick="closeModal()">Go Back</button>
+      <button class="modal-confirm" onclick="confirmSubmit()">Submit Anyway</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── QUESTIONS ────────────────────────────────────────────────────────────────
+function shuffle(arr){
+  const a=[...arr];
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+
+const questions=[
+// Q1 L17 mc — time
+{id:1,type:'mc',section:'L17',
+ text:'How do you say "9 o\'clock" in Japanese?',
+ options:['a. きゅうじ','b. くじ','c. ここのじ','d. きゅじ'],
+ answer:'b',
+ hint:'Lesson 7 time — the reading for 9 o\'clock uses a special pronunciation, not kyuu.',
+ explanation:'9 o\'clock = くじ (ku-ji). Not きゅうじ. The number 9 used for time is く (ku), not きゅう (kyuu).',
+ example:'まいあさ くじ に おきます。(I wake up at 9 o\'clock every morning.)'},
+
+// Q2 L89 sequence
+{id:2,type:'sequence',section:'L89',
+ text:'Build the sentence: "I always call my mother every morning."',
+ chips:shuffle(['わたし','は','まいあさ','はは','に','でんわ','を','します','から','あいます']),
+ answer:['わたし','は','まいあさ','はは','に','でんわ','を','します'],
+ hint:'Lesson 9 receiver ni pattern with でんわをします. はは = my own mother.',
+ explanation:'はは に (receiver) + でんわ を します. まいあさ = every morning. Note: はは is your own mother; おかあさん is someone else\'s.',
+ example:'わたし は まいあさ はは に でんわ を します。(romaji: watashi wa maiasa haha ni denwa o shimasu.)'},
+
+// Q3 L17 particle
+{id:3,type:'particle',section:'L17',
+ text:'Fill in the correct particle:',
+ sentence:'わたし の ともだち は バス <SEL1> がっこう に いきます。',
+ sel1:['を','に','で','と'],answer1:'で',
+ translation:'My friend goes to school by bus.',
+ hint:'Lesson 7 — which particle marks the means of transportation?',
+ explanation:'で (de) marks the means or method — バスで = by bus. に marks the destination (がっこうに).',
+ example:'わたし は でんしゃ で かいしゃ に いきます。(romaji: watashi wa densha de kaisha ni ikimasu.)'},
+
+// Q4 L89 error-mc
+{id:4,type:'error-mc',section:'L89',
+ text:'Which sentence contains an error?',
+ options:[
+  'a. わたし は まいにち ともだち に メール を おくります。',
+  'b. たなかさん は きのう せんせい に あいました。',
+  'c. わたし は あまり ビール を のみます。',
+  'd. はやしさん は ときどき こうえん で さんぽ を します。'
+ ],
+ answer:'c',
+ hint:'Look for a frequency adverb that is only allowed with negative verb forms.',
+ explanation:'あまり (amari) must always pair with ません (negative). Using it with のみます (affirmative) is incorrect.',
+ example:'わたし は あまり ビール を のみません。(romaji: watashi wa amari biiru o nomimasen.)'},
+
+// Q5 L17 type-word
+{id:5,type:'type-word',section:'L17',
+ text:'Type the Japanese word for "library":',
+ answer:'としょかん',
+ altTyping:['toshokan'],
+ hint:'Lesson 8 places — a quiet building where you can read and borrow books.',
+ explanation:'としょかん (toshokan) = library. Five kana: と-し-ょ-か-ん.',
+ example:'わたし は としょかん で にほんご を べんきょう します。(romaji: toshokan de nihongo o benkyou shimasu.)'},
+
+// Q6 L89 particle2
+{id:6,type:'particle2',section:'L89',
+ text:'Fill in both particles:',
+ sentence:'わたし は せんせい <SEL1> でんわばんごう <SEL2> おしえます。',
+ sel1:['を','に','で','と'],answer1:'に',
+ sel2:['を','に','で','と'],answer2:'を',
+ translation:'I tell my teacher my phone number.',
+ hint:'Two particles needed: one for the person receiving the information, one for the thing being told.',
+ explanation:'せんせい に = to the teacher (receiver). でんわばんごう を = phone number (direct object). Pattern: Person に + Noun を + Verb.',
+ example:'ともだち に じゅうしょ を おしえます。(romaji: tomodachi ni juusho o oshiemasu.)'},
+
+// Q7 L17 mc — counters
+{id:7,type:'mc',section:'L17',
+ text:'You want to order 3 bottles of juice. Which is correct?',
+ options:[
+  'a. ジュース を みっつ ください。',
+  'b. ジュース を さんぼん ください。',
+  'c. ジュース を さんまい ください。',
+  'd. ジュース を さんこ ください。'
+ ],
+ answer:'b',
+ hint:'Lesson 5 counters — bottles are long and cylindrical objects.',
+ explanation:'さんぼん (sanbon) uses the ほん/ぼん/ぽん counter for long cylindrical objects like bottles. みっつ is general, まい is flat, こ is small round.',
+ example:'ジュース を さんぼん ください。(romaji: juusu o sanbon kudasai.) Three bottles of juice, please.'},
+
+// Q8 L89 mc — family
+{id:8,type:'mc',section:'L89',
+ text:'Which word means "someone else\'s wife" (the honorific term)?',
+ options:['a. つま','b. かない','c. おくさん','d. はは'],
+ answer:'c',
+ hint:'Lesson 9 family vocabulary — own family uses humble forms, others\' family uses honorific forms.',
+ explanation:'おくさん (okusan) = someone else\'s wife (honorific). つま and かない = my wife. Never use おくさん for your own wife.',
+ example:'たなかさん の おくさん は きょうと に すんでいます。(romaji: Tanaka-san no okusan wa Kyouto ni sundeimasu.)'},
+
+// Q9 L17 sequence-en
+{id:9,type:'sequence-en',section:'L17',
+ text:'Translate into English by clicking the word chips in order:',
+ jp:'それ は だれ の かばん ですか。',
+ chips:shuffle(['Whose','bag','is','that?','this?','umbrella','key']),
+ answer:['Whose','bag','is','that?'],
+ hint:'だれの = whose. それ = that (near the listener). かばん = bag.',
+ explanation:'だれの (dare no) = whose. それ = that one near the listener. かばん = bag.',
+ example:'これ は わたし の かばん です。(romaji: kore wa watashi no kaban desu.) This is my bag.'},
+
+// Q10 L89 multiselect
+{id:10,type:'multiselect',section:'L89',
+ text:'Which sentences are grammatically correct? Choose ALL that apply.',
+ options:[
+  'a. わたし は まいにち はは に メール を おくります。',
+  'b. たなかさん は ともだち を あいます。',
+  'c. わたし は ぜんぜん テレビ を みません。',
+  'd. はやしさん は あまり コーヒー を のみます。',
+  'e. スミスさん は ときどき こうえん に いきます。'
+ ],
+ answer:['a','c','e'],
+ hint:'Check the receiver particle for あいます, and which adverbs require negative verbs.',
+ explanation:'b) Wrong: ともだち を あいます should be ともだち に あいます. d) Wrong: あまり must use ません not ます.',
+ example:'わたし は まいにち はは に メール を おくります。(romaji: watashi wa mainichi haha ni meeru o okurimasu.)'},
+
+// Q11 L17 mc — days
+{id:11,type:'mc',section:'L17',
+ text:'How do you say "Wednesday" in Japanese?',
+ options:['a. かようび','b. もくようび','c. すいようび','d. きんようび'],
+ answer:'c',
+ hint:'Lesson 7 days of the week — each day is based on a natural element. Wednesday is associated with water.',
+ explanation:'すいようび (suiyoubi) = Wednesday. すい = water. The days follow natural elements: fire, water, wood, gold, earth, sun, moon.',
+ example:'にほんご の クラス は すいようび です。(romaji: nihongo no kurasu wa suiyoubi desu.)'},
+
+// Q12 L89 sequence
+{id:12,type:'sequence',section:'L89',
+ text:'Build the sentence: "Smith-san sometimes meets his colleague at the park."',
+ chips:shuffle(['スミスさん','は','ときどき','こうえん','で','どうりょう','に','あいます','から','いきます']),
+ answer:['スミスさん','は','ときどき','こうえん','で','どうりょう','に','あいます'],
+ hint:'ときどき = sometimes. こうえんで = at the park (place of action, de). どうりょうに = colleague (receiver, ni).',
+ explanation:'こうえん で (place of action) + どうりょう に (receiver of あいます) + あいます. Note: あいます always uses に for the person met.',
+ example:'わたし は ときどき えき で ともだち に あいます。(romaji: tokidoki eki de tomodachi ni aimasu.)'},
+
+// Q13 L17 particle
+{id:13,type:'particle',section:'L17',
+ text:'Fill in the correct particle:',
+ sentence:'よう子さん は きのう ともだち <SEL1> えいが を みました。',
+ sel1:['を','に','で','と'],answer1:'と',
+ translation:'Yoko watched a movie with her friend yesterday.',
+ hint:'Lesson 6 — which particle means "together with a person"?',
+ explanation:'と (to) = with. ともだちと = with a friend. Not に (destination/receiver) or で (method/place).',
+ example:'わたし は かぞく と レストラン に いきます。(romaji: watashi wa kazoku to resutoran ni ikimasu.)'},
+
+// Q14 L89 type-word
+{id:14,type:'type-word',section:'L89',
+ text:'Type the Japanese word for "email":',
+ answer:'メール',
+ altTyping:['meeru','meru','meiru'],
+ hint:'Lesson 9 vocabulary — used with おくります (send) and the receiver ni pattern.',
+ explanation:'メール (meeru) = email. Katakana. Used in pattern: Person に メール を おくります.',
+ example:'まいにち せんせい に メール を おくります。(romaji: mainichi sensei ni meeru o okurimasu.)'},
+
+// Q15 L17 mc — dates
+{id:15,type:'mc',section:'L17',
+ text:'How do you read the date "14th" (14日) in Japanese?',
+ options:['a. じゅうよんにち','b. じゅうしにち','c. じゅうよっか','d. じゅうよっにち'],
+ answer:'c',
+ hint:'Lesson 7 dates — some dates have special irregular readings, particularly the 14th.',
+ explanation:'14日 = じゅうよっか (juuyokka). Dates have many special readings that must be memorized. The 14th is one of them.',
+ example:'たんじょうびは 14にち = じゅうよっか です。(romaji: tanjoubi wa juuyokka desu.)'},
+
+// Q16 L89 particle2
+{id:16,type:'particle2',section:'L89',
+ text:'Fill in both particles:',
+ sentence:'まいばん はやしさん は おくさん <SEL1> でんわ <SEL2> します。',
+ sel1:['を','に','で','と'],answer1:'に',
+ sel2:['を','に','で','と'],answer2:'を',
+ translation:'Every evening, Hayashi-san calls his wife.',
+ hint:'でんわをします requires two particles: one for who receives the call, one for what is being done.',
+ explanation:'おくさん に = receiver of the call. でんわ を します = fixed pattern. まいばん = every evening.',
+ example:'わたし は まいばん ちち に でんわ を します。(romaji: watashi wa maiban chichi ni denwa o shimasu.)'},
+
+// Q17 L17 sequence
+{id:17,type:'sequence',section:'L17',
+ text:'Build the sentence: "The department store is open from 10 to 8."',
+ chips:shuffle(['デパート','は','10じ','から','8じ','まで','です','に','で']),
+ answer:['デパート','は','10じ','から','8じ','まで','です'],
+ hint:'Lesson 1 time grammar — から = from, まで = until/to.',
+ explanation:'[Place] は [time] から [time] まで です. から marks start time, まで marks end time.',
+ example:'ぎんこう は 9じ から 5じ まで です。(romaji: ginkou wa 9-ji kara 5-ji made desu.)'},
+
+// Q18 L89 mc — WOTD
+{id:18,type:'mc',section:'L89',
+ text:'たすかります is best described as:',
+ options:[
+  'a. That is a hassle / I don\'t want to do it',
+  'b. That helps a lot / I appreciate it',
+  'c. Really? / Are you serious?',
+  'd. As expected / Impressive!'
+ ],
+ answer:'b',
+ hint:'Word/Expression of the Day — polite form used after receiving help or useful information.',
+ explanation:'たすかります (tasukarimasu) = That helps a lot / I appreciate it. Polite form of たすかる. Used after someone does something helpful.',
+ example:'A: ノート を みますか。B: まじ！ たすかります！(romaji: Nooto o mimasu ka. / Maji! Tasukarimasu!)'},
+
+// Q19 L17 matching
+{id:19,type:'matching',section:'L17',
+ text:'Match each time expression to its English meaning:',
+ pairs:[
+  {jp:'おととい',en:'day before yesterday'},
+  {jp:'あさって',en:'day after tomorrow'},
+  {jp:'らいしゅう',en:'next week'},
+  {jp:'せんげつ',en:'last month'},
+  {jp:'らいねん',en:'next year'},
+ ],
+ options:['day before yesterday','day after tomorrow','next week','last month','next year','this week'],
+ hint:'Lesson 6 relative time expressions — these never take the particle に.',
+ explanation:'おととい=day before yesterday, あさって=day after tomorrow, らいしゅう=next week, せんげつ=last month, らいねん=next year.',
+ example:'らいしゅう ともだち に あいます。(romaji: raishuu tomodachi ni aimasu.) I will meet my friend next week.'},
+
+// Q20 CONVERSATION — restaurant
+{id:20,type:'conversation',section:'L89',
+ text:'Restaurant roleplay: You are dining with a friend (party of 2). You have just walked into a tempura restaurant. Complete your side of the conversation.',
+ turns:[
+  {speaker:'waiter', line:'いらっしゃいませ。なんめいさまですか。'},
+  {speaker:'you', answer:['ふたり','です'], distractors:shuffle(['さんにん','ひとり','ください','は'])},
+  {speaker:'waiter', line:'どうぞ こちら へ。おのみもの は いかがですか。'},
+  {speaker:'you', answer:['なまビール','を','ふたつ','ください'], distractors:shuffle(['みっつ','おちゃ','で','います'])},
+  {speaker:'waiter', line:'かしこまりました。おすすめ は てんぷらていしょく です。いかがですか。'},
+  {speaker:'you', answer:['おかいけい','を','おねがいします'], distractors:shuffle(['みます','から','ください','たべます'])}
+ ],
+ hint:'Restaurant vocab: なんめいさま = how many people (polite), なまビールをふたつください = 2 draft beers, おかいけいをおねがいします = check please.',
+ explanation:'なんめいさま = polite form of なんにん (how many people). なまビール = draft beer. おかいけい = the bill/check.',
+ example:'おかいけい を おねがいします。(romaji: okaikei o onegaishimasu.) Check please.'},
+
+// Q21 L17 mc — counters/numbers
+{id:21,type:'mc',section:'L17',
+ text:'How do you say "two flat objects" (e.g., two pieces of paper) in Japanese?',
+ options:['a. ふたつ','b. にほん','c. にまい','d. にこ'],
+ answer:'c',
+ hint:'Lesson 5 counters — まい is used for flat, thin objects like paper, T-shirts, and plates.',
+ explanation:'にまい (nimai) = 2 flat objects. まい counter is for flat things. ほん = cylindrical, こ = small round, つ = general counting.',
+ example:'Tシャツ を にまい ください。(romaji: T-shatsu o nimai kudasai.) Two T-shirts, please.'},
+
+// Q22 L89 sequence-en
+{id:22,type:'sequence-en',section:'L89',
+ text:'Translate into English by clicking the word chips in order:',
+ jp:'わたし は ぜんぜん おんがく を ききません。',
+ chips:shuffle(['I','music','listen','to','don\'t','at all','sometimes','often']),
+ answer:['I','don\'t','listen','to','music','at all'],
+ hint:'ぜんぜん + ません = not at all. ききません = do not listen to.',
+ explanation:'ぜんぜん (zenzen) + negative verb = not at all. ききます = listen to.',
+ example:'わたし は ぜんぜん ラジオ を ききません。(romaji: watashi wa zenzen rajio o kikimasen.)'},
+
+// Q23 L17 type-word
+{id:23,type:'type-word',section:'L17',
+ text:'Type the Japanese word for "park":',
+ answer:'こうえん',
+ altTyping:['koen','kouen','kōen'],
+ hint:'Lesson 6 places — an outdoor public space, often used with さんぽをします.',
+ explanation:'こうえん (kouen) = park. Often paired with さんぽ を します (take a walk).',
+ example:'まいあさ こうえん で さんぽ を します。(romaji: maiasa kouen de sanpo o shimasu.)'},
+
+// Q24 L89 particle
+{id:24,type:'particle',section:'L89',
+ text:'Fill in the correct particle:',
+ sentence:'わたし は きのう せんせい <SEL1> あいました。',
+ sel1:['を','に','で','と'],answer1:'に',
+ translation:'I met my teacher yesterday.',
+ hint:'Lesson 9 — あいます marks the person you meet with a specific particle. It is NOT を.',
+ explanation:'あいます (aimasu = meet) always uses に for the person being met. Never を. The person met is the receiver.',
+ example:'あした ともだち に あいます。(romaji: ashita tomodachi ni aimasu.)'},
+
+// Q25 L17 mc — months
+{id:25,type:'mc',section:'L17',
+ text:'How do you say "September" in Japanese?',
+ options:['a. はちがつ','b. くがつ','c. じゅうがつ','d. ごがつ'],
+ answer:'b',
+ hint:'Lesson 7 months — formed by number + がつ. September is the 9th month.',
+ explanation:'くがつ (ku-gatsu) = September (9th month). The number 9 before がつ is く (ku), not きゅう.',
+ example:'たんじょうびは くがつ です。(romaji: tanjoubi wa ku-gatsu desu.) My birthday is in September.'},
+
+// Q26 L89 sequence
+{id:26,type:'sequence',section:'L89',
+ text:'Build the sentence: "My husband does not drink alcohol at all."',
+ chips:shuffle(['しゅじん','は','ぜんぜん','おさけ','を','のみません','から','いつも']),
+ answer:['しゅじん','は','ぜんぜん','おさけ','を','のみません'],
+ hint:'ぜんぜん must pair with negative verb ません. しゅじん = my husband.',
+ explanation:'ぜんぜん + ません = not at all. しゅじん = my husband (own family humble form). おさけ を のみません = does not drink alcohol.',
+ example:'わたし は ぜんぜん おさけ を のみません。(romaji: watashi wa zenzen osake o nomimasen.)'},
+
+// Q27 L17 error-mc
+{id:27,type:'error-mc',section:'L17',
+ text:'Which sentence has an error?',
+ options:[
+  'a. わたし は きのう としょかん で ほん を よみました。',
+  'b. スミスさん は あした に とうきょう に いきます。',
+  'c. わたし は でんしゃ で がっこう に きます。',
+  'd. よう子さん は ともだち と カフェ に いきました。'
+ ],
+ answer:'b',
+ hint:'Look for a relative time word incorrectly paired with a particle.',
+ explanation:'あした (tomorrow) is a relative time word and does NOT take に. Remove the に after あした.',
+ example:'あした とうきょう に いきます。(romaji: ashita Toukyou ni ikimasu.) No に after relative time words!'},
+
+// Q28 L89 mc — WOTD
+{id:28,type:'mc',section:'L89',
+ text:'さすが is best described as:',
+ options:[
+  'a. That is so-so / I am not sure about that',
+  'b. As expected / Impressive! (expressing admiration)',
+  'c. That is a hassle / too much work',
+  'd. I see / That makes sense (understanding something)'
+ ],
+ answer:'b',
+ hint:'Word/Expression of the Day — used to praise someone who lives up to their reputation.',
+ explanation:'さすが (sasuga) = As expected / Impressive! Used to show admiration when someone does something well. Can be used alone or with a name: さすが せんせい！',
+ example:'A: スミスさん は にほんご が とても じょうず ですね。B: さすがですね！(romaji: sasuga desu ne!)'},
+
+// Q29 L17 sequence
+{id:29,type:'sequence',section:'L17',
+ text:'Build the sentence: "Is that person a student or a teacher?"',
+ chips:shuffle(['あの','ひと','は','がくせい','ですか','せんせい','ですか','または','それとも']),
+ answer:['あの','ひと','は','がくせい','ですか','せんせい','ですか'],
+ hint:'Lesson 7 A-or-B question pattern: [topic] は A ですか、B ですか.',
+ explanation:'The A-or-B pattern uses: [topic] は [A] ですか、[B] ですか. Rising intonation on each か.',
+ example:'クラス は ごぜん ですか、ごご ですか。(romaji: kurasu wa gozen desu ka, gogo desu ka.)'},
+
+// Q30 L89 type-word
+{id:30,type:'type-word',section:'L89',
+ text:'Type the Japanese word for "draft beer":',
+ answer:'なまビール',
+ altTyping:['nama biiru','nama biru','なまびーる'],
+ hint:'Lesson 9 restaurant vocabulary — two parts combined: なま + ビール. Note the katakana spelling carefully.',
+ explanation:'なまビール (nama biiru) = draft beer. なま = fresh/raw. ビール = beer (katakana: ビ, not ベ).',
+ example:'なまビール を ふたつ ください。(romaji: nama biiru o futatsu kudasai.) Two draft beers please.'},
+
+// Q31 L17 mc — numbers
+{id:31,type:'mc',section:'L17',
+ text:'A phone number is read as: 03-1234-5678. How do you read "5678"?',
+ options:[
+  'a. ごろくしちはち',
+  'b. ごーろくーなながーはち',
+  'c. ごろくなながはち',
+  'd. ごーろくーしちーはち'
+ ],
+ answer:'c',
+ hint:'Lesson 2 phone numbers — read each digit individually. 7 in phone numbers is usually なな not しち.',
+ explanation:'Phone numbers read each digit: 5=ご, 6=ろく, 7=なな, 8=はち. In phone numbers, 7 is usually なな to avoid confusion with いち.',
+ example:'でんわばんごう は ゼロさん の いちにさんし の ごろくなながはち です。'},
+
+// Q32 L89 multiselect
+{id:32,type:'multiselect',section:'L89',
+ text:'Which terms refer to YOUR OWN family (humble/plain forms)? Choose ALL that apply.',
+ options:[
+  'a. ちち',
+  'b. おとうさん',
+  'c. はは',
+  'd. おかあさん',
+  'e. つま',
+  'f. おくさん'
+ ],
+ answer:['a','c','e'],
+ hint:'Lesson 9 — own family uses humble/plain forms. Another person\'s family uses honorific forms with お/ご.',
+ explanation:'ちち=my father, はは=my mother, つま=my wife (own family). おとうさん, おかあさん, おくさん are honorific forms used for other people\'s family.',
+ example:'わたし の ちち は まいにち コーヒー を のみます。(romaji: watashi no chichi wa mainichi koohii o nomimasu.)'},
+
+// Q33 L17 sequence-en
+{id:33,type:'sequence-en',section:'L17',
+ text:'Translate into English:',
+ jp:'わたし は らいしゅう ともだち と こうえん に いきます。',
+ chips:shuffle(['I','will go','to','the park','with','my friend','next week','yesterday','to school']),
+ answer:['I','will go','to','the park','with','my friend','next week'],
+ hint:'らいしゅう = next week. と = with. に after こうえん marks destination.',
+ explanation:'らいしゅう (raishuu) = next week. ともだちと = with my friend. こうえんに = to the park.',
+ example:'わたし は こんしゅう ともだち と えいが を みます。(romaji: konshuu tomodachi to eiga o mimasu.)'},
+
+// Q34 L89 sequence
+{id:34,type:'sequence',section:'L89',
+ text:'Build the sentence: "I sent an email to my boss yesterday."',
+ chips:shuffle(['わたし','は','きのう','じょうし','に','メール','を','おくりました','から','あいました']),
+ answer:['わたし','は','きのう','じょうし','に','メール','を','おくりました'],
+ hint:'Receiver に pattern — じょうし receives the email. きのう = yesterday (relative time, no に needed).',
+ explanation:'じょうし に (receiver) + メール を (object) + おくりました (past tense). きのう = yesterday, no particle needed.',
+ example:'わたし は じょうし に ほうこく を おくりました。(romaji: jousha ni houkoku o okurimashita.)'},
+
+// Q35 L17 mc — time
+{id:35,type:'mc',section:'L17',
+ text:'Which sentence correctly uses the particle に with a time expression?',
+ options:[
+  'a. あした に ともだち に あいます。',
+  'b. まいにち に にほんご を べんきょう します。',
+  'c. どようび に テニス を します。',
+  'd. きのう に としょかん に いきました。'
+ ],
+ answer:'c',
+ hint:'Lesson 7 — only specific times (clock times, days of week, months, dates) take に. Relative times do not.',
+ explanation:'どようび (Saturday) is a specific day of the week, so it correctly takes に. あした, まいにち, きのう are relative time words and never take に.',
+ example:'どようび に こうえん で テニス を します。(romaji: doyoubi ni kouen de tenisu o shimasu.)'},
+
+// Q36 L89 mc — restaurant
+{id:36,type:'mc',section:'L89',
+ text:'At a restaurant you want to pay separately. What do you say?',
+ options:[
+  'a. おすすめ は なんですか。',
+  'b. おかいけい を おねがいします。べつべつに。',
+  'c. おのみもの は なまビール を ふたつ ください。',
+  'd. どうぞ こちら へ。おかけください。'
+ ],
+ answer:'b',
+ hint:'Lesson 9 restaurant language — two key words: the bill, and how to split it.',
+ explanation:'おかいけい (okaikei) = the bill/check. べつべつに (betsubetsu ni) = separately. Use both together to ask for separate bills.',
+ example:'おかいけい を おねがいします。べつべつに。(romaji: okaikei o onegaishimasu. Betsubetsu ni.)'},
+
+// Q37 L17 particle
+{id:37,type:'particle',section:'L17',
+ text:'Fill in the correct particle:',
+ sentence:'スミスさん は ブラジル <SEL1> きました。',
+ sel1:['を','に','で','から'],answer1:'から',
+ translation:'Smith-san came from Brazil.',
+ hint:'Lesson 6 — which particle marks the starting point or origin of movement?',
+ explanation:'から (kara) = from. Used with きました or きます to indicate where someone came from.',
+ example:'わたし は アメリカ から きました。(romaji: watashi wa Amerika kara kimashita.)'},
+
+// Q38 L89 mc — WOTD
+{id:38,type:'mc',section:'L89',
+ text:'めんどくさい is best described as:',
+ options:[
+  'a. Impressive / as expected',
+  'b. So-so / not sure about it',
+  'c. Troublesome / what a hassle / I don\'t want to do it',
+  'd. That helps / I appreciate it'
+ ],
+ answer:'c',
+ hint:'Word/Expression of the Day — used when something seems annoying, tiring, or too much work.',
+ explanation:'めんどくさい (mendokusai) = troublesome / what a hassle / I don\'t feel like doing it. Very common casual complaint.',
+ example:'しゅくだい、めんどくさい！(romaji: shukudai, mendokusai!) Homework is such a hassle!'},
+
+// Q39 L17 sequence
+{id:39,type:'sequence',section:'L17',
+ text:'Build the sentence: "Tanaka-san reads a book at the library every Saturday."',
+ chips:shuffle(['たなかさん','は','どようび','に','としょかん','で','ほん','を','よみます','から']),
+ answer:['たなかさん','は','どようび','に','としょかん','で','ほん','を','よみます'],
+ hint:'Lesson 8 full sentence pattern: Person は + time に + place で + noun を + verb.',
+ explanation:'どようびに = on Saturday (specific day, needs に). としょかんで = at the library (place of action, needs で). ほんを よみます = reads a book.',
+ example:'わたし は にちようび に カフェ で ほん を よみます。(romaji: watashi wa nichiyoubi ni kafe de hon o yomimasu.)'},
+
+// Q40 CONVERSATION — store
+{id:40,type:'conversation',section:'L17',
+ text:'Store roleplay: You are at a department store looking for a T-shirt. Complete your side of the conversation.',
+ turns:[
+  {speaker:'staff', line:'いらっしゃいませ。なにか おさがし ですか。'},
+  {speaker:'you', answer:['すみません','Tシャツ','は','どこ','ですか'], distractors:shuffle(['あります','から','に','います'])},
+  {speaker:'staff', line:'Tシャツ は 3かい で ございます。'},
+  {speaker:'you', answer:['この','しろい','Tシャツ','は','いくら','ですか'], distractors:shuffle(['あの','くろい','を','から'])},
+  {speaker:'staff', line:'それ は 2,500えん で ございます。'},
+  {speaker:'you', answer:['では','にまい','ください'], distractors:shuffle(['みっつ','さんまい','おねがい','から'])}
+ ],
+ hint:'Store vocab: どこですか = where is it, いくらですか = how much, まい counter for flat items like T-shirts.',
+ explanation:'どこですか = where is it? いくらですか = how much? にまい = 2 flat objects (T-shirts use まい counter). では = well then / in that case.',
+ example:'この Tシャツ を にまい ください。(romaji: kono T-shatsu o nimai kudasai.) Two of these T-shirts, please.'}
+];
+
+// ── STATE ─────────────────────────────────────────────────────────────────────
+let feedbackMode=null;
+let answered={};
+let userAnswers={};
+let submitted=false;
+let currentBucket=0;
+const BUCKET_SIZE=10,TOTAL=40;
+const chipState={};
+const convChipState={};
+
+// ── MODE ──────────────────────────────────────────────────────────────────────
+function selectMode(m){
+  feedbackMode=m;
+  document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('selected'));
+  document.getElementById(m==='immediate'?'modeImmediate':'modeEnd').classList.add('selected');
+  document.getElementById('startBtn').style.display='block';
+}
+function startQuiz(){
+  document.getElementById('modeScreen').style.display='none';
+  document.getElementById('quizBody').style.display='block';
+  document.getElementById('fixedFooter').classList.add('show');
+  buildNavDots();buildBucketNav();showBucket(0);
+}
+
+// ── NAV ───────────────────────────────────────────────────────────────────────
+function buildNavDots(){
+  const c=document.getElementById('navDots');c.innerHTML='';
+  for(let i=1;i<=TOTAL;i++){
+    const d=document.createElement('div');
+    d.className='dot';d.id='dot'+i;d.textContent=i;
+    d.onclick=()=>jumpToQ(i);c.appendChild(d);
+  }
+}
+function buildBucketNav(){
+  const c=document.getElementById('bucketNav');c.innerHTML='';
+  const n=Math.ceil(TOTAL/BUCKET_SIZE);
+  for(let i=0;i<n;i++){
+    const b=document.createElement('button');
+    b.className='bucket-btn'+(i===0?' active':'');
+    b.textContent='Q'+(i*BUCKET_SIZE+1)+'–'+Math.min((i+1)*BUCKET_SIZE,TOTAL);
+    b.id='bucket'+i;
+    const idx=i;b.onclick=()=>showBucket(idx);
+    c.appendChild(b);
+  }
+}
+function showBucket(idx){
+  currentBucket=idx;
+  document.querySelectorAll('.bucket-btn').forEach((b,i)=>b.classList.toggle('active',i===idx));
+  const start=idx*BUCKET_SIZE+1,end=Math.min((idx+1)*BUCKET_SIZE,TOTAL);
+  const area=document.getElementById('questionArea');area.innerHTML='';
+  for(let i=start;i<=end;i++){area.appendChild(renderQuestion(questions[i-1]));}
+  for(let i=start;i<=end;i++)restoreQ(i);
+  document.getElementById('nextBucketBtn').style.display=(idx<Math.ceil(TOTAL/BUCKET_SIZE)-1)?'block':'none';
+  window.scrollTo({top:0,behavior:'smooth'});
+  updateDotCurrent();
+}
+function nextBucket(){showBucket(currentBucket+1);}
+function jumpToQ(qid){
+  const bi=Math.floor((qid-1)/BUCKET_SIZE);
+  showBucket(bi);
+  setTimeout(()=>{const el=document.getElementById('q'+qid);if(el)el.scrollIntoView({behavior:'smooth',block:'center'});},120);
+}
+function updateDotCurrent(){
+  const s=currentBucket*BUCKET_SIZE+1,e=Math.min((currentBucket+1)*BUCKET_SIZE,TOTAL);
+  document.querySelectorAll('.dot').forEach(d=>{
+    const id=parseInt(d.id.replace('dot',''));
+    d.classList.toggle('current',id>=s&&id<=e);
+  });
+}
+
+// ── RENDER ────────────────────────────────────────────────────────────────────
+function esc(s){return s.replace(/'/g,"\\'");}
+function hintHtml(q){return `<div class="hint" onclick="this.classList.toggle('open')"><span class="hint-text">${q.hint}</span></div>`;}
+function typeLabel(t){
+  return {mc:'Multiple Choice','error-mc':'Error Correction',multiselect:'Multi-Select',
+    'type-word':'Type the Word',particle:'Fill-in Particle',particle2:'Fill-in 2 Particles',
+    matching:'Vocab Matching',sequence:'Word Sequencing',
+    'sequence-en':'Translate to English',conversation:'Conversation Roleplay'}[t]||t;
+}
+function checkBtnHtml(qid){
+  if(feedbackMode!=='immediate')return '';
+  return `<button class="check-btn" id="chk${qid}" onclick="checkAnswer(${qid})">Check Answer</button>`;
+}
+
+function renderQuestion(q){
+  const card=document.createElement('div');
+  card.className='question-card';card.id='q'+q.id;
+  card.innerHTML=`<div class="q-header"><span class="q-num">Q${q.id}</span><div class="badges"><span class="q-section">${q.section}</span><span class="q-type">${typeLabel(q.type)}</span></div></div>`;
+  const body=document.createElement('div');
+  let inner='';
+
+  if(q.type==='mc'||q.type==='error-mc'){
+    inner=`<div class="q-text">${q.text}</div>${hintHtml(q)}
+      <div class="option-group" data-q="${q.id}" data-answer="${q.answer}">
+        ${q.options.map((o,i)=>`<label class="option-label"><input type="radio" name="q${q.id}" value="${['a','b','c','d'][i]}" onchange="onInteract(${q.id})"> ${o}</label>`).join('')}
+      </div>`;
+  } else if(q.type==='multiselect'){
+    inner=`<div class="q-text">${q.text}</div>${hintHtml(q)}
+      <div class="option-group" data-q="${q.id}" data-answer="${q.answer.join(',')}">
+        ${q.options.map((o,i)=>`<label class="option-label"><input type="checkbox" name="q${q.id}" value="${['a','b','c','d','e','f'][i]}" onchange="onInteract(${q.id})"> ${o}</label>`).join('')}
+      </div>`;
+  } else if(q.type==='type-word'){
+    inner=`<div class="q-text">${q.text}</div>${hintHtml(q)}
+      <input type="text" class="text-input" id="input${q.id}" placeholder="Type in Japanese or romaji..."
+        autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">`;
+  } else if(q.type==='particle'){
+    const parts=q.sentence.split('<SEL1>');
+    const sel=`<select id="sel1_${q.id}" onchange="onInteract(${q.id})">${['-- --',...q.sel1].map(s=>`<option value="${s==='-- --'?'':s}">${s}</option>`).join('')}</select>`;
+    inner=`<div class="q-text">${q.text}</div>${hintHtml(q)}
+      <div class="particle-sentence">${parts[0]}${sel}${parts[1]}</div>
+      <div class="translation-note">${q.translation}</div>`;
+  } else if(q.type==='particle2'){
+    const parts=q.sentence.split(/<SEL[12]>/);
+    const s1=`<select id="sel1_${q.id}" onchange="onInteract(${q.id})">${['-- --',...q.sel1].map(s=>`<option value="${s==='-- --'?'':s}">${s}</option>`).join('')}</select>`;
+    const s2=`<select id="sel2_${q.id}" onchange="onInteract(${q.id})">${['-- --',...q.sel2].map(s=>`<option value="${s==='-- --'?'':s}">${s}</option>`).join('')}</select>`;
+    inner=`<div class="q-text">${q.text}</div>${hintHtml(q)}
+      <div class="particle-sentence">${parts[0]}${s1}${parts[1]}${s2}${parts[2]}</div>
+      <div class="translation-note">${q.translation}</div>`;
+  } else if(q.type==='matching'){
+    const opts=['<option value="">-- select --</option>',...q.options.map(o=>`<option value="${o}">${o}</option>`)].join('');
+    inner=`<div class="q-text">${q.text}</div>${hintHtml(q)}
+      <div class="matching-grid" data-q="${q.id}">
+        ${q.pairs.map((p,i)=>`<label>${p.jp}</label><select id="match${q.id}_${i}" onchange="onInteract(${q.id})">${opts}</select>`).join('')}
+      </div>`;
+  } else if(q.type==='sequence'||q.type==='sequence-en'){
+    inner=`<div class="q-text">${q.text}${q.jp?`<span class="jp">${q.jp}</span>`:''}</div>${hintHtml(q)}
+      <div class="seq-label">Your answer (click chips to build, click a slot chip to remove):</div>
+      <div class="answer-slots" id="slots${q.id}"></div>
+      <div class="seq-label">Word bank:</div>
+      <div class="chip-bank" id="bank${q.id}">
+        ${q.chips.map((c,i)=>`<div class="chip" id="chip${q.id}_${i}" onclick="addChip(${q.id},${i},'${esc(c)}')">${c}</div>`).join('')}
+      </div>`;
+  } else if(q.type==='conversation'){
+    inner=`<div class="q-text">${q.text}</div>${hintHtml(q)}<div class="conv-wrap" id="conv${q.id}">${renderConv(q)}</div>`;
+  }
+
+  inner+=checkBtnHtml(q.id);
+  inner+=`<div class="feedback" id="fb${q.id}"></div>`;
+  body.innerHTML=inner;
+  card.appendChild(body);
+
+  // Wire up type-word IME events after DOM insertion
+  if(q.type==='type-word'){
+    setTimeout(()=>{
+      const inp=document.getElementById('input'+q.id);
+      if(!inp)return;
+      let isComp=false;
+      inp.addEventListener('compositionstart',()=>{isComp=true;});
+      inp.addEventListener('compositionend',()=>{isComp=false;onInteract(q.id);});
+      inp.addEventListener('input',()=>{if(!isComp)onInteract(q.id);});
+    },0);
+  }
+  return card;
+}
+
+function renderConv(q){
+  let html='';
+  q.turns.forEach((t,ti)=>{
+    html+=`<div class="conv-turn"><div class="conv-speaker">${t.speaker==='you'?'You':'Staff / Waiter'}</div>`;
+    if(t.speaker!=='you'){
+      html+=`<div class="conv-line">${t.line}</div>`;
+    } else {
+      const allChips=shuffle([...t.answer,...t.distractors]);
+      html+=`<div class="conv-line you-turn">
+        <div class="answer-slots" id="cslots${q.id}_${ti}"></div>
+        <div class="chip-bank" id="cbank${q.id}_${ti}">
+          ${allChips.map((c,i)=>`<div class="chip" id="cchip${q.id}_${ti}_${i}" onclick="addConvChip(${q.id},${ti},${i},'${esc(c)}')">${c}</div>`).join('')}
+        </div>
+        <div class="conv-correct-ans" id="cans${q.id}_${ti}" style="display:none"></div>
+      </div>`;
+    }
+    html+='</div>';
+  });
+  return html;
+}
+
+// ── CHIP LOGIC ────────────────────────────────────────────────────────────────
+function addChip(qid,idx,word){
+  if(!chipState[qid])chipState[qid]=[];
+  chipState[qid].push({idx,word});
+  document.getElementById('chip'+qid+'_'+idx).classList.add('used');
+  renderSlots(qid);onInteract(qid);
+}
+function removeChip(qid,si){
+  const item=chipState[qid][si];
+  document.getElementById('chip'+qid+'_'+item.idx).classList.remove('used');
+  chipState[qid].splice(si,1);
+  renderSlots(qid);onInteract(qid);
+}
+function renderSlots(qid){
+  const el=document.getElementById('slots'+qid);if(!el)return;
+  el.innerHTML=(chipState[qid]||[]).map((c,i)=>`<div class="slot-chip" onclick="removeChip(${qid},${i})">${c.word}</div>`).join('');
+}
+
+function addConvChip(qid,ti,idx,word){
+  const k=qid+'_'+ti;
+  if(!convChipState[k])convChipState[k]=[];
+  convChipState[k].push({idx,word});
+  document.getElementById('cchip'+qid+'_'+ti+'_'+idx).classList.add('used');
+  renderConvSlots(qid,ti);onInteract(qid);
+}
+function removeConvChip(qid,ti,si){
+  const k=qid+'_'+ti;
+  const item=convChipState[k][si];
+  document.getElementById('cchip'+qid+'_'+ti+'_'+item.idx).classList.remove('used');
+  convChipState[k].splice(si,1);
+  renderConvSlots(qid,ti);onInteract(qid);
+}
+function renderConvSlots(qid,ti){
+  const el=document.getElementById('cslots'+qid+'_'+ti);if(!el)return;
+  el.innerHTML=(convChipState[qid+'_'+ti]||[]).map((c,i)=>`<div class="slot-chip" onclick="removeConvChip(${qid},${ti},${i})">${c.word}</div>`).join('');
+}
+
+// ── INTERACTION ───────────────────────────────────────────────────────────────
+function onInteract(qid){
+  const q=questions[qid-1];
+  let hasInput=false;
+
+  if(q.type==='mc'||q.type==='error-mc'){
+    hasInput=!!document.querySelector(`input[name="q${qid}"]:checked`);
+  } else if(q.type==='multiselect'){
+    hasInput=document.querySelectorAll(`input[name="q${qid}"]:checked`).length>0;
+  } else if(q.type==='type-word'){
+    hasInput=(document.getElementById('input'+qid)||{value:''}).value.trim().length>0;
+  } else if(q.type==='particle'){
+    hasInput=!!(document.getElementById('sel1_'+qid)||{value:''}).value;
+  } else if(q.type==='particle2'){
+    const v1=(document.getElementById('sel1_'+qid)||{value:''}).value;
+    const v2=(document.getElementById('sel2_'+qid)||{value:''}).value;
+    hasInput=!!(v1&&v2);
+  } else if(q.type==='matching'){
+    hasInput=q.pairs.some((_,i)=>!!(document.getElementById('match'+qid+'_'+i)||{value:''}).value);
+  } else if(q.type==='sequence'||q.type==='sequence-en'){
+    hasInput=(chipState[qid]||[]).length>0;
+  } else if(q.type==='conversation'){
+    const youTurns=q.turns.filter(t=>t.speaker==='you');
+    hasInput=youTurns.some((_,ti)=>{
+      const actualTi=q.turns.findIndex((t,i)=>t.speaker==='you'&&q.turns.slice(0,i+1).filter(x=>x.speaker==='you').length===ti+1);
+      return (convChipState[qid+'_'+actualTi]||[]).length>0;
+    });
+  }
+
+  if(feedbackMode==='immediate'){
+    const btn=document.getElementById('chk'+qid);
+    if(btn){btn.classList.toggle('visible',hasInput);}
+  } else {
+    // In end mode, track answered state for progress
+    evaluateQ(qid);
+  }
+}
+
+// ── EVALUATE (silent, for progress tracking in end mode) ──────────────────────
+function evaluateQ(qid){
+  const q=questions[qid-1];
+  let correct=false,hasAnswer=false;
+
+  if(q.type==='mc'||q.type==='error-mc'){
+    const sel=document.querySelector(`input[name="q${qid}"]:checked`);
+    if(sel){hasAnswer=true;correct=(sel.value===q.answer);}
+  } else if(q.type==='multiselect'){
+    const checked=[...document.querySelectorAll(`input[name="q${qid}"]:checked`)].map(i=>i.value).sort();
+    if(checked.length>0){hasAnswer=true;correct=JSON.stringify(checked)===JSON.stringify([...q.answer].sort());}
+  } else if(q.type==='type-word'){
+    const val=(document.getElementById('input'+qid)||{value:''}).value.trim();
+    if(val){hasAnswer=true;correct=normMatch(val,q);}
+  } else if(q.type==='particle'){
+    const v=(document.getElementById('sel1_'+qid)||{value:''}).value;
+    if(v){hasAnswer=true;correct=(v===q.answer1);}
+  } else if(q.type==='particle2'){
+    const v1=(document.getElementById('sel1_'+qid)||{value:''}).value;
+    const v2=(document.getElementById('sel2_'+qid)||{value:''}).value;
+    if(v1&&v2){hasAnswer=true;correct=(v1===q.answer1&&v2===q.answer2);}
+  } else if(q.type==='matching'){
+    const vals=q.pairs.map((_,i)=>(document.getElementById('match'+qid+'_'+i)||{value:''}).value);
+    if(vals.every(v=>v)){hasAnswer=true;correct=vals.every((v,i)=>v===q.pairs[i].en);}
+  } else if(q.type==='sequence'||q.type==='sequence-en'){
+    const ua=(chipState[qid]||[]).map(c=>c.word);
+    if(ua.length>0){hasAnswer=true;correct=JSON.stringify(ua)===JSON.stringify(q.answer);}
+  } else if(q.type==='conversation'){
+    const youTurnIdxs=q.turns.map((t,i)=>({t,i})).filter(({t})=>t.speaker==='you').map(({i})=>i);
+    const allAnswered=youTurnIdxs.every(ti=>(convChipState[qid+'_'+ti]||[]).length>0);
+    if(allAnswered){
+      hasAnswer=true;
+      correct=youTurnIdxs.every((ti,yi)=>{
+        const ua=(convChipState[qid+'_'+ti]||[]).map(c=>c.word);
+        return JSON.stringify(ua)===JSON.stringify(q.turns[ti].answer);
+      });
+    }
+  }
+
+  if(hasAnswer){answered[qid]=correct;}
+  else{delete answered[qid];}
+  updateProgress();
+  return {hasAnswer,correct};
+}
+
+function normMatch(val,q){
+  const n=s=>s.toLowerCase().replace(/\s+/g,'').replace(/[ōoō]/g,'o').replace(/[ūuū]/g,'u');
+  const nv=n(val);
+  return [q.answer,...(q.altTyping||[])].some(a=>n(a)===nv);
+}
+
+// ── CHECK ANSWER (immediate mode) ─────────────────────────────────────────────
+function checkAnswer(qid){
+  const q=questions[qid-1];
+  const {correct}=evaluateQ(qid);
+  answered[qid]=correct;
+  lockQuestion(qid);
+  showFeedback(qid,correct);
+  const btn=document.getElementById('chk'+qid);if(btn)btn.style.display='none';
+  updateProgress();
+}
+
+function lockQuestion(qid){
+  const q=questions[qid-1];
+  const card=document.getElementById('q'+qid);if(!card)return;
+  card.querySelectorAll('input,select,button.check-btn').forEach(el=>{el.disabled=true;});
+  // Lock chips
+  card.querySelectorAll('.chip').forEach(c=>{c.onclick=null;c.style.cursor='default';});
+  card.querySelectorAll('.slot-chip').forEach(c=>{c.onclick=null;c.style.cursor='default';});
+}
+
+// ── SHOW FEEDBACK ─────────────────────────────────────────────────────────────
+function showFeedback(qid,isCorrect){
+  const q=questions[qid-1];
+  const fb=document.getElementById('fb'+qid);if(!fb)return;
+  const card=document.getElementById('q'+qid);
+  if(card){card.classList.toggle('correct',isCorrect===true);card.classList.toggle('incorrect',isCorrect===false);}
+  fb.className='feedback show '+(isCorrect?'correct-fb':'incorrect-fb');
+  fb.innerHTML=`<div class="answer-line">${isCorrect?'Correct!':'Not quite.'}</div>
+    <div class="answer-line">Correct answer: ${getCorrectDisplay(q)}</div>
+    <div class="explanation">${q.explanation}</div>
+    <div class="example">${q.example}</div>`;
+  highlightAnswers(qid,q,isCorrect);
+  // Conversation: show correct per turn
+  if(q.type==='conversation'){
+    let youTi=0;
+    q.turns.forEach((t,ti)=>{
+      if(t.speaker==='you'){
+        const el=document.getElementById('cans'+qid+'_'+ti);
+        if(el){
+          el.style.display='block';
+          el.innerHTML='Correct: '+t.answer.map(w=>`<span>${w}</span>`).join('');
+        }
+        youTi++;
+      }
+    });
+  }
+}
+
+function getCorrectDisplay(q){
+  if(q.type==='mc'||q.type==='error-mc')return q.options[['a','b','c','d'].indexOf(q.answer)];
+  if(q.type==='multiselect')return q.answer.map(a=>q.options[['a','b','c','d','e','f'].indexOf(a)]).join(' + ');
+  if(q.type==='type-word')return q.answer+' ('+(q.altTyping||[]).join(' / ')+')';
+  if(q.type==='particle')return q.answer1;
+  if(q.type==='particle2')return q.answer1+' / '+q.answer2;
+  if(q.type==='matching')return q.pairs.map(p=>p.jp+' = '+p.en).join(', ');
+  if(q.type==='sequence'||q.type==='sequence-en')return q.answer.join(' ');
+  if(q.type==='conversation'){
+    const yt=q.turns.filter(t=>t.speaker==='you');
+    return yt.map(t=>t.answer.join(' ')).join(' | ');
+  }
+  return '';
+}
+
+function highlightAnswers(qid,q,isCorrect){
+  if(q.type==='mc'||q.type==='error-mc'||q.type==='multiselect'){
+    const labels=document.querySelectorAll(`#q${qid} .option-label`);
+    const letters=['a','b','c','d','e','f'];
+    labels.forEach((l,i)=>{
+      const letter=letters[i];
+      const inp=l.querySelector('input');
+      const isAns=Array.isArray(q.answer)?q.answer.includes(letter):q.answer===letter;
+      const isChk=inp&&inp.checked;
+      if(isAns&&isChk)l.classList.add('correct-opt');
+      else if(!isAns&&isChk)l.classList.add('incorrect-opt');
+      else if(isAns&&!isChk)l.classList.add('missed-opt');
+    });
+  } else if(q.type==='type-word'){
+    const inp=document.getElementById('input'+qid);
+    if(inp)inp.classList.add(isCorrect?'correct-input':'incorrect-input');
+  } else if(q.type==='particle'||q.type==='particle2'){
+    [1,2].forEach(n=>{
+      const s=document.getElementById('sel'+n+'_'+qid);
+      if(s){const exp=n===1?q.answer1:q.answer2;s.classList.add(s.value===exp?'correct-input':'incorrect-input');}
+    });
+  } else if(q.type==='matching'){
+    q.pairs.forEach((_,i)=>{
+      const s=document.getElementById('match'+qid+'_'+i);
+      if(s)s.classList.add(s.value===q.pairs[i].en?'correct-input':'incorrect-input');
+    });
+  }
+}
+
+// ── RESTORE ───────────────────────────────────────────────────────────────────
+function restoreQ(qid){
+  if(!userAnswers[qid]&&answered[qid]===undefined)return;
+  const q=questions[qid-1];
+  if(q.type==='mc'||q.type==='error-mc'){
+    if(userAnswers[qid]){const inp=document.querySelector(`input[name="q${qid}"][value="${userAnswers[qid]}"]`);if(inp)inp.checked=true;}
+  } else if(q.type==='multiselect'){
+    (userAnswers[qid]||[]).forEach(v=>{const inp=document.querySelector(`input[name="q${qid}"][value="${v}"]`);if(inp)inp.checked=true;});
+  } else if(q.type==='type-word'){
+    const inp=document.getElementById('input'+qid);if(inp&&userAnswers[qid])inp.value=userAnswers[qid];
+  } else if(q.type==='particle'){
+    const s=document.getElementById('sel1_'+qid);if(s&&userAnswers[qid])s.value=userAnswers[qid];
+  } else if(q.type==='particle2'){
+    const s1=document.getElementById('sel1_'+qid),s2=document.getElementById('sel2_'+qid);
+    if(s1&&s2&&Array.isArray(userAnswers[qid])){s1.value=userAnswers[qid][0];s2.value=userAnswers[qid][1];}
+  } else if(q.type==='matching'){
+    (userAnswers[qid]||[]).forEach((v,i)=>{const s=document.getElementById('match'+qid+'_'+i);if(s)s.value=v;});
+  } else if(q.type==='sequence'||q.type==='sequence-en'){
+    if(chipState[qid])renderSlots(qid);
+  }
+  if(submitted||answered[qid]!==undefined&&feedbackMode==='immediate'){
+    showFeedback(qid,answered[qid]);
+    lockQuestion(qid);
+  }
+}
+
+// ── PROGRESS ──────────────────────────────────────────────────────────────────
+function updateProgress(){
+  // Save user answers
+  questions.forEach(q=>{
+    const qid=q.id;
+    if(q.type==='mc'||q.type==='error-mc'){const sel=document.querySelector(`input[name="q${qid}"]:checked`);if(sel)userAnswers[qid]=sel.value;}
+    else if(q.type==='multiselect'){const chk=[...document.querySelectorAll(`input[name="q${qid}"]:checked`)].map(i=>i.value);if(chk.length)userAnswers[qid]=chk;}
+    else if(q.type==='type-word'){const inp=document.getElementById('input'+qid);if(inp&&inp.value.trim())userAnswers[qid]=inp.value.trim();}
+    else if(q.type==='particle'){const s=document.getElementById('sel1_'+qid);if(s&&s.value)userAnswers[qid]=s.value;}
+    else if(q.type==='particle2'){const s1=document.getElementById('sel1_'+qid),s2=document.getElementById('sel2_'+qid);if(s1&&s2&&s1.value&&s2.value)userAnswers[qid]=[s1.value,s2.value];}
+    else if(q.type==='matching'){const vals=q.pairs.map((_,i)=>{const s=document.getElementById('match'+qid+'_'+i);return s?s.value:'';});if(vals.some(v=>v))userAnswers[qid]=vals;}
+  });
+
+  const n=Object.keys(answered).length;
+  document.getElementById('footerCount').textContent=n+' / '+TOTAL+' answered';
+  document.getElementById('topProgress').style.width=(n/TOTAL*100)+'%';
+  for(let i=1;i<=TOTAL;i++){
+    const d=document.getElementById('dot'+i);if(!d)continue;
+    d.className='dot';
+    if(answered[i]!==undefined)d.classList.add(submitted?(answered[i]?'correct':'incorrect'):'answered');
+  }
+  updateDotCurrent();
+}
+
+// ── SUBMIT ────────────────────────────────────────────────────────────────────
+function attemptSubmit(){
+  // Evaluate any unevaluated in end mode
+  if(feedbackMode==='end'){questions.forEach(q=>evaluateQ(q.id));}
+  const un=TOTAL-Object.keys(answered).length;
+  if(un>0){document.getElementById('warnMsg').textContent=`You have ${un} unanswered question(s). Submit anyway?`;document.getElementById('warnModal').classList.add('show');}
+  else confirmSubmit();
+}
+function closeModal(){document.getElementById('warnModal').classList.remove('show');}
+function confirmSubmit(){
+  closeModal();submitted=true;
+  // Evaluate all questions; mark any unanswered as incorrect so answers are revealed
+  questions.forEach(q=>{
+    if(feedbackMode==='end'){evaluateQ(q.id);}
+    // For any question still unanswered, mark it false so feedback shows the correct answer
+    if(answered[q.id]===undefined){answered[q.id]=false;}
+    const el=document.getElementById('q'+q.id);if(!el)return;
+    showFeedback(q.id,answered[q.id]);
+    lockQuestion(q.id);
+  });
+  updateProgress();showScore();
+  document.getElementById('nextBucketBtn').style.display='none';
+}
+
+function showScore(){
+  const sec=document.getElementById('scoreSection');sec.classList.add('show');
+  const correct=Object.values(answered).filter(v=>v).length;
+  const pct=Math.round(correct/TOTAL*100);
+  const L89=questions.filter(q=>q.section==='L89');
+  const L17=questions.filter(q=>q.section==='L17');
+  const L89c=L89.filter(q=>answered[q.id]===true).length,L89t=L89.length;
+  const L17c=L17.filter(q=>answered[q.id]===true).length,L17t=L17.length;
+  const types=['mc','error-mc','multiselect','type-word','particle','particle2','matching','sequence','sequence-en','conversation'];
+  let tBreak='';
+  types.forEach(t=>{
+    const qs=questions.filter(q=>q.type===t);
+    const c=qs.filter(q=>answered[q.id]===true).length,a=qs.length;
+    if(a>0)tBreak+=`<div class="breakdown-item">${typeLabel(t)}<span>${c}/${a}</span></div>`;
+  });
+  const msg=pct>=90?'Excellent! すごい！':pct>=70?'Good work! がんばった！':pct>=50?'Keep practicing! もう少し！':'Review time! がんばれ！';
+  sec.innerHTML=`<h2 style="font-size:1.35em;color:var(--accent)">Quiz Complete!</h2>
+    <div class="score-big">${correct} / ${TOTAL}</div>
+    <div style="font-size:1.15em;font-weight:700;color:var(--muted)">${pct}%</div>
+    <div class="score-bar-container"><div class="score-bar" id="scoreBar"></div></div>
+    <p style="font-size:1.05em;margin:8px 0">${msg}</p>
+    <div class="breakdown">
+      <h3>By Lesson Group</h3>
+      <div class="breakdown-grid">
+        <div class="breakdown-item">Lessons 8-9<span>${L89c} / ${L89t}</span></div>
+        <div class="breakdown-item">Lessons 1-7<span>${L17c} / ${L17t}</span></div>
+      </div>
+      <h3>By Question Type</h3>
+      <div class="breakdown-grid">${tBreak}</div>
+    </div>
+    <div class="post-submit-btns">
+      <button class="copy-btn" onclick="copyReview()">Copy Results for AI Review</button>
+      <button class="print-btn" onclick="window.print()">Print Quiz</button>
+    </div>`;
+  setTimeout(()=>{const b=document.getElementById('scoreBar');if(b)b.style.width=pct+'%';},100);
+  sec.scrollIntoView({behavior:'smooth'});
+}
+
+function copyReview(){
+  let txt=`Japanese Quiz Results — 2026-05-10\nScore: ${Object.values(answered).filter(v=>v).length}/${TOTAL}\n\nMissed:\n`;
+  questions.forEach(q=>{if(answered[q.id]===false)txt+=`Q${q.id} [${q.section}] ${q.text.replace(/<[^>]+>/g,'').slice(0,60)} | Correct: ${getCorrectDisplay(q)}\n`;});
+  navigator.clipboard.writeText(txt).then(()=>alert('Copied to clipboard!'));
+}
+
+updateProgress();
+</script>
+</body>
+</html>
