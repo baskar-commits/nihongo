@@ -13,14 +13,6 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 header{text-align:center;padding:26px 20px;background:linear-gradient(135deg,var(--accent),#e74c3c);color:#fff;border-radius:16px;margin-bottom:22px;}
 header h1{font-size:1.5em;margin-bottom:6px;}
 header p{font-size:.9em;opacity:.9;}
-/* Mode screen */
-#modeScreen{background:var(--card);border-radius:16px;padding:36px 28px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.12);max-width:520px;margin:0 auto 30px;}
-#modeScreen h2{font-size:1.25em;margin-bottom:10px;color:var(--accent);}
-#modeScreen p{color:#555;margin-bottom:22px;font-size:.96em;}
-.mode-btn{display:block;width:100%;padding:15px 18px;margin:10px 0;border:2px solid var(--accent2);border-radius:10px;background:#fff;color:var(--accent2);font-size:.97em;font-weight:700;cursor:pointer;transition:all .2s;text-align:left;}
-.mode-btn:hover,.mode-btn.selected{background:var(--accent2);color:#fff;}
-#startBtn{display:none;margin-top:18px;padding:13px 40px;background:linear-gradient(135deg,var(--accent),#e74c3c);color:#fff;border:none;border-radius:10px;font-size:1.05em;font-weight:700;cursor:pointer;}
-#quizBody{display:none;}
 /* Nav dots */
 #navDots{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-bottom:16px;padding:12px;background:var(--card);border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);}
 .dot{width:24px;height:24px;border-radius:50%;background:#ddd;cursor:pointer;font-size:.65em;font-weight:700;display:flex;align-items:center;justify-content:center;color:#999;transition:all .2s;}
@@ -28,10 +20,6 @@ header p{font-size:.9em;opacity:.9;}
 .dot.correct{background:var(--green);color:#fff;}
 .dot.incorrect{background:var(--red);color:#fff;}
 .dot.current{box-shadow:0 0 0 3px var(--accent2);}
-/* Bucket nav */
-#bucketNav{display:flex;gap:8px;justify-content:center;margin-bottom:16px;flex-wrap:wrap;}
-.bucket-btn{padding:7px 16px;border:2px solid var(--border);border-radius:8px;background:#fff;font-weight:700;cursor:pointer;font-size:.88em;transition:all .2s;}
-.bucket-btn.active{background:var(--accent2);color:#fff;border-color:var(--accent2);}
 /* Cards */
 .question-card{background:var(--card);border-radius:12px;padding:20px 22px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,.06);border-left:4px solid var(--accent2);transition:border-color .3s;}
 .question-card.correct{border-left-color:var(--green);}
@@ -102,11 +90,9 @@ header p{font-size:.9em;opacity:.9;}
 .feedback .explanation{color:#555;margin-top:4px;}
 .feedback .example{color:var(--green);margin-top:6px;font-style:italic;}
 /* Footer */
-#fixedFooter{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid var(--border);padding:11px 18px;display:none;justify-content:space-between;align-items:center;z-index:100;box-shadow:0 -4px 12px rgba(0,0,0,.08);}
-#fixedFooter.show{display:flex;}
+#fixedFooter{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid var(--border);padding:11px 18px;display:flex;justify-content:space-between;align-items:center;z-index:100;box-shadow:0 -4px 12px rgba(0,0,0,.08);}
 #footerCount{font-weight:700;color:var(--muted);font-size:.9em;}
 #submitBtn{padding:10px 26px;background:linear-gradient(135deg,var(--accent),#e74c3c);color:#fff;border:none;border-radius:8px;font-size:.93em;font-weight:700;cursor:pointer;}
-#nextBucketBtn{padding:10px 22px;background:var(--accent2);color:#fff;border:none;border-radius:8px;font-size:.93em;font-weight:700;cursor:pointer;}
 /* Top progress */
 .top-progress{position:fixed;top:0;left:0;height:3px;background:var(--accent);transition:width .3s;z-index:999;}
 /* Score */
@@ -136,7 +122,7 @@ header p{font-size:.9em;opacity:.9;}
 .modal-confirm{background:var(--accent);color:#fff;}
 @media(max-width:600px){.breakdown-grid{grid-template-columns:1fr;}#fixedFooter{flex-direction:column;gap:8px;padding:10px 14px;}}
 @media print{
-  #fixedFooter,#navDots,#bucketNav,#modeScreen,.hint,.check-btn{display:none!important;}
+  #fixedFooter,#navDots,.hint,.check-btn{display:none!important;}
   .feedback{display:block!important;}
   .question-card{break-inside:avoid;box-shadow:none;border:1px solid #ccc;margin-bottom:10px;}
   .score-section{display:block!important;box-shadow:none;}
@@ -153,17 +139,8 @@ header p{font-size:.9em;opacity:.9;}
   <p style="margin-top:4px;font-size:.84em;">Lesson 9 + Review of Lessons 1-8 | がんばって！</p>
 </header>
 
-<div id="modeScreen">
-  <h2>How would you like to see answers?</h2>
-  <p>Choose your feedback mode. You cannot change this once the quiz starts.</p>
-  <button class="mode-btn" id="modeImmediate" onclick="selectMode('immediate')">After each question — I will click Check Answer to reveal feedback one question at a time</button>
-  <button class="mode-btn" id="modeEnd" onclick="selectMode('end')">All at the end — feedback shown only after I submit all 40 questions</button>
-  <button id="startBtn" onclick="startQuiz()">Start Quiz</button>
-</div>
-
 <div id="quizBody">
   <div id="navDots"></div>
-  <div id="bucketNav"></div>
   <div id="questionArea"></div>
   <div class="score-section" id="scoreSection"></div>
 </div>
@@ -173,7 +150,6 @@ header p{font-size:.9em;opacity:.9;}
   <span id="footerCount">0 / 40 answered</span>
   <div style="display:flex;gap:8px;">
     <button id="submitBtn" onclick="attemptSubmit()">Submit All 40 Questions</button>
-    <button id="nextBucketBtn" onclick="nextBucket()">Next</button>
   </div>
 </div>
 
@@ -524,8 +500,8 @@ const questions=[
  text:'A phone number is read as: 03-1234-5678. How do you read "5678"?',
  options:[
   'a. ごろくしちはち',
-  'b. ごーろくーなながーはち',
-  'c. ごろくなながはち',
+  'b. ごーろくーななーはち',
+  'c. ごろくななはち',
   'd. ごーろくーしちーはち'
  ],
  answer:'c',
@@ -562,7 +538,7 @@ const questions=[
 // Q34 L89 sequence
 {id:34,type:'sequence',section:'L89',
  text:'Build the sentence: "I sent an email to my boss yesterday."',
- chips:shuffle(['わたし','は','きのう','じょうし','に','メール','を','おくりました','から','あいました']),
+ chips:shuffle(['わたし','は','きのう','じょうし','に','メール','を','おくりました','で','あいました']),
  answer:['わたし','は','きのう','じょうし','に','メール','を','おくりました'],
  hint:'Receiver に pattern — じょうし receives the email. きのう = yesterday (relative time, no に needed).',
  explanation:'じょうし に (receiver) + メール を (object) + おくりました (past tense). きのう = yesterday, no particle needed.',
@@ -646,28 +622,12 @@ const questions=[
 ];
 
 // ── STATE ─────────────────────────────────────────────────────────────────────
-let feedbackMode=null;
 let answered={};
 let userAnswers={};
 let submitted=false;
-let currentBucket=0;
-const BUCKET_SIZE=10,TOTAL=40;
+const TOTAL=40;
 const chipState={};
 const convChipState={};
-
-// ── MODE ──────────────────────────────────────────────────────────────────────
-function selectMode(m){
-  feedbackMode=m;
-  document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('selected'));
-  document.getElementById(m==='immediate'?'modeImmediate':'modeEnd').classList.add('selected');
-  document.getElementById('startBtn').style.display='block';
-}
-function startQuiz(){
-  document.getElementById('modeScreen').style.display='none';
-  document.getElementById('quizBody').style.display='block';
-  document.getElementById('fixedFooter').classList.add('show');
-  buildNavDots();buildBucketNav();showBucket(0);
-}
 
 // ── NAV ───────────────────────────────────────────────────────────────────────
 function buildNavDots(){
@@ -678,41 +638,9 @@ function buildNavDots(){
     d.onclick=()=>jumpToQ(i);c.appendChild(d);
   }
 }
-function buildBucketNav(){
-  const c=document.getElementById('bucketNav');c.innerHTML='';
-  const n=Math.ceil(TOTAL/BUCKET_SIZE);
-  for(let i=0;i<n;i++){
-    const b=document.createElement('button');
-    b.className='bucket-btn'+(i===0?' active':'');
-    b.textContent='Q'+(i*BUCKET_SIZE+1)+'–'+Math.min((i+1)*BUCKET_SIZE,TOTAL);
-    b.id='bucket'+i;
-    const idx=i;b.onclick=()=>showBucket(idx);
-    c.appendChild(b);
-  }
-}
-function showBucket(idx){
-  currentBucket=idx;
-  document.querySelectorAll('.bucket-btn').forEach((b,i)=>b.classList.toggle('active',i===idx));
-  const start=idx*BUCKET_SIZE+1,end=Math.min((idx+1)*BUCKET_SIZE,TOTAL);
-  const area=document.getElementById('questionArea');area.innerHTML='';
-  for(let i=start;i<=end;i++){area.appendChild(renderQuestion(questions[i-1]));}
-  for(let i=start;i<=end;i++)restoreQ(i);
-  document.getElementById('nextBucketBtn').style.display=(idx<Math.ceil(TOTAL/BUCKET_SIZE)-1)?'block':'none';
-  window.scrollTo({top:0,behavior:'smooth'});
-  updateDotCurrent();
-}
-function nextBucket(){showBucket(currentBucket+1);}
 function jumpToQ(qid){
-  const bi=Math.floor((qid-1)/BUCKET_SIZE);
-  showBucket(bi);
-  setTimeout(()=>{const el=document.getElementById('q'+qid);if(el)el.scrollIntoView({behavior:'smooth',block:'center'});},120);
-}
-function updateDotCurrent(){
-  const s=currentBucket*BUCKET_SIZE+1,e=Math.min((currentBucket+1)*BUCKET_SIZE,TOTAL);
-  document.querySelectorAll('.dot').forEach(d=>{
-    const id=parseInt(d.id.replace('dot',''));
-    d.classList.toggle('current',id>=s&&id<=e);
-  });
+  const el=document.getElementById('q'+qid);
+  if(el)el.scrollIntoView({behavior:'smooth',block:'center'});
 }
 
 // ── RENDER ────────────────────────────────────────────────────────────────────
@@ -725,7 +653,6 @@ function typeLabel(t){
     'sequence-en':'Translate to English',conversation:'Conversation Roleplay'}[t]||t;
 }
 function checkBtnHtml(qid){
-  if(feedbackMode!=='immediate')return '';
   return `<button class="check-btn" id="chk${qid}" onclick="checkAnswer(${qid})">Check Answer</button>`;
 }
 
@@ -887,13 +814,9 @@ function onInteract(qid){
     });
   }
 
-  if(feedbackMode==='immediate'){
-    const btn=document.getElementById('chk'+qid);
-    if(btn){btn.classList.toggle('visible',hasInput);}
-  } else {
-    // In end mode, track answered state for progress
-    evaluateQ(qid);
-  }
+  const btn=document.getElementById('chk'+qid);
+  if(btn){btn.classList.toggle('visible',hasInput);}
+  updateProgress();
 }
 
 // ── EVALUATE (silent, for progress tracking in end mode) ──────────────────────
@@ -935,9 +858,6 @@ function evaluateQ(qid){
     }
   }
 
-  if(hasAnswer){answered[qid]=correct;}
-  else{delete answered[qid];}
-  updateProgress();
   return {hasAnswer,correct};
 }
 
@@ -1059,7 +979,7 @@ function restoreQ(qid){
   } else if(q.type==='sequence'||q.type==='sequence-en'){
     if(chipState[qid])renderSlots(qid);
   }
-  if(submitted||answered[qid]!==undefined&&feedbackMode==='immediate'){
+  if(submitted||answered[qid]!==undefined){
     showFeedback(qid,answered[qid]);
     lockQuestion(qid);
   }
@@ -1078,39 +998,59 @@ function updateProgress(){
     else if(q.type==='matching'){const vals=q.pairs.map((_,i)=>{const s=document.getElementById('match'+qid+'_'+i);return s?s.value:'';});if(vals.some(v=>v))userAnswers[qid]=vals;}
   });
 
-  const n=Object.keys(answered).length;
+  const n=submitted?Object.keys(answered).length:questions.filter(q=>hasUserInput(q.id)).length;
   document.getElementById('footerCount').textContent=n+' / '+TOTAL+' answered';
   document.getElementById('topProgress').style.width=(n/TOTAL*100)+'%';
   for(let i=1;i<=TOTAL;i++){
     const d=document.getElementById('dot'+i);if(!d)continue;
     d.className='dot';
-    if(answered[i]!==undefined)d.classList.add(submitted?(answered[i]?'correct':'incorrect'):'answered');
+    if(submitted){
+      if(answered[i]!==undefined)d.classList.add(answered[i]?'correct':'incorrect');
+    } else {
+      if(answered[i]!==undefined)d.classList.add('correct'); // already check-answered correctly
+      else if(hasUserInput(i))d.classList.add('answered');   // has input but not yet checked
+    }
   }
-  updateDotCurrent();
 }
 
 // ── SUBMIT ────────────────────────────────────────────────────────────────────
+function hasUserInput(qid){
+  const q=questions[qid-1];
+  if(q.type==='mc'||q.type==='error-mc')return !!document.querySelector(`input[name="q${qid}"]:checked`);
+  if(q.type==='multiselect')return document.querySelectorAll(`input[name="q${qid}"]:checked`).length>0;
+  if(q.type==='type-word')return (document.getElementById('input'+qid)||{value:''}).value.trim().length>0;
+  if(q.type==='particle')return !!(document.getElementById('sel1_'+qid)||{value:''}).value;
+  if(q.type==='particle2'){const v1=(document.getElementById('sel1_'+qid)||{value:''}).value,v2=(document.getElementById('sel2_'+qid)||{value:''}).value;return !!(v1&&v2);}
+  if(q.type==='matching')return q.pairs.some((_,i)=>!!(document.getElementById('match'+qid+'_'+i)||{value:''}).value);
+  if(q.type==='sequence'||q.type==='sequence-en')return (chipState[qid]||[]).length>0;
+  if(q.type==='conversation'){const yti=q.turns.map((t,i)=>({t,i})).filter(({t})=>t.speaker==='you').map(({i})=>i);return yti.some(ti=>(convChipState[qid+'_'+ti]||[]).length>0);}
+  return false;
+}
 function attemptSubmit(){
-  // Evaluate any unevaluated in end mode
-  if(feedbackMode==='end'){questions.forEach(q=>evaluateQ(q.id));}
-  const un=TOTAL-Object.keys(answered).length;
-  if(un>0){document.getElementById('warnMsg').textContent=`You have ${un} unanswered question(s). Submit anyway?`;document.getElementById('warnModal').classList.add('show');}
+  const un=questions.filter(q=>!hasUserInput(q.id)&&answered[q.id]===undefined).length;
+  if(un>0){document.getElementById('warnMsg').textContent=`You have ${un} question(s) with no answer entered. Submit anyway?`;document.getElementById('warnModal').classList.add('show');}
   else confirmSubmit();
 }
 function closeModal(){document.getElementById('warnModal').classList.remove('show');}
 function confirmSubmit(){
   closeModal();submitted=true;
-  // Evaluate all questions; mark any unanswered as incorrect so answers are revealed
   questions.forEach(q=>{
-    if(feedbackMode==='end'){evaluateQ(q.id);}
-    // For any question still unanswered, mark it false so feedback shows the correct answer
-    if(answered[q.id]===undefined){answered[q.id]=false;}
+    if(answered[q.id]===undefined){
+      // If user interacted but never clicked Check Answer, evaluate their input now
+      if(hasUserInput(q.id)){
+        const {correct}=evaluateQ(q.id);
+        answered[q.id]=correct;
+      } else {
+        // Truly unanswered — mark false so correct answer is revealed
+        answered[q.id]=false;
+      }
+    }
     const el=document.getElementById('q'+q.id);if(!el)return;
     showFeedback(q.id,answered[q.id]);
     lockQuestion(q.id);
   });
   updateProgress();showScore();
-  document.getElementById('nextBucketBtn').style.display='none';
+  document.getElementById('fixedFooter').style.display='none';
 }
 
 function showScore(){
@@ -1152,12 +1092,244 @@ function showScore(){
 }
 
 function copyReview(){
-  let txt=`Japanese Quiz Results — 2026-05-10\nScore: ${Object.values(answered).filter(v=>v).length}/${TOTAL}\n\nMissed:\n`;
-  questions.forEach(q=>{if(answered[q.id]===false)txt+=`Q${q.id} [${q.section}] ${q.text.replace(/<[^>]+>/g,'').slice(0,60)} | Correct: ${getCorrectDisplay(q)}\n`;});
-  navigator.clipboard.writeText(txt).then(()=>alert('Copied to clipboard!'));
+  const currentLesson = 9; // derived from quiz title/content
+  const totalCorrect = Object.values(answered).filter(v=>v).length;
+
+  let txt = `=== JAPANESE QUIZ RESULTS FOR AI REVIEW ===\n\n`;
+  txt += `STUDENT CONTEXT:\n`;
+  txt += `Textbook: Japanese for Busy People I, Romaji Revised 4th Edition\n`;
+  txt += `Currently studying: Lesson ${currentLesson}\n`;
+  txt += `Completed lessons: Lessons 1 through ${currentLesson - 1}\n`;
+  txt += `Script knowledge: Can read and write hiragana and katakana (still learning). Reads romaji fluently. No kanji yet.\n\n`;
+  txt += `INSTRUCTIONS FOR AI REVIEWER:\n`;
+  txt += `Based on the quiz results below, please:\n`;
+  txt += `1. Identify the student's strengths based on what they answered correctly\n`;
+  txt += `2. Identify focus areas based on incorrect or skipped answers\n`;
+  txt += `3. Group your feedback thematically (e.g. particles, verb conjugation, vocabulary, counters) rather than question by question\n`;
+  txt += `4. For each focus area, briefly explain the underlying grammar or vocabulary concept and suggest how to think about it\n`;
+  txt += `5. Suggest 2-3 specific practice activities for the most important gaps\n\n`;
+  txt += `QUIZ SCORE: ${totalCorrect} / ${TOTAL} (${Math.round(totalCorrect/TOTAL*100)}%)\n\n`;
+
+  // Score breakdown by lesson group
+  const L89qs=questions.filter(q=>q.section==='L89');
+  const L17qs=questions.filter(q=>q.section==='L17');
+  txt += `SCORE BREAKDOWN:\n`;
+  txt += `By Lesson Group:\n`;
+  txt += `  Lessons 8-9: ${L89qs.filter(q=>answered[q.id]===true).length} / ${L89qs.length}\n`;
+  txt += `  Lessons 1-7: ${L17qs.filter(q=>answered[q.id]===true).length} / ${L17qs.length}\n`;
+  txt += `By Question Type:\n`;
+  const types=['mc','error-mc','multiselect','type-word','particle','particle2','matching','sequence','sequence-en','conversation'];
+  types.forEach(t=>{
+    const qs=questions.filter(q=>q.type===t);
+    if(qs.length>0)txt+=`  ${typeLabel(t)}: ${qs.filter(q=>answered[q.id]===true).length} / ${qs.length}\n`;
+  });
+  txt += '\n';
+
+  txt += `=== CORRECTLY ANSWERED (${Object.values(answered).filter(v=>v).length} questions) ===\n\n`;
+  questions.forEach(q => {
+    if(answered[q.id] === true){
+      txt += `Q${q.id} [${q.section}] ${q.text.replace(/<[^>]+>/g,'').trim()}\n`;
+      txt += `  Correct answer: ${getCorrectDisplay(q)}\n`;
+      txt += `  Explanation: ${q.explanation}\n\n`;
+    }
+  });
+
+  txt += `=== INCORRECT OR SKIPPED (${Object.values(answered).filter(v=>v===false).length} questions) ===\n\n`;
+  questions.forEach(q => {
+    if(answered[q.id] === false){
+      txt += `Q${q.id} [${q.section}] ${q.text.replace(/<[^>]+>/g,'').trim()}\n`;
+      txt += `  Correct answer: ${getCorrectDisplay(q)}\n`;
+      txt += `  Explanation: ${q.explanation}\n\n`;
+    }
+  });
+
+  navigator.clipboard.writeText(txt).then(
+    () => alert('Copied to clipboard! Paste into any AI chat for review.'),
+    () => { // fallback for browsers that block clipboard
+      const ta = document.createElement('textarea');
+      ta.value = txt;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      alert('Copied to clipboard! Paste into any AI chat for review.');
+    }
+  );
 }
 
-updateProgress();
+// ── INIT ─────────────────────────────────────────────────────────────────────
+function initQuiz(){
+  buildNavDots();
+  const area = document.getElementById('questionArea');
+  area.innerHTML = '';
+  questions.forEach(q => area.appendChild(renderQuestion(q)));
+  questions.forEach(q => restoreQ(q.id));
+  updateProgress();
+}
+initQuiz();
+
+const RUN_TESTS = false;
+
+if(RUN_TESTS){
+  setTimeout(()=>{
+    console.log('%c=== QUIZ SELF-TEST STARTING ===','color:#2980b9;font-weight:bold;font-size:13px');
+    const results=[];
+    function pass(msg){results.push({ok:true,msg});console.log('%cPASS%c '+msg,'color:green;font-weight:bold','color:inherit');}
+    function fail(msg){results.push({ok:false,msg});console.error('FAIL '+msg);}
+    function check(condition,msg){condition?pass(msg):fail(msg);}
+
+    // ── STEP 1: Pick 4 random questions (10% of 40), avoid Q20/Q40 (conversation) for simplicity
+    const pool=questions.filter(q=>q.type!=='conversation'&&q.type!=='matching');
+    const shuffled=[...pool].sort(()=>Math.random()-0.5).slice(0,4);
+    // First 2: interact only (no Check Answer) — tests submit evaluation path
+    // Last 2: interact AND click Check Answer — tests check-answer path
+    const interactOnly=shuffled.slice(0,2);
+    const checkAnswered=shuffled.slice(2,4);
+    // Within each group, first = correct answer, second = wrong answer
+    const testPlan=[
+      {q:interactOnly[0], correct:true,  clickCheck:false},
+      {q:interactOnly[1], correct:false, clickCheck:false},
+      {q:checkAnswered[0],correct:true,  clickCheck:true},
+      {q:checkAnswered[1],correct:false, clickCheck:true},
+    ];
+    console.log('Test questions:',testPlan.map(t=>`Q${t.q.id}(${t.q.type}) correct=${t.correct} checkClick=${t.clickCheck}`).join(' | '));
+
+    // ── STEP 2: Simulate answers
+    function simulateAnswer(q, correct){
+      const qid=q.id;
+      if(q.type==='mc'||q.type==='error-mc'){
+        const letter=correct?q.answer:(['a','b','c','d'].find(l=>l!==q.answer));
+        const inp=document.querySelector(`input[name="q${qid}"][value="${letter}"]`);
+        if(inp){inp.checked=true;inp.dispatchEvent(new Event('change',{bubbles:true}));}
+      } else if(q.type==='multiselect'){
+        const letters=correct?q.answer:[['a','b','c','d','e'].find(l=>!q.answer.includes(l))];
+        letters.forEach(l=>{const inp=document.querySelector(`input[name="q${qid}"][value="${l}"]`);if(inp){inp.checked=true;inp.dispatchEvent(new Event('change',{bubbles:true}));}});
+      } else if(q.type==='type-word'){
+        const inp=document.getElementById('input'+qid);
+        if(inp){inp.value=correct?q.answer:'まちがい';inp.dispatchEvent(new Event('input',{bubbles:true}));inp.dispatchEvent(new Event('compositionend',{bubbles:true}));}
+      } else if(q.type==='particle'){
+        const s=document.getElementById('sel1_'+qid);
+        if(s){s.value=correct?q.answer1:(q.sel1.find(v=>v!==q.answer1)||q.sel1[0]);s.dispatchEvent(new Event('change',{bubbles:true}));}
+      } else if(q.type==='particle2'){
+        const s1=document.getElementById('sel1_'+qid),s2=document.getElementById('sel2_'+qid);
+        if(s1&&s2){s1.value=correct?q.answer1:(q.sel1.find(v=>v!==q.answer1)||q.sel1[0]);s2.value=correct?q.answer2:(q.sel2.find(v=>v!==q.answer2)||q.sel2[0]);s1.dispatchEvent(new Event('change',{bubbles:true}));s2.dispatchEvent(new Event('change',{bubbles:true}));}
+      } else if(q.type==='sequence'||q.type==='sequence-en'){
+        const words=correct?q.answer:[...q.answer].reverse();
+        words.forEach(word=>{
+          const chips=document.querySelectorAll(`#bank${qid} .chip:not(.used)`);
+          const chip=[...chips].find(c=>c.textContent===word);
+          if(chip)chip.click();
+        });
+      }
+    }
+
+    // ── STEP 3: Run simulations
+    testPlan.forEach(({q,correct,clickCheck})=>{
+      simulateAnswer(q,correct);
+      if(clickCheck){
+        setTimeout(()=>{
+          const btn=document.getElementById('chk'+q.id);
+          if(btn&&btn.classList.contains('visible'))btn.click();
+        },50);
+      }
+    });
+
+    // ── STEP 4: Check pre-submit state, then submit and check post-submit state
+    setTimeout(()=>{
+      console.log('%c--- PRE-SUBMIT CHECKS ---','color:#8e44ad;font-weight:bold');
+
+      // Check dots turned blue for all interacted questions
+      testPlan.forEach(({q})=>{
+        const dot=document.getElementById('dot'+q.id);
+        const isBlueOrGreen=dot&&(dot.classList.contains('answered')||dot.classList.contains('correct')||dot.classList.contains('incorrect'));
+        check(isBlueOrGreen,`Q${q.id} dot is marked after interaction`);
+      });
+
+      // Check footer count reflects interacted questions
+      const footerText=document.getElementById('footerCount').textContent;
+      const footerN=parseInt(footerText);
+      check(footerN>=4,`Footer count is at least 4 (got ${footerN})`);
+
+      // Check answered object: clickCheck questions should be in answered, interactOnly should NOT be
+      interactOnly.forEach(q=>{
+        check(answered[q.id]===undefined,`Q${q.id} (interact-only) not in answered before submit`);
+      });
+      checkAnswered.forEach(q=>{
+        check(answered[q.id]!==undefined,`Q${q.id} (check-answered) IS in answered before submit`);
+      });
+
+      // Check correctness of check-answered questions
+      check(answered[checkAnswered[0].id]===true, `Q${checkAnswered[0].id} (correct+checked) answered=true`);
+      check(answered[checkAnswered[1].id]===false,`Q${checkAnswered[1].id} (wrong+checked) answered=false`);
+
+      // ── STEP 5: Submit and check post-submit state
+      console.log('%c--- SUBMITTING ---','color:#8e44ad;font-weight:bold');
+      confirmSubmit();
+
+      setTimeout(()=>{
+        console.log('%c--- POST-SUBMIT CHECKS ---','color:#8e44ad;font-weight:bold');
+
+        // Check interact-only questions were evaluated correctly on submit (not blindly false)
+        check(answered[interactOnly[0].id]===true, `Q${interactOnly[0].id} (correct+not-checked) evaluated true on submit`);
+        check(answered[interactOnly[1].id]===false,`Q${interactOnly[1].id} (wrong+not-checked) evaluated false on submit`);
+
+        // Check all 40 have answered set
+        const allAnswered=questions.every(q=>answered[q.id]!==undefined);
+        check(allAnswered,'All 40 questions have answered value after submit');
+
+        // Check all 40 feedback blocks are visible
+        const allFeedback=questions.every(q=>{const fb=document.getElementById('fb'+q.id);return fb&&fb.classList.contains('show');});
+        check(allFeedback,'All 40 feedback blocks are visible after submit');
+
+        // Check footer is hidden
+        const footer=document.getElementById('fixedFooter');
+        check(!footer||footer.style.display==='none','Footer is hidden after submit');
+
+        // Check score section is visible
+        const scoreVisible=document.getElementById('scoreSection').classList.contains('show');
+        check(scoreVisible,'Score section is visible after submit');
+
+        // Check score totals: L89+L17 should equal total correct
+        const totalCorrect=Object.values(answered).filter(v=>v).length;
+        const L89c=questions.filter(q=>q.section==='L89'&&answered[q.id]===true).length;
+        const L17c=questions.filter(q=>q.section==='L17'&&answered[q.id]===true).length;
+        check(L89c+L17c===totalCorrect,`Score breakdown L89(${L89c})+L17(${L17c})=${L89c+L17c} matches total correct(${totalCorrect})`);
+
+        // Check submit button hidden
+        const submitBtn=document.getElementById('submitBtn');
+        check(!submitBtn||submitBtn.closest('#fixedFooter').style.display==='none','Submit button hidden after submit');
+
+        // ── SUMMARY
+        const passed=results.filter(r=>r.ok).length;
+        const failed=results.filter(r=>!r.ok).length;
+        console.log(`%c=== SELF-TEST COMPLETE: ${passed} passed, ${failed} failed ===`,
+          failed===0?'color:green;font-weight:bold;font-size:13px':'color:red;font-weight:bold;font-size:13px');
+        if(failed>0){
+          console.warn('Failed checks:');
+          results.filter(r=>!r.ok).forEach(r=>console.error('  FAIL: '+r.msg));
+        }
+
+        // ── RESET to clean state so user sees a fresh quiz
+        console.log('%cResetting quiz to clean state...','color:#2980b9');
+        // Clear all state
+        Object.keys(answered).forEach(k=>delete answered[k]);
+        Object.keys(userAnswers).forEach(k=>delete userAnswers[k]);
+        Object.keys(chipState).forEach(k=>delete chipState[k]);
+        Object.keys(convChipState).forEach(k=>delete convChipState[k]);
+        submitted=false;
+        // Hide score section
+        const sc=document.getElementById('scoreSection');
+        if(sc){sc.classList.remove('show');sc.innerHTML='';}
+        // Show footer again
+        const ft=document.getElementById('fixedFooter');
+        if(ft)ft.style.display='';
+        // Re-render all questions fresh
+        initQuiz();
+        console.log('%cQuiz reset complete. Ready for user.','color:green;font-weight:bold');
+      },300);
+    },300);
+  },500);
+}
 </script>
 </body>
 </html>
