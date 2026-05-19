@@ -77,6 +77,12 @@ function Format-MonthName($yyyyMM) {
   return $dt.ToString("MMMM yyyy")
 }
 
+function Format-QuizLabel($Date) {
+  # Derives "Monday, May 18, 2026" from a YYYY-MM-DD string — never relies on the HTML title
+  $dt = [datetime]::ParseExact($Date, "yyyy-MM-dd", $null)
+  return $dt.ToString("dddd, MMMM d, yyyy")
+}
+
 function Build-HomePage($RepoRoot, $SiteTitle) {
   $quizzesRoot = Join-Path $RepoRoot "quizzes"
   $indexPath = Join-Path $RepoRoot "index.html"
@@ -127,8 +133,8 @@ function Build-HomePage($RepoRoot, $SiteTitle) {
         $monthLabel = Format-MonthName "$($yGroup.Name)-$($mGroup.Name)"
         $archiveHtml += "<div class=""month""><div class=""month-title"">$monthLabel</div><ul>`n"
         foreach ($q in ($mGroup.Group | Sort-Object Date -Descending)) {
-          $safeTitle = [System.Security.SecurityElement]::Escape($q.Title)
-          $archiveHtml += "<li><a href=""$($q.Url)"">$safeTitle</a> <span class=""date"">$($q.Date)</span></li>`n"
+          $dateLabel = Format-QuizLabel $q.Date
+          $archiveHtml += "<li><a href=""$($q.Url)"">$dateLabel</a> <span class=""date"">$($q.Date)</span></li>`n"
         }
         $archiveHtml += "</ul></div>`n"
       }
@@ -137,8 +143,8 @@ function Build-HomePage($RepoRoot, $SiteTitle) {
 
   $latestHtml = "<p class=""meta"">No quizzes published yet.</p>"
   if ($null -ne $latest) {
-    $safeLatestTitle = [System.Security.SecurityElement]::Escape($latest.Title)
-    $latestHtml = "<a class=""primary"" href=""$($latest.Url)"">Start Quiz</a><div class=""meta"">$safeLatestTitle<br>$($latest.Date)</div>"
+    $dateLabel = Format-QuizLabel $latest.Date
+    $latestHtml = "<a class=""primary"" href=""$($latest.Url)"">Start Quiz</a><div class=""meta"">$dateLabel<br>$($latest.Date)</div>"
   }
 
   $homeHtml = @"
