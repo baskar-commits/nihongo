@@ -781,4 +781,17 @@ questions.forEach(q=>quizBody.appendChild(buildQuestion(q)));
 updateFooter();
 </script>
 </body>
+</html>iteText(out).then(()=>alert("Copied to clipboard!")).catch(()=>fallbackCopy(out));}else{fallbackCopy(out);}
+}
+function fallbackCopy(text){
+  const ta=document.createElement("textarea");ta.value=text;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.focus();ta.select();
+  try{document.execCommand("copy");alert("Copied to clipboard!");}catch(e){alert("Could not copy. Please copy manually.");}
+  document.body.removeChild(ta);
+}
+buildNavDots();
+const quizBody=document.getElementById("quizBody");
+questions.forEach(q=>quizBody.appendChild(buildQuestion(q)));
+updateFooter();
+</script>
+</body>
 </html>
