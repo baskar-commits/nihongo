@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Japan Trip: Conversation Practice</title>
+<style>
+  :root{
+    --bg:#f8f6f1; --card:#fff; --accent:#0e7c66; --accent-dark:#0a5c4c;
+    --text:#2c3e50; --muted:#7f8c8d; --border:#ddd;
+    --you:#0e7c66; --partner:#8e44ad; --announce:#b7791f; --flag:#c0392b;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.55;padding:16px}
+  .container{max-width:820px;margin:0 auto}
+  header{background:linear-gradient(135deg,var(--accent),#16a085);color:#fff;border-radius:14px;padding:18px 16px}
+  header h1{margin:0 0 6px;font-size:1.35rem}
+  header p{margin:0;opacity:.95;font-size:.95rem}
+  .crumbs{margin:14px 0 0;font-size:.9rem;color:var(--muted)}
+  .crumbs a{color:var(--accent);cursor:pointer;text-decoration:none;font-weight:600}
+  .crumbs a:hover{text-decoration:underline}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;margin-top:14px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+  h2{margin:0 0 10px;font-size:1.1rem}
+  h3{margin:0 0 4px;font-size:1.02rem;color:var(--accent-dark)}
+  .muted{color:var(--muted);font-size:.92rem}
+  .btn{display:inline-block;background:var(--accent);color:#fff;border:0;text-decoration:none;font-weight:700;
+       padding:11px 16px;border-radius:10px;cursor:pointer;font-size:.95rem;font-family:inherit}
+  .btn:hover{filter:brightness(.94)}
+  .btn.ghost{background:#fff;color:var(--accent);border:1.5px solid var(--accent)}
+  .btn.small{padding:7px 12px;font-size:.86rem}
+  .btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .scene{border:1px solid var(--border);border-radius:12px;padding:14px;margin:10px 0;background:#fff;cursor:pointer}
+  .scene:hover{border-color:var(--accent)}
+  .scene.locked{opacity:.55;cursor:default}
+  .scene.locked:hover{border-color:var(--border)}
+  .scene .kana{color:var(--muted);font-size:.95rem}
+  .pill{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;
+        padding:3px 8px;border-radius:99px;background:#eef4f2;color:var(--accent-dark);margin-left:6px;vertical-align:middle}
+  .pill.soon{background:#f2f2f2;color:var(--muted)}
+  .pill.listen{background:#fdf3e0;color:var(--announce)}
+  .sub{border:1px solid var(--border);border-radius:12px;padding:13px;margin:9px 0;background:#fff;cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+  .sub:hover{border-color:var(--accent)}
+  .sub .idx{font-weight:800;color:var(--accent);min-width:2.1em}
+  .note{background:#f4f9f7;border-left:3px solid var(--accent);padding:10px 12px;border-radius:0 8px 8px 0;margin:12px 0;font-size:.93rem}
+  .note ul{margin:0;padding-left:19px}
+  .note li{margin:5px 0}
+
+  /* How to practice */
+  details.how{border:1px solid var(--border);border-radius:12px;padding:0;margin:12px 0;background:#fff}
+  details.how>summary{cursor:pointer;padding:11px 14px;font-weight:700;color:var(--accent-dark);list-style:none}
+  details.how>summary::-webkit-details-marker{display:none}
+  details.how>summary::before{content:"▸ ";color:var(--accent)}
+  details.how[open]>summary::before{content:"▾ "}
+  details.how .body{padding:0 14px 14px;font-size:.93rem}
+  details.how ol,details.how ul{margin:6px 0 10px;padding-left:20px}
+  details.how li{margin:5px 0}
+
+  /* Stage direction */
+  .stage{margin:14px 4px;color:#6b7b8c;font-style:italic;font-size:.95rem;text-align:center}
+  .stage::before{content:"- "}
+  .stage::after{content:" -"}
+
+  /* Turn card */
+  .turn{border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin:10px 0;background:#fff;cursor:pointer}
+  .turn:hover{border-color:#bbb}
+  .turnhead{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .who{font-size:.76rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px}
+  .who.you{color:var(--you)}
+  .who.partner{color:var(--partner)}
+  .who.announce{color:var(--announce)}
+  .num{font-size:.72rem;color:#aab4bd;font-weight:700;letter-spacing:.04em;white-space:nowrap}
+  .turn.you{border-left:4px solid var(--you)}
+  .turn.partner{border-left:4px solid var(--partner)}
+  .turn.announce{border-left:4px solid var(--announce)}
+  .en{font-size:1.02rem}
+  .hint{display:flex;align-items:center;gap:7px;margin-top:7px;font-size:.8rem;color:var(--muted);font-style:italic}
+  .pips{display:inline-flex;gap:4px;flex:0 0 auto}
+  .pip{width:9px;height:9px;border-radius:50%;border:1.5px solid #bfc9d1;background:#fff;display:block}
+  .pip.on{background:var(--accent);border-color:var(--accent)}
+  .kana-line{font-size:1.5rem;margin-top:10px;line-height:1.65;word-break:break-word}
+  .romaji-line{font-size:1rem;color:#4a6572;margin-top:6px;font-style:italic}
+  .detail{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);font-size:.9rem}
+  .src{color:var(--muted);font-size:.83rem;margin-top:6px}
+  .extra{color:var(--flag);font-weight:600}
+  .wordmark{border-bottom:2px dotted #9aa7b1}
+  .lex{margin-top:8px;font-size:.87rem}
+  .lex .row{margin:3px 0}
+  .lex .lab{font-weight:700;color:var(--muted);font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:2px}
+  .alt{margin-top:8px;padding:8px 10px;background:#f6f8f9;border-radius:8px;font-size:.88rem}
+  .alt .altkana{font-size:1.12rem;margin:2px 0}
+  .alt .altrom{font-style:italic;color:#4a6572}
+  .extras{margin-top:8px;font-size:.87rem}
+  .extras .row{margin:3px 0}
+  .anchor{color:#5b6b7a;margin:2px 0 0 14px;font-size:.85rem;line-height:1.45}
+  .grammar{margin-top:6px;color:#34495e}
+  .cchip{display:inline;background:#e8f3ef;color:var(--accent-dark);border:1px solid #bcdcd2;
+         border-radius:6px;padding:1px 6px;margin:0 1px;font-weight:600;cursor:pointer;
+         font-family:inherit;font-size:inherit;line-height:inherit;white-space:nowrap}
+  .cchip:hover{background:#d8ebe4}
+  .cchip::after{content:" ?";font-size:.72em;opacity:.65;font-weight:700}
+  .cpanel{margin:8px 0 4px;padding:11px 13px;background:#f2f8f6;border:1px solid #cde3db;border-radius:10px}
+  .cpanel h4{margin:0 0 5px;font-size:.95rem;color:var(--accent-dark)}
+  .cpanel .cbody{font-size:.9rem}
+  .cpanel .cex{margin-top:7px}
+  .cpanel .cex .k{font-size:1.1rem;line-height:1.5}
+  .cpanel .cex .r{font-style:italic;color:#4a6572;font-size:.86rem}
+  .cpanel .cex .e{color:var(--muted);font-size:.86rem}
+  .cpanel .csrc{margin-top:8px;font-size:.8rem;color:var(--muted)}
+  .toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}
+  .legend{margin-top:16px;font-size:.85rem;color:var(--muted)}
+  .legend span{margin-right:14px;white-space:nowrap}
+  .footer{margin-top:22px;color:var(--muted);font-size:.88rem;text-align:center}
+  .footer a{color:var(--accent)}
+  .err{background:#fdecea;border:1px solid #f5c6c2;color:#a93226;padding:12px;border-radius:10px}
+  @media(max-width:520px){ .kana-line{font-size:1.35rem} body{padding:12px} }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1 id="h-title">Japan Trip: Conversation Practice</h1>
+    <p id="h-sub">Easy Conversational Japanese, Lessons 1-5</p>
+  </header>
+
+  <div class="crumbs" id="crumbs"></div>
+  <div id="app"></div>
+
+  <div class="footer">
+    <a href="../index.html">← Back to the Japanese Class site</a>
+  </div>
+</div>
+
+<script>
+const SPEAKER_LABEL = { you: "You", partner: "Partner", announce: "Announcement" };
+
+const HOW_TO_HTML = `
+<div class="body">
+<p class="muted" style="margin-top:0">Every line shows the English first. The Japanese is hidden until you ask for it.</p>
+<ol>
+  <li><b>Read the English</b> and say the Japanese out loud. Out loud matters; thinking it is not the same skill.</li>
+  <li><b>Tap once</b> to reveal the kana. Compare it with what you said.</li>
+  <li><b>Tap again</b> for the romaji, a grammar note, and where the line came from.</li>
+  <li>Tap a third time to hide it and try the line again.</li>
+</ol>
+<p style="margin-bottom:4px"><b>Ways to use it</b></p>
+<ul>
+  <li><b>On your own:</b> work down the conversation saying both sides, one after the other.</li>
+  <li><b>With a partner:</b> decide who takes which role, then cover the other person's lines.</li>
+  <li><b>Announcements:</b> one of you can read them aloud, or just listen.</li>
+</ul>
+<p style="margin-bottom:4px"><b>What the marks mean</b></p>
+<ul>
+  <li>Words in <span class="extra">red</span> were <b>not</b> in the class handouts.</li>
+  <li>Words with a <span class="wordmark">dotted underline</span> were taught, but are worth a reminder.</li>
+  <li>Both give the romaji and connect to a word you already know.</li>
+  <li>Green buttons like <span class="cchip">～てもいいですか</span> open a short explanation right where you are. Tap again to close it.</li>
+  <li>Every line is numbered. <b>1A-03</b> means scene 1, conversation A, line 3, so you can say exactly which line has a problem.</li>
+</ul>
+</div>`;
+
+let CONCEPTS = {};
+let MANIFEST = null;
+let SCENE = null;
+let VIEW = { name: "hub" };
+
+const app = document.getElementById("app");
+const crumbs = document.getElementById("crumbs");
+
+// Turn [[concept-key]] markers in note text into tappable chips.
+function chips(text){
+  return esc(text).replace(/\[\[([a-z0-9-]+)\]\]/g, (m, key) => {
+    const c = CONCEPTS[key];
+    if (!c) return m;
+    return '<button type="button" class="cchip" data-concept="' + esc(key) + '">' + esc(c.chip) + '</button>';
+  });
+}
+
+function conceptPanelHtml(key){
+  const c = CONCEPTS[key];
+  if (!c) return '';
+  let h = '<div class="cpanel" data-panel="' + esc(key) + '">';
+  h += '<h4>' + esc(c.title) + '</h4>';
+  h += '<div class="cbody">' + esc(c.body) + '</div>';
+  (c.examples || []).forEach(x => {
+    h += '<div class="cex"><div class="k">' + esc(x.kana) + '</div>' +
+         '<div class="r">' + esc(x.romaji) + '</div>' +
+         '<div class="e">' + esc(x.en) + '</div></div>';
+  });
+  if (c.source) h += '<div class="csrc">From ' + esc(c.source) + '</div>';
+  return h + '</div>';
+}
+
+function esc(s){ return String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+function markKana(t){
+  let out = esc(t.kana);
+  (t.extras || []).forEach(e => {
+    const w = esc(e.word);
+    if (w && out.includes(w)) out = out.split(w).join('<span class="extra">' + w + '</span>');
+  });
+  (t.words || []).forEach(e => {
+    const w = esc(e.word);
+    if (w && out.includes(w)) out = out.split(w).join('<span class="wordmark">' + w + '</span>');
+  });
+  return out;
+}
+
+function lexBlock(list, label, cls){
+  if (!list || !list.length) return '';
+  let h = '<div class="lex"><div class="lab">' + esc(label) + '</div>';
+  list.forEach(e => {
+    h += '<div class="row"><span class="' + cls + '">' + esc(e.word) + '</span>';
+    if (e.romaji) h += ' <i>(' + esc(e.romaji) + ')</i>';
+    h += ': ' + esc(e.gloss);
+    if (e.anchor) h += '<div class="anchor">' + chips(e.anchor) + '</div>';
+    h += '</div>';
+  });
+  return h + '</div>';
+}
+
+function noteHtml(note){
+  if (!note) return '';
+  if (Array.isArray(note)) {
+    return '<div class="note"><ul>' + note.map(n => '<li>' + chips(n) + '</li>').join('') + '</ul></div>';
+  }
+  return '<div class="note">' + chips(note) + '</div>';
+}
+
+function howToBlock(open){
+  return '<details class="how"' + (open ? ' open' : '') + '><summary>How to practice</summary>' + HOW_TO_HTML + '</details>';
+}
+
+function setCrumbs(parts){
+  crumbs.innerHTML = parts.map((p, i) =>
+    p.go ? '<a data-go="' + i + '">' + esc(p.label) + '</a>' : esc(p.label)
+  ).join(" &nbsp;›&nbsp; ");
+  crumbs.querySelectorAll("a[data-go]").forEach(a => { a.onclick = () => parts[+a.dataset.go].go(); });
+}
+
+/* ---------- Hub ---------- */
+function renderHub(){
+  VIEW = { name: "hub" };
+  setCrumbs([{ label: "All scenes" }]);
+  const ready = MANIFEST.scenes.filter(s => s.status === "ready");
+  let h = '<div class="card">';
+  h += '<h2>Role-play a trip to Japan</h2>';
+  h += '<p class="muted">Each scene is a place on the trip. Inside it, the sub-scenes are the separate conversations you have there. On the plane you speak to a flight attendant, to the passenger beside you, and you hear the captain.</p>';
+  h += '<p class="muted">Everything is in polite Japanese. Nothing is graded and nothing is timed.</p>';
+  h += '<p class="muted">Scenes marked <span class="pill soon">planned</span> are not written yet.</p>';
+  h += howToBlock(false);
+  if (ready.length > 1) h += '<div class="btnrow"><button class="btn" id="tripmode">Take the whole trip</button></div>';
+  h += '</div>';
+
+  h += '<div class="card"><h2>Scenes</h2>';
+  MANIFEST.scenes.forEach(s => {
+    const isReady = s.status === "ready";
+    h += '<div class="scene' + (isReady ? '' : ' locked') + '"' + (isReady ? ' data-scene="' + esc(s.file) + '"' : '') + '>';
+    h += '<h3>' + s.order + '. ' + esc(s.title) + (isReady ? '' : '<span class="pill soon">planned</span>') + '</h3>';
+    h += '<div class="kana">' + esc(s.kana) + '</div>';
+    h += '<div class="muted">' + esc(s.summary) + '</div>';
+    h += '</div>';
+  });
+  h += '</div>';
+
+  h += '<div class="legend"><span><b style="color:var(--you)">▌</b> your line</span>' +
+       '<span><b style="color:var(--partner)">▌</b> the other person</span>' +
+       '<span><b style="color:var(--announce)">▌</b> announcement</span></div>';
+
+  app.innerHTML = h;
+  app.querySelectorAll("[data-scene]").forEach(el => { el.onclick = () => loadScene(el.dataset.scene); });
+  const tm = document.getElementById("tripmode");
+  if (tm) tm.onclick = () => renderTrip();
+}
+
+/* ---------- Scene ---------- */
+function countLines(ss){ return ss.turns.filter(t => !t.stage).length; }
+
+function renderScene(){
+  VIEW = { name: "scene" };
+  setCrumbs([{ label: "All scenes", go: renderHub }, { label: SCENE.title.en }]);
+  let h = '<div class="card">';
+  h += '<h2>' + esc(SCENE.title.en) + ' <span class="muted">' + esc(SCENE.title.kana) + '</span></h2>';
+  h += '<p class="muted">' + esc(SCENE.summary) + '</p>';
+  h += '</div>';
+
+  h += '<div class="card"><h2>Conversations here</h2>';
+  SCENE.subscenes.forEach((ss, i) => {
+    const ann = ss.mode === "announcement";
+    h += '<div class="sub" data-sub="' + i + '">';
+    h += '<div class="idx">' + esc(ss.id) + '</div><div>';
+    h += '<h3>' + esc(ss.title.en) + (ann ? '<span class="pill listen">announcement</span>' : '') + '</h3>';
+    h += '<div class="kana muted">' + esc(ss.title.kana) + ' · ' + countLines(ss) + ' lines</div>';
+    h += '</div></div>';
+  });
+  h += '</div>';
+  app.innerHTML = h;
+  app.querySelectorAll("[data-sub]").forEach(el => { el.onclick = () => renderSub(+el.dataset.sub); });
+}
+
+/* ---------- Turn ---------- */
+function turnHtml(t, num, ss, chars){
+  if (t.stage) return '<div class="stage">' + esc(t.stage) + '</div>';
+
+  const who = t.speaker;
+  let label = SPEAKER_LABEL[who] || "Partner";
+  if (who === "partner" || who === "announce") {
+    const key = t.speakerOverride || ss.partner;
+    if (key && chars && chars[key]) label = chars[key].en;
+  }
+
+  let h = '<div class="turn ' + who + '" data-state="0">';
+  h += '<div class="turnhead"><div class="who ' + who + '">' + esc(label) + '</div>' +
+       '<div class="num">' + esc(num) + '</div></div>';
+  h += '<div class="en">' + esc(t.en) + '</div>';
+  h += '<div class="hint"><span class="pips"><span class="pip"></span><span class="pip"></span></span>' +
+       '<span class="hinttext">tap to reveal the kana</span></div>';
+  h += '<div class="kana-line" hidden>' + markKana(t) + '</div>';
+  h += '<div class="detail" hidden>';
+  h += '<div class="romaji-line">' + esc(t.romaji) + '</div>';
+  if (t.grammar) h += '<div class="grammar">' + chips(t.grammar) + '</div>';
+  h += lexBlock(t.words, "Words in this line", "wordmark");
+  h += lexBlock(t.extras, "Not from class", "extra");
+  if (t.alternative) {
+    h += '<div class="alt"><b>You can also say</b>';
+    if (t.alternative.note) h += ' <span class="muted">(' + chips(t.alternative.note) + ')</span>';
+    h += '<div class="altkana">' + esc(t.alternative.kana) + '</div>';
+    if (t.alternative.romaji) h += '<div class="altrom">' + esc(t.alternative.romaji) + '</div>';
+    h += '</div>';
+  }
+  h += '<div class="src">Source: ' + esc(t.source || "-") + '</div>';
+  h += '</div></div>';
+  return h;
+}
+
+function applyState(el, st){
+  const kana = el.querySelector(".kana-line");
+  const detail = el.querySelector(".detail");
+  const pips = el.querySelectorAll(".pip");
+  const hint = el.querySelector(".hinttext");
+  kana.hidden = st < 1;
+  detail.hidden = st < 2;
+  pips[0].classList.toggle("on", st >= 1);
+  pips[1].classList.toggle("on", st >= 2);
+  hint.textContent = st === 0 ? "tap to reveal the kana"
+                   : st === 1 ? "tap again for romaji and notes"
+                   : "tap to hide and try again";
+  el.dataset.state = String(st);
+}
+
+function wireTurns(root){
+  root.querySelectorAll(".turn").forEach(el => {
+    el.onclick = () => applyState(el, (+el.dataset.state + 1) % 3);
+  });
+  wireChips(root);
+}
+
+function wireChips(root){
+  root.querySelectorAll(".cchip").forEach(btn => {
+    btn.onclick = ev => {
+      ev.stopPropagation();          // never trigger the card's reveal
+      const key = btn.dataset.concept;
+      const host = btn.closest(".detail") || btn.closest(".note") || btn.parentElement;
+      const open = host.querySelector('[data-panel="' + key + '"]');
+      if (open) { open.remove(); return; }
+      host.insertAdjacentHTML("beforeend", conceptPanelHtml(key));
+    };
+  });
+}
+
+/* ---------- Sub-scene player ---------- */
+function renderSub(index){
+  const all = index === "all";
+  const list = all ? SCENE.subscenes : [SCENE.subscenes[index]];
+  VIEW = { name: "sub", index: index };
+  setCrumbs([
+    { label: "All scenes", go: renderHub },
+    { label: SCENE.title.en, go: renderScene },
+    { label: all ? "Whole scene" : SCENE.subscenes[index].title.en }
+  ]);
+
+  let h = '<div class="card">';
+  h += '<h2>' + esc(all ? SCENE.title.en + ": all conversations" : SCENE.subscenes[index].title.en) + '</h2>';
+  h += howToBlock(false);
+  h += '</div>';
+
+  list.forEach(ss => {
+    h += '<div class="card">';
+    if (all) h += '<h2>' + esc(ss.id) + ' · ' + esc(ss.title.en) +
+                  (ss.mode === "announcement" ? '<span class="pill listen">announcement</span>' : '') + '</h2>';
+    h += noteHtml(ss.note);
+    let n = 0;
+    ss.turns.forEach(t => {
+      let num = "";
+      if (!t.stage) { n++; num = ss.id + "-" + String(n).padStart(2, "0"); }
+      h += turnHtml(t, num, ss, SCENE.characters);
+    });
+    h += '</div>';
+  });
+
+  if (!all){
+    const i = SCENE.subscenes.findIndex(s => s.id === list[0].id);
+    h += '<div class="card"><div class="btnrow">';
+    if (i > 0) h += '<button class="btn ghost" data-nav="' + (i - 1) + '">← ' + esc(SCENE.subscenes[i-1].id) + '</button>';
+    if (i < SCENE.subscenes.length - 1) h += '<button class="btn" data-nav="' + (i + 1) + '">' + esc(SCENE.subscenes[i+1].id) + ' · ' + esc(SCENE.subscenes[i+1].title.en) + ' →</button>';
+    h += '</div></div>';
+  }
+
+  app.innerHTML = h;
+  wireTurns(app);
+  app.querySelectorAll("[data-nav]").forEach(b => {
+    b.onclick = () => { renderSub(+b.dataset.nav); window.scrollTo(0,0); };
+  });
+  window.scrollTo(0,0);
+}
+
+/* ---------- Trip mode ---------- */
+function renderTrip(){
+  const ready = MANIFEST.scenes.filter(s => s.status === "ready");
+  setCrumbs([{ label: "All scenes", go: renderHub }, { label: "The whole trip" }]);
+  let h = '<div class="card"><h2>The whole trip</h2>';
+  h += '<p class="muted">Scenes in order, start to finish.</p>';
+  ready.forEach(s => {
+    h += '<div class="scene" data-scene="' + esc(s.file) + '"><h3>' + s.order + '. ' + esc(s.title) + '</h3>' +
+         '<div class="kana">' + esc(s.kana) + '</div></div>';
+  });
+  h += '</div>';
+  app.innerHTML = h;
+  app.querySelectorAll("[data-scene]").forEach(el => { el.onclick = () => loadScene(el.dataset.scene, true); });
+}
+
+/* ---------- Loading ---------- */
+function loadError(e){
+  return '<div class="card"><div class="err"><b>Could not load the scene data.</b><br>' + esc(e.message) +
+    '<br><br>If you opened this file directly from your hard drive, browsers block loading the scene data. ' +
+    'View it on the published site instead, or run a local server from the repo folder.</div></div>';
+}
+
+async function loadScene(file, playAll){
+  app.innerHTML = '<div class="card muted">Loading…</div>';
+  try {
+    const r = await fetch("scenes/" + file, { cache: "no-cache" });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    SCENE = await r.json();
+    if (playAll) renderSub("all"); else renderScene();
+  } catch (e) { app.innerHTML = loadError(e); }
+}
+
+async function boot(){
+  try {
+    const [rm, rc] = await Promise.all([
+      fetch("scenes/manifest.json", { cache: "no-cache" }),
+      fetch("concepts.json", { cache: "no-cache" })
+    ]);
+    if (!rm.ok) throw new Error("HTTP " + rm.status);
+    MANIFEST = await rm.json();
+    CONCEPTS = rc.ok ? await rc.json() : {};
+    document.getElementById("h-title").textContent = MANIFEST.title;
+    document.getElementById("h-sub").textContent = MANIFEST.subtitle;
+    renderHub();
+  } catch (e) { app.innerHTML = loadError(e); }
+}
+boot();
+</script>
+</body>
+</html>

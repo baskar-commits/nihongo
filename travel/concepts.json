@@ -1,0 +1,289 @@
+{
+  "te-form": {
+    "chip": "て-form",
+    "title": "The て-form",
+    "body": "A verb ending that other patterns plug into. To build it, start from the ます form, drop ます, and change the ending by its last sound. く becomes いて (おきます, おいて). り, ち and い become って (とります, とって / まちます, まって). み and び become んで (のみます, のんで). し becomes して (します, して). If only one sound is left after dropping ます, just add て (たべます, たべて / みます, みて). One irregular worth memorising: いきます becomes いって, not いいて. Nothing means anything on its own yet. Its whole job is to carry the pattern that comes after it.",
+    "examples": [
+      {
+        "kana": "とります → とって",
+        "romaji": "torimasu, totte",
+        "en": "take (a photo)"
+      },
+      {
+        "kana": "おきます → おいて",
+        "romaji": "okimasu, oite",
+        "en": "put, place"
+      },
+      {
+        "kana": "まちます → まって",
+        "romaji": "machimasu, matte",
+        "en": "wait"
+      },
+      {
+        "kana": "いきます → いって",
+        "romaji": "ikimasu, itte",
+        "en": "go (irregular)"
+      }
+    ],
+    "source": "Lesson 4"
+  },
+  "te-kudasai": {
+    "chip": "～てください",
+    "title": "Asking someone to do something",
+    "body": "Build the て-form, then add ください. That is a polite request: please do this. Two steps, and it works on any verb.",
+    "examples": [
+      {
+        "kana": "まちます → まって → まってください。",
+        "romaji": "Matte kudasai.",
+        "en": "Please wait."
+      },
+      {
+        "kana": "まがります → まがって → まがってください。",
+        "romaji": "Magatte kudasai.",
+        "en": "Please turn."
+      }
+    ],
+    "source": "Lesson 4"
+  },
+  "te-mo-ii": {
+    "chip": "～てもいいですか",
+    "title": "Asking permission: ～てもいいですか",
+    "body": "Build the て-form, then add もいいですか. It breaks into pieces: て (the verb), も (even if), いい (good), ですか (is it?). So you are literally asking is it all right even if I do this? English just says may I. The reply you want is はい、どうぞ.",
+    "examples": [
+      {
+        "kana": "とります → とって → とってもいいですか。",
+        "romaji": "Totte mo ii desu ka.",
+        "en": "May I take (a photo)?"
+      },
+      {
+        "kana": "おきます → おいて → おいてもいいですか。",
+        "romaji": "Oite mo ii desu ka.",
+        "en": "May I put it (here)?"
+      }
+    ],
+    "source": "Lesson 4"
+  },
+  "te-imasu": {
+    "chip": "～ています",
+    "title": "Ongoing states",
+    "body": "Build the て-form, then add います. Where ます states a plain action, ています describes something ongoing or a continuing state. Japanese uses it for where you live, where you work, and what you do for a living, where English would just use the present tense.",
+    "examples": [
+      {
+        "kana": "すみます → すんで → すんでいます。",
+        "romaji": "Sunde imasu.",
+        "en": "I live (there)."
+      },
+      {
+        "kana": "します → して → しています。",
+        "romaji": "Shite imasu.",
+        "en": "I do (it) / I work as."
+      },
+      {
+        "kana": "つとめます → つとめて → つとめています。",
+        "romaji": "Tsutomete imasu.",
+        "en": "I work at."
+      }
+    ],
+    "source": "Lesson 1"
+  },
+  "tai-desu": {
+    "chip": "～たいです",
+    "title": "Saying what you want to do",
+    "body": "Start from the ます form, drop ます, add たいです. It says what you want to do. No て-form needed for this one.",
+    "examples": [
+      {
+        "kana": "いきます → いきたいです。",
+        "romaji": "Ikitai desu.",
+        "en": "I want to go."
+      },
+      {
+        "kana": "たべます → たべたいです。",
+        "romaji": "Tabetai desu.",
+        "en": "I want to eat."
+      }
+    ],
+    "source": "Lessons 4 and 5"
+  },
+  "masen-ka": {
+    "chip": "～ませんか",
+    "title": "Inviting someone",
+    "body": "Literally won't you do it? The negative shape is what makes it polite: it leaves the other person free to decline. ～ましょう, let's, is its firmer partner.",
+    "examples": [
+      {
+        "kana": "いっしょにおちゃしませんか。",
+        "romaji": "Issho ni ocha shimasen ka.",
+        "en": "Shall we grab tea together?"
+      },
+      {
+        "kana": "わしょくをたべにいきませんか。",
+        "romaji": "Washoku o tabe ni ikimasen ka.",
+        "en": "Would you like to go eat Japanese food?"
+      }
+    ],
+    "source": "Lesson 5"
+  },
+  "ne-yo": {
+    "chip": "ね and よ",
+    "title": "ね and よ at the end of a sentence",
+    "body": "ね invites the other person to agree with something you both know. よ tells them something they did not know. They can appear in the same short exchange.",
+    "examples": [
+      {
+        "kana": "すごいですね。",
+        "romaji": "Sugoi desu ne.",
+        "en": "That's impressive, isn't it."
+      },
+      {
+        "kana": "しんかんせんははやいですよ。",
+        "romaji": "Shinkansen wa hayai desu yo.",
+        "en": "The shinkansen is fast, you know."
+      }
+    ],
+    "source": "Lessons 1 and 2"
+  },
+  "de-particle": {
+    "chip": "で",
+    "title": "Two jobs for で",
+    "body": "で marks where an action happens, and it also marks the means you use. Same particle, two jobs; the verb tells you which. あるいて, on foot, is the odd one out and takes no で.",
+    "examples": [
+      {
+        "kana": "にほんでなにをしますか。",
+        "romaji": "Nihon de nani o shimasu ka.",
+        "en": "What will you do in Japan? (place)"
+      },
+      {
+        "kana": "しんかんせんでいきます。",
+        "romaji": "Shinkansen de ikimasu.",
+        "en": "I'll go by shinkansen. (means)"
+      }
+    ],
+    "source": "Lessons 2 and 4"
+  },
+  "no-linker": {
+    "chip": "の",
+    "title": "の joining two nouns",
+    "body": "の links a noun to the noun after it: the second belongs to, or is described by, the first. It also attaches position words.",
+    "examples": [
+      {
+        "kana": "はねだのてんき",
+        "romaji": "Haneda no tenki",
+        "en": "the weather in Haneda"
+      },
+      {
+        "kana": "とうきょうのぎんこう",
+        "romaji": "Toukyou no ginkou",
+        "en": "a bank in Tokyo"
+      },
+      {
+        "kana": "えきのまえ",
+        "romaji": "eki no mae",
+        "en": "in front of the station"
+      }
+    ],
+    "source": "Lessons 1 and 2"
+  },
+  "polite-o": {
+    "chip": "polite お-",
+    "title": "The polite お- prefix",
+    "body": "お- goes on a noun to show respect, usually when the thing belongs to the other person, or when staff speak to a customer. Some words carry it almost always: おちゃ, おなまえ.",
+    "examples": [
+      {
+        "kana": "おなまえはなんですか。",
+        "romaji": "Onamae wa nan desu ka.",
+        "en": "What is your name?"
+      },
+      {
+        "kana": "おしごとはなんですか。",
+        "romaji": "Oshigoto wa nan desu ka.",
+        "en": "What do you do for work?"
+      }
+    ],
+    "source": "Lesson 1"
+  },
+  "kosoado": {
+    "chip": "これ／この／こちら",
+    "title": "The これ family",
+    "body": "Three sets that all follow the same near / middle / far pattern. これ, それ, あれ stand alone. この, その, あの always have a noun after them. こちら, そちら, あちら are the polite versions, used for directions and with customers.",
+    "examples": [
+      {
+        "kana": "これはいくらですか。",
+        "romaji": "Kore wa ikura desu ka.",
+        "en": "How much is this?"
+      },
+      {
+        "kana": "このひこうき",
+        "romaji": "kono hikouki",
+        "en": "this plane"
+      },
+      {
+        "kana": "こちらへどうぞ。",
+        "romaji": "Kochira e douzo.",
+        "en": "This way, please."
+      }
+    ],
+    "source": "Lessons 2 and 3"
+  },
+  "past-polite": {
+    "chip": "ました",
+    "title": "Thanking in the past",
+    "body": "ありがとうございます thanks for something still going on. ありがとうございました thanks for something now finished, so it is what you say as you leave. The same ました ending turns any ます verb into the past.",
+    "examples": [
+      {
+        "kana": "ありがとうございます。",
+        "romaji": "Arigatou gozaimasu.",
+        "en": "Thank you. (ongoing)"
+      },
+      {
+        "kana": "ありがとうございました。",
+        "romaji": "Arigatou gozaimashita.",
+        "en": "Thank you. (finished)"
+      }
+    ],
+    "source": "Lesson 1 and the textbook"
+  },
+  "aizuchi": {
+    "chip": "あいづち",
+    "title": "Showing you are listening",
+    "body": "Short reactions dropped into a conversation to show you are following. Japanese expects them far more often than English does. Silence reads as disengagement, not politeness.",
+    "examples": [
+      {
+        "kana": "そうですか。",
+        "romaji": "Sou desu ka.",
+        "en": "Oh, really?"
+      },
+      {
+        "kana": "そうなんですか。",
+        "romaji": "Sou nan desu ka.",
+        "en": "Is that so? (warmer, more surprised)"
+      },
+      {
+        "kana": "へえ～！すごいですね。",
+        "romaji": "Hee~! Sugoi desu ne.",
+        "en": "Wow, that's amazing!"
+      }
+    ],
+    "source": "Every lesson"
+  },
+  "keigo": {
+    "chip": "keigo",
+    "title": "Keigo: the formal layer",
+    "body": "Announcements, staff and anyone serving a customer switch into a formal register. You do not need to produce it, only recognize it. The commonest swaps: です becomes でございます, します becomes いたします, います becomes おります, and もらいます becomes いただきます. Nouns take ご- or お- (ごとうじょう, ごりよう, おしょくじ). Once you spot those endings the sentence underneath is usually one you already know.",
+    "examples": [
+      {
+        "kana": "きちょうのやまだです。 → きちょうのやまだでございます。",
+        "romaji": "Kichou no Yamada de gozaimasu.",
+        "en": "This is Captain Yamada. (formal)"
+      },
+      {
+        "kana": "とうちゃくしました。 → とうちゃくいたしました。",
+        "romaji": "Touchaku itashimashita.",
+        "en": "We have arrived. (humble)"
+      },
+      {
+        "kana": "まってください。 → おまちください。",
+        "romaji": "Omachi kudasai.",
+        "en": "Please wait. (formal)"
+      }
+    ],
+    "source": "Not taught in class. Worth recognizing for travel."
+  }
+}

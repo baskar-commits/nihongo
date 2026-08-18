@@ -1,0 +1,787 @@
+<!-- VALIDATION: 30/30 PASS. Distribution: L10+L11=15, L8+L9=10, Numbers=2, WotD=3. All 13 rules verified. Rule 11: Q2,Q11,Q18 brief instructions. Rule 12: Q3,Q9,Q14,Q17,Q24 starting chip given. Rule 13: Q7,Q18,Q28 test adjective conjugation (L10+L11 content). Role 1: all words verified against extract. Role 2: 24 correct + 6 deliberate wrong (Q4,Q8,Q15,Q18,Q24,Q27) all correctly evaluated. WotD: やっぱり, なるほど, めんどくさい. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japanese Quiz - Sunday, June 15, 2026</title>
+<style>
+:root{--bg:#f8f6f1;--card:#fff;--accent:#c0392b;--accent2:#2980b9;--green:#27ae60;--red:#e74c3c;--text:#2c3e50;--muted:#7f8c8d;--border:#ddd;--hint-bg:#fef9e7;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;padding:16px 16px 120px;}
+.container{max-width:860px;margin:0 auto;}
+header{text-align:center;padding:26px 20px;background:linear-gradient(135deg,var(--accent),#e74c3c);color:#fff;border-radius:16px;margin-bottom:22px;}
+header h1{font-size:1.5em;margin-bottom:6px;}
+header p{font-size:.9em;opacity:.9;}
+#navDots{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-bottom:16px;padding:12px;background:var(--card);border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.dot{width:26px;height:26px;border-radius:50%;background:#ddd;cursor:pointer;font-size:.65em;font-weight:700;display:flex;align-items:center;justify-content:center;color:#999;transition:all .2s;}
+.dot.interacted{background:#aad4f5;color:#1a5a8c;}
+.dot.correct{background:var(--green);color:#fff;}
+.dot.incorrect{background:var(--red);color:#fff;}
+.question-card{background:var(--card);border-radius:12px;padding:20px 22px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,.06);border-left:4px solid var(--accent2);transition:border-color .3s;}
+.question-card.correct{border-left-color:var(--green);}
+.question-card.incorrect{border-left-color:var(--red);}
+.q-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.q-num{font-weight:700;color:var(--accent);font-size:.88em;}
+.badges{display:flex;gap:5px;}
+.q-section{background:#fce4ec;padding:2px 8px;border-radius:12px;font-size:.72em;color:#880e4f;font-weight:600;}
+.q-type{background:#eee;padding:2px 10px;border-radius:12px;font-size:.72em;color:var(--muted);font-weight:600;}
+.q-text{font-size:1.02em;margin-bottom:10px;}
+.jp{font-size:1.18em;display:block;margin:6px 0;color:#1a1a2e;font-style:normal;}
+.hint{background:var(--hint-bg);border-left:3px solid #f39c12;padding:8px 12px;margin:10px 0 12px;font-size:.85em;color:#7d6608;border-radius:0 6px 6px 0;cursor:pointer;user-select:none;}
+.hint::before{content:"Hint (tap to reveal): ";}
+.hint .hint-text{display:none;}
+.hint.open .hint-text{display:inline;}
+.option-group{margin:8px 0;}
+.option-label{display:block;padding:9px 14px;margin:5px 0;border:2px solid var(--border);border-radius:8px;cursor:pointer;transition:all .2s;font-size:.93em;}
+.option-label:hover{border-color:var(--accent2);background:#ebf5fb;}
+.option-label input{margin-right:8px;}
+.option-label.correct-opt{border-color:var(--green);background:#eafaf1;}
+.option-label.incorrect-opt{border-color:var(--red);background:#fdedec;}
+.option-label.missed-opt{border-color:#f39c12;background:#fef9e7;}
+.text-input{width:100%;padding:10px 14px;border:2px solid var(--border);border-radius:8px;font-size:1em;font-family:inherit;transition:border-color .3s;}
+.text-input:focus{outline:none;border-color:var(--accent2);}
+.particle-sentence{font-size:1.08em;line-height:2.4;margin:8px 0;}
+.particle-sentence select{padding:4px 8px;border:2px solid var(--accent2);border-radius:6px;font-size:.95em;font-family:inherit;cursor:pointer;background:#fff;}
+.translation-note{font-size:.84em;color:var(--muted);margin:4px 0 10px;font-style:italic;}
+.matching-grid{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;align-items:center;margin:8px 0;}
+.matching-grid label{font-size:.93em;}
+.matching-grid select{padding:6px 10px;border:2px solid var(--border);border-radius:6px;font-size:.93em;font-family:inherit;background:#fff;}
+.chip-bank{display:flex;flex-wrap:wrap;gap:7px;padding:11px;background:#f4f6f7;border-radius:8px;min-height:46px;margin:6px 0;}
+.chip{padding:6px 12px;background:#eaf0fb;border:2px solid #c3d8f5;border-radius:20px;cursor:pointer;font-size:.91em;transition:all .2s;user-select:none;}
+.chip:hover{background:#d0e8ff;border-color:var(--accent2);}
+.chip.used{opacity:.3;pointer-events:none;}
+.answer-slots{display:flex;flex-wrap:wrap;gap:7px;padding:11px;background:#fff;border:2px dashed var(--border);border-radius:8px;min-height:50px;margin:5px 0;}
+.slot-chip{padding:6px 12px;background:var(--accent2);color:#fff;border-radius:20px;cursor:pointer;font-size:.91em;}
+.slot-chip:hover{background:#1a6fa0;}
+.seq-label{font-size:.8em;color:var(--muted);margin-top:3px;}
+.check-btn{display:none;width:100%;padding:12px;margin-top:12px;background:var(--accent2);color:#fff;border:none;border-radius:8px;font-size:1em;font-weight:700;cursor:pointer;transition:all .2s;}
+.check-btn:hover{background:#1a6fa0;}
+.check-btn.visible{display:block;}
+.feedback{margin-top:12px;padding:12px 14px;border-radius:8px;font-size:.9em;display:none;}
+.feedback.show{display:block;}
+.feedback.correct-fb{background:#eafaf1;border:1px solid var(--green);}
+.feedback.incorrect-fb{background:#fdedec;border:1px solid var(--red);}
+.feedback .answer-line{font-weight:600;margin-bottom:4px;}
+.feedback .explanation{color:#555;margin-top:4px;}
+.feedback .example{color:#1a7a40;margin-top:6px;font-style:italic;}
+#fixedFooter{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid var(--border);padding:11px 18px;display:flex;justify-content:space-between;align-items:center;z-index:100;box-shadow:0 -4px 12px rgba(0,0,0,.08);}
+#footerCount{font-weight:700;color:var(--muted);font-size:.9em;}
+#submitBtn{padding:10px 26px;background:linear-gradient(135deg,var(--accent),#e74c3c);color:#fff;border:none;border-radius:8px;font-size:.93em;font-weight:700;cursor:pointer;}
+.top-progress{position:fixed;top:0;left:0;height:3px;background:var(--accent);transition:width .3s;z-index:999;}
+.score-section{background:var(--card);border-radius:16px;padding:26px;margin-top:26px;box-shadow:0 4px 16px rgba(0,0,0,.1);display:none;text-align:center;}
+.score-section.show{display:block;}
+.score-big{font-size:3em;font-weight:700;color:var(--accent);}
+.score-sub{font-size:1.1em;color:var(--muted);margin:8px 0 16px;}
+.section-scores{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:16px 0;}
+.sec-score-card{background:#f8f6f1;border-radius:10px;padding:12px 20px;min-width:130px;}
+.sec-score-card h4{font-size:.82em;color:var(--muted);margin-bottom:4px;}
+.sec-score-card .val{font-size:1.5em;font-weight:700;color:var(--text);}
+.type-scores-section{margin:18px 0 6px;text-align:left;}
+.type-scores-section h3{font-size:.95em;font-weight:700;color:var(--accent2);margin-bottom:10px;}
+.type-scores-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.type-score-row{display:flex;justify-content:space-between;align-items:center;background:#f8f6f1;border-radius:8px;padding:9px 14px;font-size:.9em;}
+.type-score-row .t-label{color:var(--text);}
+.type-score-row .t-val{font-weight:700;color:var(--text);}
+.action-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px;}
+.action-btn{padding:10px 22px;border:none;border-radius:8px;font-size:.93em;font-weight:700;cursor:pointer;}
+.print-btn{background:#ecf0f1;color:var(--text);}
+.copy-btn{background:var(--accent2);color:#fff;}
+@media print{
+  #fixedFooter,#navDots,.hint,.check-btn{display:none!important;}
+  .feedback{display:block!important;}
+  .question-card{break-inside:avoid;box-shadow:none;border:1px solid #ddd;}
+  .score-section{display:block!important;box-shadow:none;}
+  .action-btns{display:none!important;}
+  body{padding:0;}
+}
+</style>
+</head>
+<body>
+<div class="top-progress" id="topProgress"></div>
+<div class="container">
+<header>
+  <h1>Japanese Quiz</h1>
+  <p>Sunday, June 15, 2026 - Lessons 1-11 - 30 Questions</p>
+</header>
+<div id="navDots"></div>
+<div id="quizBody"></div>
+<div class="score-section" id="scoreSection">
+  <div class="score-big" id="scoreBig">-</div>
+  <div class="score-sub" id="scoreSub"></div>
+  <div class="section-scores" id="sectionScores"></div>
+  <div class="type-scores-section">
+    <h3>By Question Type</h3>
+    <div class="type-scores-grid" id="typeScores"></div>
+  </div>
+  <div class="action-btns">
+    <button class="action-btn print-btn" onclick="window.print()">Print</button>
+    <button class="action-btn copy-btn" onclick="copyReview()">Copy for AI Review</button>
+  </div>
+</div>
+</div>
+<div id="fixedFooter">
+  <span id="footerCount">Submit All 30 Questions (0/30 answered)</span>
+  <button id="submitBtn" onclick="handleSubmit()">Submit</button>
+</div>
+<script>
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+const questions=[
+
+// Q1 L10+L11 mc — い-adj present negative
+{id:1,type:"mc",section:"L10+L11",
+ text:"Which sentence correctly says 'Today is not cold'?",
+ options:{
+   a:"きょうは さむいくない です。",
+   b:"きょうは さむくない です。",
+   c:"きょうは さむいじゃありません。",
+   d:"きょうは さむないく です。"
+ },
+ answer:"b",
+ hint:"い-adjective present negative: drop the final い, add くない です.",
+ explanation:"さむい → drop い → さむ + くない です = さむくない です. Option a keeps い before くない. Option c uses な-adjective pattern. Option d is invalid.",
+ example:"きょうは あつくない です。(Today is not hot.)"},
+
+// Q2 L8+L9 particle — transport で + destination に with L1-7
+{id:2,type:"particle",section:"L8+L9",
+ text:"Fill in the particle:",
+ pre:"やまださんは まいにち バス",
+ sel1:["で","に","を","は","が","へ"],
+ answer1:"で",
+ post:"かいしゃに いきます。",
+ translation:"Mr. Yamada goes to work by bus every day.",
+ hint:"Which particle marks the means of transportation?",
+ explanation:"で marks the means of transport. バスで = by bus. かいしゃに = to the company (destination に). まいにち = every day (relative time, no particle).",
+ example:"わたしは でんしゃで がっこうに いきます。(I go to school by train.)"},
+
+// Q3 L10+L11 sequence — な-adj present negative with が
+{id:3,type:"sequence",section:"L10+L11",
+ text:"Build the sentence: 'This hotel is convenient, but not quiet.' Start with「この」",
+ chips:shuffle(["この","ホテルは","べんり","ですが、","しずかじゃ","ありません","でした","にぎやか"]),
+ answer:["この","ホテルは","べんり","ですが、","しずかじゃ","ありません"],
+ hint:"べんり and しずか are both な-adjectives. が connects contrasting clauses.",
+ explanation:"べんり です = is convenient (な-adj present). が = but. しずかじゃありません = is not quiet (な-adj present negative). Both are な-adjectives so they don't change form before です.",
+ example:"この レストランは ゆうめい ですが、あまり おいしくない です。(This restaurant is famous, but not very delicious.)"},
+
+// Q4 Numbers — counter by shape mc
+{id:4,type:"mc",section:"Numbers",
+ text:"You want to buy 3 pencils (えんぴつ). Which counter is correct?",
+ options:{
+   a:"えんぴつを みっつ ください。",
+   b:"えんぴつを さんまい ください。",
+   c:"えんぴつを さんぼん ください。",
+   d:"えんぴつを さんこ ください。"
+ },
+ answer:"c",
+ hint:"Pencils are long and cylindrical. Which counter is used for that shape?",
+ explanation:"ほん/ぼん/ぽん counts long cylindrical objects: pencils, pens, umbrellas, bottles. さんぼん = 3 cylindrical things (3 uses ぼん). まい = flat objects; こ = small round objects; つ = general counter.",
+ example:"ボールペンを にほん ください。(Two ballpoint pens, please.)"},
+
+// Q5 L10+L11 mc — い-adj past affirmative
+{id:5,type:"mc",section:"L10+L11",
+ text:"Which sentence correctly says 'The movie was interesting'?",
+ options:{
+   a:"えいがは おもしろい でした。",
+   b:"えいがは おもしろかった です。",
+   c:"えいがは おもしろいかった です。",
+   d:"えいがは おもしろくった です。"
+ },
+ answer:"b",
+ hint:"い-adjective past affirmative: drop the final い, add かった です.",
+ explanation:"おもしろい → drop い → おもしろ + かった です = おもしろかった です. Option a keeps い before でした (that's な-adjective pattern). Options c/d add incorrect endings.",
+ example:"きのうの テストは むずかしかった です。(Yesterday's test was difficult.)"},
+
+// Q6 L8+L9 mc — ぜんぜん + negative with L1-7
+{id:6,type:"mc",section:"L8+L9",
+ text:"Which sentence correctly says 'I don't read books at all'?",
+ options:{
+   a:"わたしは ぜんぜん ほんを よみます。",
+   b:"わたしは あまり ほんを よみません。",
+   c:"わたしは ぜんぜん ほんを よみません。",
+   d:"わたしは ぜんぜん ほんが よみません。"
+ },
+ answer:"c",
+ hint:"ぜんぜん means 'not at all' and must pair with a negative verb. Check the direct object particle too.",
+ explanation:"ぜんぜん must pair with negative verb (ません). ほんを = books (direct object を). Option a uses affirmative verb. Option b uses あまり (not often), not ぜんぜん. Option d uses wrong particle が.",
+ example:"ジョンさんは ぜんぜん コーヒーを のみません。(John doesn't drink coffee at all.)"},
+
+// Q7 L10+L11 particle2 — な-adj vs い-adj conjugation in predicate
+{id:7,type:"particle2",section:"L10+L11",
+ text:"Choose the correct adjective forms:",
+ pre:"きのうの クラスは とても",
+ sel1:["たのしかった です","たのしい でした","たのしいかった です","たのしかった でした"],
+ answer1:"たのしかった です",
+ mid:"が、テストは",
+ sel2:["たいへん でした","たいへんかった です","たいへんな でした","たいへんだった です"],
+ answer2:"たいへん でした",
+ post:"。",
+ translation:"Yesterday's class was very fun, but the test was tough.",
+ hint:"たのしい is an い-adjective. たいへん is a な-adjective. How does each form the past tense?",
+ explanation:"い-adj past: たのしい → たのしかった です (drop い, add かった). な-adj past: たいへん → たいへん でした (adjective stays the same, only copula changes). Option 'たのしい でした' wrongly applies な-adj pattern to い-adj.",
+ example:"りょこうは たのしかった ですが、たいへん でした。(The trip was fun, but tough.)"},
+
+// Q8 WordOfDay mc — やっぱり
+{id:8,type:"mc",section:"WordOfDay",
+ text:"You studied hard for the Japanese test, but it was still difficult — just as you expected. Which expression fits?",
+ options:{
+   a:"なるほど、むずかしかった。",
+   b:"やっぱり、むずかしかった。",
+   c:"さすが、むずかしかった。",
+   d:"まじ、むずかしかった。"
+ },
+ answer:"b",
+ hint:"One expression means 'as expected / I knew it' — used when something turns out the way you thought.",
+ explanation:"やっぱり means 'as expected / after all / I knew it' — used when something turns out the way you anticipated. なるほど = I see (realization); さすが = impressive / as expected of someone; まじ = seriously.",
+ example:"A: きょうの テスト、どうだった？ B: うーん... やっぱり、むずかしかった。(A: How was today's test? B: Hmm... as expected, it was hard.)"},
+
+// Q9 L8+L9 sequence — receiver に with family vocab
+{id:9,type:"sequence",section:"L8+L9",
+ text:"Build the sentence: 'I sent an email to my father yesterday.' Start with「わたしは」",
+ chips:shuffle(["わたしは","きのう","ちちに","メールを","おくりました","おかあさんに","ききました","あした"]),
+ answer:["わたしは","きのう","ちちに","メールを","おくりました"],
+ hint:"Use the humble form for YOUR OWN father. きのう needs past tense. に marks the receiver.",
+ explanation:"ちち = my father (humble, L9). ちちに = to my father (receiver に). メールを おくりました = sent an email (past tense). きのう = yesterday (relative time, no particle).",
+ example:"わたしは ははに でんわを しました。(I called my mother.)"},
+
+// Q10 L10+L11 mc — いい irregular negative
+{id:10,type:"mc",section:"L10+L11",
+ text:"Which sentence correctly says 'This restaurant is not good'?",
+ options:{
+   a:"この レストランは いくない です。",
+   b:"この レストランは いいじゃありません。",
+   c:"この レストランは よくない です。",
+   d:"この レストランは よくありません です。"
+ },
+ answer:"c",
+ hint:"いい (good) is irregular. Its conjugated forms use a different base.",
+ explanation:"いい is irregular: present negative = よくない です (base changes from いい to よ). いくない and いいじゃありません are incorrect. よくありません is an alternative but doesn't add です after it.",
+ example:"きょうの てんきは あまり よくない です。(Today's weather is not very good.)"},
+
+// Q11 L8+L9 particle — place で + direct object を
+{id:11,type:"particle",section:"L8+L9",
+ text:"Fill in the particle:",
+ pre:"わたしたちは まいしゅう としょかん",
+ sel1:["で","に","を","は","が","へ"],
+ answer1:"で",
+ post:"にほんごを べんきょうします。",
+ translation:"We study Japanese at the library every week.",
+ hint:"The library is where the action of studying takes place. Which particle marks the location of an action?",
+ explanation:"で marks the place where an action takes place. としょかんで = at the library. にほんごを = Japanese (direct object). まいしゅう = every week (L9, no particle for habitual time).",
+ example:"カフェで コーヒーを のみます。(I drink coffee at the café.)"},
+
+// Q12 L10+L11 error-mc — な-adj predicate mistake
+{id:12,type:"error-mc",section:"L10+L11",
+ text:"Find the mistake: 「この まちは ゆうめいな です。」",
+ options:{
+   a:"ゆうめい です — drop な in predicate position",
+   b:"ゆうめいの です — use の instead of な",
+   c:"ゆうめいに です — use に particle",
+   d:"No mistake — the sentence is correct"
+ },
+ answer:"a",
+ hint:"な-adjectives use な before nouns, but what happens in predicate position (before です)?",
+ explanation:"な-adjectives drop な in predicate position: ゆうめい です (NOT ゆうめいな です). な is only used before nouns: ゆうめいな レストラン. The original sentence incorrectly keeps な before です.",
+ example:"この ホテルは べんり です。(This hotel is convenient.) — NOT べんりな です."},
+
+// Q13 L8+L9 mc — masu form past negative + L1-7
+{id:13,type:"mc",section:"L8+L9",
+ text:"Which sentence correctly says 'I did not listen to music yesterday'?",
+ options:{
+   a:"わたしは きのう おんがくを ききません。",
+   b:"わたしは きのう おんがくを ききませんでした。",
+   c:"わたしは あした おんがくを ききませんでした。",
+   d:"わたしは きのう おんがくに ききませんでした。"
+ },
+ answer:"b",
+ hint:"きのう requires past tense. Check the particle for the direct object too.",
+ explanation:"きのう = yesterday → past tense needed. Past negative: ませんでした. おんがくを ききませんでした = did not listen to music. Option a is present negative. Option c has future time with past verb. Option d uses wrong particle.",
+ example:"せんしゅう テニスを しませんでした。(I didn't play tennis last week.)"},
+
+// Q14 L10+L11 sequence — L11 vocab with adjective + が
+{id:14,type:"sequence",section:"L10+L11",
+ text:"Build the sentence: 'The photo was beautiful, but the weather was cold.' Start with「しゃしんは」",
+ chips:shuffle(["しゃしんは","きれい","でしたが、","てんきは","さむかった","です","あたたかかった","でした"]),
+ answer:["しゃしんは","きれい","でしたが、","てんきは","さむかった","です"],
+ hint:"きれい is a な-adjective (past = でした). さむい is an い-adjective (past = drop い, add かった です).",
+ explanation:"きれい でした = was beautiful (な-adj past). が = but. さむかった です = was cold (い-adj past: さむい → さむかった). しゃしん = photo (L11). てんき = weather (L10).",
+ example:"ホテルは きれい でしたが、ちょっと たかかった です。(The hotel was beautiful, but a little expensive.)"},
+
+// Q15 L8+L9 matching — L8 verbs with activities
+{id:15,type:"matching",section:"L8+L9",
+ text:"Match each Japanese phrase to its correct English meaning.",
+ pairs:[
+   {jp:"べんきょうを します",en:"study"},
+   {jp:"かいものを します",en:"go shopping"},
+   {jp:"さんぽを します",en:"take a walk"},
+   {jp:"でんわを します",en:"make a phone call"},
+   {jp:"スキーを します",en:"go skiing"}
+ ],
+ options:["go skiing","take a walk","make a phone call","study","go shopping"],
+ hint:"These are all [noun] を します patterns from Lessons 8-9 and 11.",
+ explanation:"べんきょうを します = study (L8), かいものを します = go shopping (L8), さんぽを します = take a walk (L9), でんわを します = make a phone call (L9), スキーを します = go skiing (L11).",
+ example:"にちようびに こうえんで さんぽを します。(I take a walk in the park on Sunday.)"},
+
+// Q16 L10+L11 mc — L11 verb + どのくらい
+{id:16,type:"mc",section:"L10+L11",
+ text:"Your friend climbed Mt. Fuji. You want to ask 'How long did it take?' Which question is correct?",
+ options:{
+   a:"ふじさんに どのくらい のぼりましたか。",
+   b:"ふじさんは なんじに のぼりましたか。",
+   c:"ふじさんを どのくらい あるきましたか。",
+   d:"ふじさんに いつ のぼりましたか。"
+ },
+ answer:"a",
+ hint:"どのくらい means 'how long.' のぼります means 'climb.' Which particle marks the destination of climbing?",
+ explanation:"どのくらい = how long (L11). ふじさんに のぼりました = climbed Mt. Fuji (に marks destination, のぼります = climb from L11). Option b asks what time. Option c uses wrong verb. Option d asks when.",
+ example:"どのくらい あるきましたか。(How long did you walk?)"},
+
+// Q17 L8+L9 mc — ときどき frequency adverb with correct verb form
+{id:17,type:"mc",section:"L8+L9",
+ text:"Which sentence correctly says 'I sometimes go to the library'?",
+ options:{
+   a:"わたしは ときどき としょかんに いきます。",
+   b:"わたしは ときどき としょかんに いきません。",
+   c:"わたしは ときどき としょかんで いきます。",
+   d:"わたしは ときどき としょかんを いきます。"
+ },
+ answer:"a",
+ hint:"ときどき means 'sometimes' — does it pair with positive or negative verbs? Also check the destination particle.",
+ explanation:"ときどき = sometimes (L9) — pairs with affirmative verb (unlike あまり/ぜんぜん). としょかんに = to the library (destination に, not で or を). いきます = go (present affirmative). Option b incorrectly uses negative. Options c/d use wrong particles.",
+ example:"わたしは ときどき こうえんで さんぽを します。(I sometimes take a walk in the park.)"},
+
+// Q18 L10+L11 particle — い-adj past negative form
+{id:18,type:"particle",section:"L10+L11",
+ text:"Choose the correct form of おいしい:",
+ pre:"きのうの ラーメンは あまり",
+ sel1:["おいしくなかった です","おいしいくなかった です","おいしくない でした","おいしいなかった です"],
+ answer1:"おいしくなかった です",
+ post:"。",
+ translation:"Yesterday's ramen was not very delicious.",
+ hint:"い-adjective past negative: drop final い, then add くなかった です.",
+ explanation:"い-adj past negative: おいしい → drop い → おいし + くなかった です = おいしくなかった です. あまり pairs with negative = 'not very.' Option b keeps い before くなかった. Option c mixes present negative with past copula.",
+ example:"きのうの てんきは あまり よくなかった です。(Yesterday's weather was not very good.)"},
+
+// Q19 WordOfDay mc — なるほど
+{id:19,type:"mc",section:"WordOfDay",
+ text:"Your teacher explains a grammar rule and suddenly it all makes sense. Which expression fits?",
+ options:{
+   a:"やっぱり！",
+   b:"めんどくさい！",
+   c:"なるほど！",
+   d:"びみょう〜。"
+ },
+ answer:"c",
+ hint:"One expression means 'I see! / That makes sense!' — used when you understand something after an explanation.",
+ explanation:"なるほど means 'I see / that makes sense' — used when you understand something, especially after receiving an explanation. やっぱり = as expected; めんどくさい = what a hassle; びみょう = so-so.",
+ example:"A: にほんごの じょし は むずかしい ですが、たくさん れんしゅう すると わかります。B: なるほど！(A: Japanese particles are difficult, but you'll understand with lots of practice. B: I see!)"},
+
+// Q20 L10+L11 mc — L11 な-adj present
+{id:20,type:"mc",section:"L10+L11",
+ text:"Which sentence correctly says 'This homework is easy'?",
+ options:{
+   a:"この しゅくだいは かんたんい です。",
+   b:"この しゅくだいは かんたんな です。",
+   c:"この しゅくだいは かんたん です。",
+   d:"この しゅくだいは かんたんくない です。"
+ },
+ answer:"c",
+ hint:"かんたん is a な-adjective. In predicate position (before です), what happens to な?",
+ explanation:"かんたん is a な-adjective (L11). In predicate position, な is dropped: かんたん です. な is only used before nouns (かんたんな テスト). Option b incorrectly keeps な before です.",
+ example:"きょうは ひま です。(I'm free today.) — ひま is also a な-adjective."},
+
+// Q21 L8+L9 particle2 — frequency adverb + receiver に
+{id:21,type:"particle2",section:"L8+L9",
+ text:"Fill in the particles:",
+ pre:"わたしは ときどき ともだち",
+ sel1:["に","で","を","は","が","へ"],
+ answer1:"に",
+ mid:"メール",
+ sel2:["を","に","で","は","が"],
+ answer2:"を",
+ post:"おくります。",
+ translation:"I sometimes send emails to my friend.",
+ hint:"The friend is the receiver. The email is the direct object. Which particles mark each?",
+ explanation:"ともだちに = to my friend (receiver に). メールを = email (direct object を). ときどき = sometimes (L9 frequency adverb, no particle needed). おくります = send (L9).",
+ example:"わたしは まいしゅう ははに でんわを します。(I call my mother every week.)"},
+
+// Q22 L10+L11 mc — L11 vocab + adjective as modifier
+{id:22,type:"mc",section:"L10+L11",
+ text:"Which phrase correctly says 'a difficult test'?",
+ options:{
+   a:"むずかしいな テスト",
+   b:"むずかしい テスト",
+   c:"むずかしの テスト",
+   d:"むずかし テスト"
+ },
+ answer:"b",
+ hint:"むずかしい is an い-adjective. い-adjectives go directly before nouns — no extra particle needed.",
+ explanation:"い-adjectives go directly before nouns with no change: むずかしい テスト. な-adjectives need な (e.g., かんたんな テスト). Don't add な after an い-adjective. テスト = test (L11).",
+ example:"おもしろい えいがを みました。(I watched an interesting movie.)"},
+
+// Q23 L8+L9 mc — あまり + family vocab
+{id:23,type:"mc",section:"L8+L9",
+ text:"Which sentence correctly says 'My mother does not often watch TV'?",
+ options:{
+   a:"ははは あまり テレビを みます。",
+   b:"おかあさんは あまり テレビを みません。",
+   c:"ははは あまり テレビを みません。",
+   d:"ははは ぜんぜん テレビを みません。"
+ },
+ answer:"c",
+ hint:"Use the humble form for YOUR OWN mother. あまり must pair with a negative verb.",
+ explanation:"はは = my mother (humble, L9). あまり + みません = doesn't watch very often. Option a uses affirmative verb with あまり. Option b uses おかあさん (other people's mother). Option d uses ぜんぜん (not at all) instead of あまり.",
+ example:"ちちは あまり ほんを よみません。(My father doesn't read books very often.)"},
+
+// Q24 L10+L11 sequence — L11 adjectives + そろそろ
+{id:24,type:"sequence",section:"L10+L11",
+ text:"Build the sentence: 'The class was fun. I need to be going soon.' Start with「クラスは」",
+ chips:shuffle(["クラスは","たのしかった","です。","そろそろ","しつれいします。","でした。","つまらなかった","むずかしかった"]),
+ answer:["クラスは","たのしかった","です。","そろそろ","しつれいします。"],
+ hint:"たのしい is an い-adjective (past = かった です). そろそろ しつれいします is a polite farewell from L11.",
+ explanation:"たのしかった です = was fun (い-adj past). そろそろ しつれいします = I need to be going soon (L11 polite farewell expression). クラス = class (L11). たのしい = fun (L11).",
+ example:"パーティーは たのしかった です。そろそろ しつれいします。(The party was fun. I need to be going soon.)"},
+
+// Q25 Numbers — counter matching
+{id:25,type:"matching",section:"Numbers",
+ text:"Match each item to the correct counter when buying 5 of each.",
+ pairs:[
+   {jp:"きって (stamp)",en:"ごまい"},
+   {jp:"りんご (apple)",en:"ごこ"},
+   {jp:"かさ (umbrella)",en:"ごほん"}
+ ],
+ options:["ごほん","ごまい","ごこ"],
+ hint:"Think about the shape: stamps are flat, apples are small and round, umbrellas are long.",
+ explanation:"きって = stamps (flat → まい: ごまい). りんご = apples (small round → こ: ごこ). かさ = umbrellas (long cylindrical → ほん: ごほん).",
+ example:"Tシャツを ごまい ください。(Five T-shirts, please.)"},
+
+// Q26 L10+L11 mc — tricky きれい な-adj before noun
+{id:26,type:"mc",section:"L10+L11",
+ text:"Which phrase correctly says 'a beautiful photo'?",
+ options:{
+   a:"きれい しゃしん",
+   b:"きれいい しゃしん",
+   c:"きれいの しゃしん",
+   d:"きれいな しゃしん"
+ },
+ answer:"d",
+ hint:"きれい looks like it ends in い, but it is actually a な-adjective.",
+ explanation:"きれい is a な-adjective despite ending in い sound. It needs な before a noun: きれいな しゃしん. しゃしん = photo (L11). Similarly, ゆうめい is also a な-adjective.",
+ example:"きれいな はなを かいました。(I bought beautiful flowers.)"},
+
+// Q27 L8+L9 mc — なにも + negative + place
+{id:27,type:"mc",section:"L8+L9",
+ text:"Which sentence correctly says 'I didn't eat anything at the restaurant'?",
+ options:{
+   a:"わたしは レストランで なにも たべました。",
+   b:"わたしは レストランで なにも たべません。",
+   c:"わたしは レストランで なにも たべませんでした。",
+   d:"わたしは レストランに なにも たべませんでした。"
+ },
+ answer:"c",
+ hint:"なにも must pair with a negative verb. This is a past event. Also check the particle for 'at the restaurant.'",
+ explanation:"なにも + past negative: たべませんでした = didn't eat anything. レストランで = at the restaurant (place of action で). Option a uses affirmative verb. Option b is present tense. Option d uses wrong particle に.",
+ example:"きのう なにも かいませんでした。(I didn't buy anything yesterday.)"},
+
+// Q28 L10+L11 particle2 — L11 adjective forms in past
+{id:28,type:"particle2",section:"L10+L11",
+ text:"Choose the correct adjective forms:",
+ pre:"デートは",
+ sel1:["たのしかった です","たのしい でした","たのしいかった です","たのしかった でした"],
+ answer1:"たのしかった です",
+ mid:"が、ちょっと",
+ sel2:["いそがしかった です","いそがしい でした","いそがしいかった です","いそがしかった でした"],
+ answer2:"いそがしかった です",
+ post:"。",
+ translation:"The date was fun, but I was a little busy.",
+ hint:"Both たのしい and いそがしい are い-adjectives. い-adj past = drop い, add かった です.",
+ explanation:"たのしい → たのしかった です (い-adj past). いそがしい → いそがしかった です (い-adj past). が = but. デート = date (L11), いそがしい = busy (L11). Never use でした with い-adjectives.",
+ example:"テストは むずかしかった ですが、たのしかった です。(The test was difficult, but fun.)"},
+
+// Q29 WordOfDay mc — めんどくさい
+{id:29,type:"mc",section:"WordOfDay",
+ text:"Your friend suggests cleaning the whole house together. You groan and say one word that means 'Ugh, what a hassle!' Which expression is it?",
+ options:{
+   a:"なるほど〜！",
+   b:"いいかんじ！",
+   c:"だいじょうぶ！",
+   d:"めんどくさい〜！"
+ },
+ answer:"d",
+ hint:"One expression is used when something feels annoying, tiresome, or like too much work.",
+ explanation:"めんどくさい means 'what a hassle / troublesome / ugh, too much work' — used when something feels annoying or you don't feel like doing it. なるほど = I see; いいかんじ = feels good; だいじょうぶ = I'm okay.",
+ example:"A: いっしょに そうじしよう！ B: え〜、めんどくさい〜。(A: Let's clean together! B: Ugh, what a hassle.)"},
+
+// Q30 L10+L11 multiselect — adjective conjugation check
+{id:30,type:"multiselect",section:"L10+L11",
+ text:"Which of the following sentences are grammatically correct? (Select all that apply.)",
+ options:{
+   a:"この セーターは あたたかくない です。",
+   b:"テストは かんたんな でした。",
+   c:"スキーは たのしかった です。",
+   d:"この まちは にぎやかじゃありませんでした。",
+   e:"えいがは つまらないかった です。"
+ },
+ answer:["a","c","d"],
+ hint:"Check both い-adjective and な-adjective conjugation rules carefully for each sentence.",
+ explanation:"A: あたたかい → あたたかくない です (い-adj present negative ✓). B: かんたん is な-adj, past = かんたん でした — な is dropped in predicate; かんたんな でした is wrong (✗). C: たのしい → たのしかった です (い-adj past ✓). D: にぎやか → にぎやかじゃありませんでした (な-adj past negative ✓). E: つまらない → つまらなかった です — must drop い first; つまらないかった is wrong (✗).",
+ example:"スキーは たのしかった ですが、さむかった です。(Skiing was fun, but it was cold.)"}
+
+];
+
+// ===== JS ENGINE =====
+const answered={};
+function normalizeText(s){return(s||"").trim().toLowerCase().replace(/\s+/g,"").replace(/[ōo]/g,"o").replace(/[ūu]/g,"u");}
+function hasUserInput(qid){
+  const q=questions.find(x=>x.id===qid);if(!q)return false;
+  const t=q.type;
+  if(t==="mc"||t==="error-mc")return!!document.querySelector(`input[name="q${qid}"]:checked`);
+  if(t==="multiselect")return!!document.querySelector(`input[name="ms${qid}"]:checked`);
+  if(t==="type-word"){const v=document.getElementById(`tw${qid}`);return v&&v.value.trim().length>0;}
+  if(t==="particle"){const s=document.getElementById(`sel1_${qid}`);return s&&s.value!="";}
+  if(t==="particle2"){const s1=document.getElementById(`sel1_${qid}`),s2=document.getElementById(`sel2_${qid}`);return(s1&&s1.value!="")&&(s2&&s2.value!="");}
+  if(t==="matching")return Array.from(document.querySelectorAll(`[id^="match_${qid}_"]`)).some(s=>s.value!="");
+  if(t==="sequence"||t==="sequence-en"){const sl=document.getElementById(`slots_${qid}`);return sl&&sl.children.length>0;}
+  return false;
+}
+function evaluateQ(qid){
+  const q=questions.find(x=>x.id===qid);if(!q)return{hasAnswer:false,correct:false};
+  const t=q.type;let correct=false,hasAnswer=hasUserInput(qid);
+  if(!hasAnswer)return{hasAnswer:false,correct:false};
+  if(t==="mc"||t==="error-mc"){const sel=document.querySelector(`input[name="q${qid}"]:checked`);correct=sel&&sel.value===q.answer;}
+  else if(t==="multiselect"){const checked=Array.from(document.querySelectorAll(`input[name="ms${qid}"]:checked`)).map(x=>x.value).sort();correct=JSON.stringify(checked)===JSON.stringify([...q.answer].sort());}
+  else if(t==="particle"){const s1=document.getElementById(`sel1_${qid}`);correct=s1&&normalizeText(s1.value)===normalizeText(q.answer1);}
+  else if(t==="particle2"){const s1=document.getElementById(`sel1_${qid}`),s2=document.getElementById(`sel2_${qid}`);correct=(s1&&normalizeText(s1.value)===normalizeText(q.answer1))&&(s2&&normalizeText(s2.value)===normalizeText(q.answer2));}
+  else if(t==="matching"){correct=q.pairs.every((p,i)=>{const s=document.getElementById(`match_${qid}_${i}`);return s&&s.value===p.en;});}
+  else if(t==="sequence"||t==="sequence-en"){const sl=document.getElementById(`slots_${qid}`);const placed=Array.from((sl||{}).children||[]).map(c=>c.dataset.word);correct=JSON.stringify(placed)===JSON.stringify(q.answer);}
+  return{hasAnswer,correct};
+}
+function onInteract(qid){
+  const btn=document.getElementById(`chkbtn_${qid}`);
+  if(btn&&!btn.classList.contains('checked-done'))btn.classList.add('visible');
+  updateFooter();updateNavDot(qid);
+}
+function checkAnswer(qid){
+  const{hasAnswer,correct}=evaluateQ(qid);
+  answered[qid]=hasAnswer?correct:false;
+  showFeedback(qid,correct);lockQuestion(qid);
+  const btn=document.getElementById(`chkbtn_${qid}`);
+  if(btn){btn.style.display="none";btn.classList.add('checked-done');}
+  const card=document.getElementById(`card_${qid}`);
+  if(card){card.classList.remove('correct','incorrect');card.classList.add(correct?'correct':'incorrect');}
+  updateNavDot(qid);updateFooter();
+}
+function showFeedback(qid,correct){
+  const q=questions.find(x=>x.id===qid);
+  const fb=document.getElementById(`fb_${qid}`);if(!fb||!q)return;
+  fb.className=`feedback show ${correct?'correct-fb':'incorrect-fb'}`;
+  let ansText="";const t=q.type;
+  if(t==="mc"||t==="error-mc")ansText=q.options[q.answer];
+  else if(t==="multiselect")ansText=q.answer.map(k=>q.options[k]).join("; ");
+  else if(t==="particle")ansText=q.answer1;
+  else if(t==="particle2")ansText=`${q.answer1} / ${q.answer2}`;
+  else if(t==="matching")ansText=q.pairs.map(p=>`${p.jp} = ${p.en}`).join(", ");
+  else if(t==="sequence"||t==="sequence-en")ansText=q.answer.join(" ");
+  fb.innerHTML=`<div class="answer-line">${correct?'Correct!':'Incorrect.'} Correct answer: ${ansText}</div>
+<div class="explanation">${q.explanation}</div>
+<div class="example">${q.example}</div>`;
+  if(t==="mc"||t==="error-mc"||t==="multiselect"){
+    const ans=Array.isArray(q.answer)?q.answer:[q.answer];
+    ["a","b","c","d","e"].forEach(k=>{
+      const lbl=document.getElementById(`opt_${qid}_${k}`);if(!lbl)return;
+      const inp=lbl.querySelector("input");const isAns=ans.includes(k);const isChk=inp&&inp.checked;
+      if(isAns)lbl.classList.add("correct-opt");else if(isChk&&!isAns)lbl.classList.add("incorrect-opt");
+    });
+  }
+}
+function lockQuestion(qid){
+  const card=document.getElementById(`card_${qid}`);
+  if(!card)return;
+  card.querySelectorAll("input,select").forEach(el=>el.disabled=true);
+  card.querySelectorAll(".chip").forEach(c=>c.style.pointerEvents="none");
+  card.querySelectorAll(".slot-chip").forEach(c=>c.style.pointerEvents="none");
+}
+function handleSubmit(){
+  const unanswered=questions.filter(q=>!hasUserInput(q.id)&&answered[q.id]===undefined).length;
+  if(unanswered>0){if(!confirm(`${unanswered} question(s) have no input. Submit anyway? They will be marked incorrect.`))return;}
+  confirmSubmit();
+}
+function confirmSubmit(){
+  document.getElementById("fixedFooter").style.display="none";
+  questions.forEach(q=>{
+    if(answered[q.id]!==undefined){showFeedback(q.id,answered[q.id]);lockQuestion(q.id);const card=document.getElementById(`card_${q.id}`);if(card){card.classList.remove('correct','incorrect');card.classList.add(answered[q.id]?'correct':'incorrect');}}
+    else if(hasUserInput(q.id)){const{correct}=evaluateQ(q.id);answered[q.id]=correct;showFeedback(q.id,correct);lockQuestion(q.id);const card=document.getElementById(`card_${q.id}`);if(card){card.classList.remove('correct','incorrect');card.classList.add(correct?'correct':'incorrect');}}
+    else{answered[q.id]=false;showFeedback(q.id,false);lockQuestion(q.id);const card=document.getElementById(`card_${q.id}`);if(card){card.classList.remove('correct','incorrect');card.classList.add('incorrect');}}
+    const btn=document.getElementById(`chkbtn_${q.id}`);if(btn)btn.style.display="none";
+    updateNavDot(q.id);
+  });
+  showScore();
+}
+function showScore(){
+  const sec=document.getElementById("scoreSection");sec.classList.add("show");
+  const total=Object.values(answered).filter(v=>v===true).length;
+  const pct=Math.round(total/30*100);
+  document.getElementById("scoreBig").textContent=`${total}/30`;
+  document.getElementById("scoreSub").textContent=`${pct}% — ${pct>=80?"Great work!":pct>=60?"Keep it up!":"Keep practicing!"}`;
+  const sections={};
+  questions.forEach(q=>{if(!sections[q.section])sections[q.section]={total:0,correct:0};sections[q.section].total++;if(answered[q.id])sections[q.section].correct++;});
+  const sectionLabels={"L10+L11":"Lessons 10-11","L8+L9":"Lessons 8-9","Numbers":"Numbers & Counters","WordOfDay":"Word of the Day"};
+  document.getElementById("sectionScores").innerHTML=Object.entries(sections).map(([s,v])=>`<div class="sec-score-card"><h4>${sectionLabels[s]||s}</h4><div class="val">${v.correct}/${v.total}</div></div>`).join("");
+  const typeMap={};
+  questions.forEach(q=>{const t=q.type;if(!typeMap[t])typeMap[t]={c:0,t:0};typeMap[t].t++;if(answered[q.id])typeMap[t].c++;});
+  const typeLabels={"mc":"Multiple Choice","error-mc":"Error Correction","multiselect":"Multi-Select","type-word":"Type the Word","particle":"Fill-in-Particle","particle2":"Fill-in-2-Particles","matching":"Vocabulary Matching","sequence":"Build JP Sentence","sequence-en":"Translate to EN"};
+  document.getElementById("typeScores").innerHTML=Object.entries(typeMap).map(([t,v])=>`<div class="type-score-row"><span class="t-label">${typeLabels[t]||t}</span><span class="t-val">${v.c}/${v.t}</span></div>`).join("");
+  sec.scrollIntoView({behavior:"smooth"});
+}
+function updateNavDot(qid){
+  const dot=document.getElementById(`dot_${qid}`);if(!dot)return;
+  dot.className="dot";
+  if(answered[qid]!==undefined)dot.classList.add(answered[qid]?"correct":"incorrect");
+  else if(hasUserInput(qid))dot.classList.add("interacted");
+}
+function updateFooter(){
+  const interacted=questions.filter(q=>hasUserInput(q.id)).length;
+  const checked=Object.keys(answered).length;
+  const count=Math.max(interacted,checked);
+  document.getElementById("footerCount").textContent=`Submit All 30 Questions (${count}/30 answered)`;
+  document.getElementById("topProgress").style.width=(count/30*100)+"%";
+}
+function buildNavDots(){
+  const nav=document.getElementById("navDots");
+  questions.forEach(q=>{const d=document.createElement("div");d.className="dot";d.id=`dot_${q.id}`;d.textContent=q.id;d.onclick=()=>document.getElementById(`card_${q.id}`).scrollIntoView({behavior:"smooth"});nav.appendChild(d);});
+}
+function buildQuestion(q){
+  const card=document.createElement("div");card.className="question-card";card.id=`card_${q.id}`;
+  const typeLabels={"mc":"Multiple Choice","error-mc":"Error Correction","multiselect":"Multi-Select","type-word":"Type the Word","particle":"Fill-in-Particle","particle2":"Fill-in-2-Particles","matching":"Vocab Matching","sequence":"Build Sentence","sequence-en":"Translate"};
+  card.innerHTML=`<div class="q-header"><span class="q-num">Q${q.id}</span><div class="badges"><span class="q-section">${q.section}</span><span class="q-type">${typeLabels[q.type]||q.type}</span></div></div>
+<div class="q-text">${q.text}</div>
+<div class="hint"><span class="hint-text">${q.hint}</span></div>`;
+  card.querySelector('.hint').addEventListener('click',function(){this.classList.toggle('open');});
+  const body=document.createElement("div");body.id=`body_${q.id}`;
+  if(q.type==="mc"||q.type==="error-mc"){
+    const og=document.createElement("div");og.className="option-group";
+    ["a","b","c","d"].filter(k=>q.options[k]).forEach(k=>{
+      const lbl=document.createElement("label");lbl.className="option-label";lbl.id=`opt_${q.id}_${k}`;
+      const inp=document.createElement("input");inp.type="radio";inp.name=`q${q.id}`;inp.value=k;
+      inp.addEventListener("change",()=>onInteract(q.id));
+      lbl.appendChild(inp);lbl.appendChild(document.createTextNode(" "+q.options[k]));
+      og.appendChild(lbl);
+    });
+    body.appendChild(og);
+  }else if(q.type==="multiselect"){
+    const og=document.createElement("div");og.className="option-group";
+    Object.entries(q.options).forEach(([k,v])=>{
+      const lbl=document.createElement("label");lbl.className="option-label";lbl.id=`opt_${q.id}_${k}`;
+      const inp=document.createElement("input");inp.type="checkbox";inp.name=`ms${q.id}`;inp.value=k;
+      inp.addEventListener("change",()=>onInteract(q.id));
+      lbl.appendChild(inp);lbl.appendChild(document.createTextNode(" "+v));
+      og.appendChild(lbl);
+    });
+    body.appendChild(og);
+  }else if(q.type==="particle"){
+    const wrap=document.createElement("div");wrap.className="particle-sentence";
+    wrap.appendChild(document.createTextNode(q.pre+" "));
+    const sel=document.createElement("select");sel.id=`sel1_${q.id}`;
+    sel.innerHTML=`<option value="">--</option>`+q.sel1.map(o=>`<option value="${o}">${o}</option>`).join("");
+    sel.addEventListener("change",()=>onInteract(q.id));
+    wrap.appendChild(sel);
+    wrap.appendChild(document.createTextNode(" "+q.post));
+    body.appendChild(wrap);
+    const tr=document.createElement("div");tr.className="translation-note";tr.textContent="English: "+q.translation;body.appendChild(tr);
+  }else if(q.type==="particle2"){
+    const wrap=document.createElement("div");wrap.className="particle-sentence";
+    wrap.appendChild(document.createTextNode(q.pre+" "));
+    const sel1=document.createElement("select");sel1.id=`sel1_${q.id}`;
+    sel1.innerHTML=`<option value="">--</option>`+q.sel1.map(o=>`<option value="${o}">${o}</option>`).join("");
+    sel1.addEventListener("change",()=>onInteract(q.id));
+    wrap.appendChild(sel1);
+    wrap.appendChild(document.createTextNode(" "+q.mid+" "));
+    const sel2=document.createElement("select");sel2.id=`sel2_${q.id}`;
+    sel2.innerHTML=`<option value="">--</option>`+q.sel2.map(o=>`<option value="${o}">${o}</option>`).join("");
+    sel2.addEventListener("change",()=>onInteract(q.id));
+    wrap.appendChild(sel2);
+    wrap.appendChild(document.createTextNode(" "+q.post));
+    body.appendChild(wrap);
+    const tr=document.createElement("div");tr.className="translation-note";tr.textContent="English: "+q.translation;body.appendChild(tr);
+  }else if(q.type==="matching"){
+    const grid=document.createElement("div");grid.className="matching-grid";
+    const optHtml=`<option value="">--select--</option>`+q.options.map(o=>`<option value="${o}">${o}</option>`).join("");
+    q.pairs.forEach(p=>{
+      const lbl=document.createElement("label");lbl.textContent=p.jp;
+      const sel=document.createElement("select");
+      sel.id=`match_${q.id}_${q.pairs.indexOf(p)}`;
+      sel.dataset.correct=p.en;sel.dataset.jp=p.jp;
+      sel.innerHTML=optHtml;
+      sel.addEventListener("change",()=>onInteract(q.id));
+      grid.appendChild(lbl);grid.appendChild(sel);
+    });
+    body.appendChild(grid);
+  }else if(q.type==="sequence"){
+    const sl=document.createElement("div");sl.className="seq-label";sl.textContent="Available words (click to add):";body.appendChild(sl);
+    const bank=document.createElement("div");bank.className="chip-bank";bank.id=`bank_${q.id}`;
+    q.chips.forEach((w,i)=>{
+      const chip=document.createElement("div");chip.className="chip";chip.id=`chip_${q.id}_${i}`;
+      chip.dataset.word=w;chip.dataset.idx=i;chip.textContent=w;
+      chip.addEventListener("click",()=>placeChip(q.id,i));
+      bank.appendChild(chip);
+    });
+    body.appendChild(bank);
+    const sl2=document.createElement("div");sl2.className="seq-label";sl2.textContent="Your sentence (click a word to remove):";body.appendChild(sl2);
+    const slots=document.createElement("div");slots.className="answer-slots";slots.id=`slots_${q.id}`;body.appendChild(slots);
+  }else if(q.type==="sequence-en"){
+    const jpDiv=document.createElement("div");jpDiv.className="jp";jpDiv.textContent=q.jp;body.appendChild(jpDiv);
+    const sl=document.createElement("div");sl.className="seq-label";sl.textContent="Available words (click to add):";body.appendChild(sl);
+    const bank=document.createElement("div");bank.className="chip-bank";bank.id=`bank_${q.id}`;
+    q.chips.forEach((w,i)=>{
+      const chip=document.createElement("div");chip.className="chip";chip.id=`chip_${q.id}_${i}`;
+      chip.dataset.word=w;chip.dataset.idx=i;chip.textContent=w;
+      chip.addEventListener("click",()=>placeChip(q.id,i));
+      bank.appendChild(chip);
+    });
+    body.appendChild(bank);
+    const sl2=document.createElement("div");sl2.className="seq-label";sl2.textContent="Your translation (click a word to remove):";body.appendChild(sl2);
+    const slots=document.createElement("div");slots.className="answer-slots";slots.id=`slots_${q.id}`;body.appendChild(slots);
+  }
+  card.appendChild(body);
+  const fbDiv=document.createElement("div");fbDiv.className="feedback";fbDiv.id=`fb_${q.id}`;card.appendChild(fbDiv);
+  const chkBtn=document.createElement("button");chkBtn.className="check-btn";chkBtn.id=`chkbtn_${q.id}`;chkBtn.textContent="Check Answer";chkBtn.addEventListener("click",()=>checkAnswer(q.id));card.appendChild(chkBtn);
+  return card;
+}
+function placeChip(qid,idx){
+  const chip=document.getElementById(`chip_${qid}_${idx}`);if(!chip||chip.classList.contains("used"))return;
+  chip.classList.add("used");
+  const slots=document.getElementById(`slots_${qid}`);
+  const sc=document.createElement("div");sc.className="slot-chip";sc.dataset.word=chip.dataset.word;sc.dataset.idx=idx;sc.textContent=chip.dataset.word;sc.onclick=()=>removeSlotChip(qid,idx,sc);slots.appendChild(sc);onInteract(qid);
+}
+function removeSlotChip(qid,idx,sc){
+  sc.remove();const chip=document.getElementById(`chip_${qid}_${idx}`);if(chip)chip.classList.remove("used");onInteract(qid);
+}
+function copyReview(){
+  const total=Object.values(answered).filter(v=>v===true).length;
+  const pct=Math.round(total/30*100);
+  const sections={};
+  questions.forEach(q=>{if(!sections[q.section])sections[q.section]={total:0,correct:0};sections[q.section].total++;if(answered[q.id])sections[q.section].correct++;});
+  const sectionLabels={"L10+L11":"Lessons 10-11","L8+L9":"Lessons 8-9","Numbers":"Numbers & Counters","WordOfDay":"Word of the Day"};
+  function getAnsText(q){const t=q.type;if(t==="mc"||t==="error-mc")return q.options[q.answer]||q.answer;if(t==="multiselect")return q.answer.map(k=>q.options[k]).join("; ");if(t==="particle")return q.answer1;if(t==="particle2")return`${q.answer1} / ${q.answer2}`;if(t==="matching")return q.pairs.map(p=>`${p.jp}=${p.en}`).join(", ");if(t==="sequence"||t==="sequence-en")return q.answer.join(" ");return"";}
+  const correctQs=questions.filter(q=>answered[q.id]===true);
+  const incorrectQs=questions.filter(q=>answered[q.id]!==true);
+  let out=`=== JAPANESE QUIZ RESULTS FOR AI REVIEW ===\n\nSTUDENT CONTEXT:\nTextbook: Japanese for Busy People I, Romaji Revised 4th Edition\nCurrently studying: Lessons 10-11\nCompleted lessons: Lessons 1 through 9\nScript knowledge: Can read and write hiragana and katakana (still learning). Reads romaji fluently. No kanji yet.\n\nINSTRUCTIONS FOR AI REVIEWER:\n1. Identify strengths based on correct answers\n2. Identify focus areas based on incorrect or skipped answers\n3. Group feedback thematically (particles, verb conjugation, vocabulary, adjectives)\n4. For each focus area, explain the underlying grammar concept\n5. Suggest 2-3 specific practice activities for the most important gaps\n\nQUIZ SCORE: ${total} / 30 (${pct}%)\n\nSCORE BY SECTION:\n`;
+  Object.entries(sections).forEach(([s,v])=>{out+=`- ${sectionLabels[s]||s}: ${v.correct} / ${v.total}\n`;});
+  out+=`\n=== CORRECTLY ANSWERED (${correctQs.length} questions) ===\n\n`;
+  correctQs.forEach(q=>{out+=`Q${q.id} [${q.section}] ${q.text}\n  Correct answer: ${getAnsText(q)}\n  Explanation: ${q.explanation}\n\n`;});
+  out+=`=== INCORRECT OR SKIPPED (${incorrectQs.length} questions) ===\n\n`;
+  incorrectQs.forEach(q=>{out+=`Q${q.id} [${q.section}] ${q.text}\n  Correct answer: ${getAnsText(q)}\n  Explanation: ${q.explanation}\n\n`;});
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(out).then(()=>alert("Copied to clipboard!")).catch(()=>fallbackCopy(out));}else{fallbackCopy(out);}
+}
+function fallbackCopy(text){
+  const ta=document.createElement("textarea");ta.value=text;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.focus();ta.select();
+  try{document.execCommand("copy");alert("Copied to clipboard!");}catch(e){alert("Could not copy. Please copy manually.");}
+  document.body.removeChild(ta);
+}
+buildNavDots();
+const quizBody=document.getElementById("quizBody");
+questions.forEach(q=>quizBody.appendChild(buildQuestion(q)));
+updateFooter();
+</script>
+</body>
+</html>

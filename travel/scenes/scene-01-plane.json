@@ -1,0 +1,1542 @@
+{
+  "id": "scene-01-plane",
+  "order": 1,
+  "title": {
+    "en": "On the Plane",
+    "kana": "ひこうきで",
+    "romaji": "Hikouki de"
+  },
+  "summary": "Boarding in Seattle, through the flight, to arrival at Haneda.",
+  "lessons": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "register": "formal",
+  "characters": {
+    "attendant": {
+      "en": "Flight attendant",
+      "kana": "きゃくしつじょういん"
+    },
+    "captain": {
+      "en": "Captain",
+      "kana": "きちょう"
+    },
+    "tanaka": {
+      "en": "Tanaka-san, the passenger next to you",
+      "kana": "たなかさん"
+    },
+    "staff": {
+      "en": "Airport ground staff",
+      "kana": "くうこうのスタッフ"
+    },
+    "crew": {
+      "en": "Cabin crew",
+      "kana": "きゃくしつじょういん"
+    }
+  },
+  "subscenes": [
+    {
+      "id": "1A",
+      "mode": "dialogue",
+      "title": {
+        "en": "Boarding and finding your seat",
+        "kana": "とうじょう"
+      },
+      "partner": "attendant",
+      "note": "The aisle works just like a street. The direction phrases here are straight out of Lesson 4, and they all use the ～てください request form.",
+      "turns": [
+        {
+          "speaker": "partner",
+          "en": "Hello. Welcome aboard.",
+          "kana": "こんにちは。いらっしゃいませ。",
+          "romaji": "Konnichiwa. Irasshaimase.",
+          "source": "L1 / L3",
+          "words": [
+            {
+              "word": "いらっしゃいませ",
+              "romaji": "irasshaimase",
+              "gloss": "welcome",
+              "anchor": "a fixed greeting staff say to a customer. There is no reply to it and you never say it back. You will hear it in every shop and restaurant in Japan."
+            }
+          ]
+        },
+        {
+          "speaker": "partner",
+          "en": "What is your seat number?",
+          "kana": "おせきはなんばんですか。",
+          "romaji": "Oseki wa nan-ban desu ka.",
+          "source": "JBP なん-",
+          "extras": [
+            {
+              "word": "おせき",
+              "romaji": "oseki",
+              "gloss": "seat",
+              "anchor": "the polite お- you already use in おなまえ and おしごと"
+            },
+            {
+              "word": "なんばん",
+              "romaji": "nan-ban",
+              "gloss": "what number",
+              "anchor": "same なん as なんじ and なんですか"
+            }
+          ]
+        },
+        {
+          "speaker": "you",
+          "en": "It's 25A.",
+          "kana": "にじゅうごのエーです。",
+          "romaji": "Nijuugo no ee desu.",
+          "source": "JBP numbers + の",
+          "grammar": "Seat numbers join the number and the letter with の. Letters of the alphabet are written in katakana: エー is A, ビー is B."
+        },
+        {
+          "speaker": "partner",
+          "en": "This way, please.",
+          "kana": "こちらへどうぞ。",
+          "romaji": "Kochira e douzo.",
+          "source": "L3",
+          "words": [
+            {
+              "word": "こちら",
+              "romaji": "kochira",
+              "gloss": "this way, this direction",
+              "anchor": "the polite member of the [[kosoado]] family. こちら, そちら and あちら are the versions you use with customers and strangers."
+            }
+          ]
+        },
+        {
+          "speaker": "partner",
+          "en": "Please go straight.",
+          "kana": "まっすぐいってください。",
+          "romaji": "Massugu itte kudasai.",
+          "source": "L4",
+          "grammar": "いって is the [[te-form]] of いきます, and [[te-kudasai]] turns any verb into a polite request. Once you can make the て-form, you can ask for almost anything.",
+          "words": [
+            {
+              "word": "まっすぐ",
+              "romaji": "massugu",
+              "gloss": "straight ahead",
+              "anchor": "used on its own before the verb, the way you use ゆっくり in ゆっくりおねがいします"
+            }
+          ]
+        },
+        {
+          "speaker": "partner",
+          "en": "Then turn left.",
+          "kana": "それから、ひだりにまがってください。",
+          "romaji": "Sorekara, hidari ni magatte kudasai.",
+          "source": "L4 + L3 それから",
+          "grammar": "に marks the direction you turn toward. The Lesson 4 handout writes ひだりへ; へ and に are both correct here, and に is the more common one in speech.",
+          "words": [
+            {
+              "word": "それから",
+              "romaji": "sorekara",
+              "gloss": "and then, after that",
+              "anchor": "built on から, which you know as from. It strings two instructions together in order."
+            }
+          ]
+        },
+        {
+          "speaker": "you",
+          "en": "I see. Understood, thank you.",
+          "kana": "そうですか。わかりました。ありがとうございます。",
+          "romaji": "Sou desu ka. Wakarimashita. Arigatou gozaimasu.",
+          "source": "L4",
+          "words": [
+            {
+              "word": "わかりました",
+              "romaji": "wakarimashita",
+              "gloss": "understood, got it",
+              "anchor": "the past form of わかります. Japanese uses the past here because you have just taken the information in. わかります on its own would mean I understand in general."
+            }
+          ],
+          "grammar": "そうですか is [[aizuchi]]: a short noise that shows you are following."
+        },
+        {
+          "stage": "You reach row 25. The locker above your seat is nearly full."
+        },
+        {
+          "speaker": "you",
+          "en": "May I put my bag here?",
+          "kana": "かばんをここにおいてもいいですか。",
+          "romaji": "Kaban o koko ni oite mo ii desu ka.",
+          "source": "L4 ～てもいいですか + JBP かばん",
+          "grammar": "[[te-mo-ii]] asks permission. It is built on the [[te-form]]: おきます becomes おいて, then もいいですか is added.",
+          "extras": [
+            {
+              "word": "おいて",
+              "romaji": "oite",
+              "gloss": "put, place",
+              "anchor": "the [[te-form]] of おきます. Verbs ending in く take いて."
+            }
+          ]
+        },
+        {
+          "speaker": "partner",
+          "en": "Yes, please do.",
+          "kana": "はい、どうぞ。",
+          "romaji": "Hai, douzo.",
+          "source": "L4",
+          "words": [
+            {
+              "word": "どうぞ",
+              "romaji": "douzo",
+              "gloss": "please, go ahead",
+              "anchor": "the same どうぞ as in こちらへどうぞ and どうぞよろしく. It offers or permits something. It never asks for something: that is ください."
+            }
+          ]
+        },
+        {
+          "speaker": "you",
+          "en": "Thank you.",
+          "kana": "ありがとうございます。",
+          "romaji": "Arigatou gozaimasu.",
+          "source": "L1",
+          "alternative": {
+            "kana": "ありがとうございました。",
+            "romaji": "Arigatou gozaimashita.",
+            "note": "the past form, used once the thing you are thanking for is finished. See [[past-polite]]."
+          }
+        }
+      ]
+    },
+    {
+      "id": "1B",
+      "mode": "announcement",
+      "partner": "captain",
+      "title": {
+        "en": "The captain's welcome",
+        "kana": "きちょうのあいさつ"
+      },
+      "note": [
+        "This is listening practice, not speaking practice.",
+        "Real announcements are in [[keigo]], the formal register, so many of these words will be new. You are not expected to say any of it.",
+        "Read the English, then reveal it and look for the shapes you do know underneath the formal endings.",
+        "One of you can read it aloud if you want a voice in the room.",
+        "This is the announcement made once the plane is safely on its way."
+      ],
+      "turns": [
+        {
+          "speaker": "announce",
+          "en": "Everyone, thank you very much for flying with us today.",
+          "kana": "みなさま、ほんじつはごとうじょういただきまして、まことにありがとうございます。",
+          "romaji": "Minasama, honjitsu wa gotoujou itadakimashite, makoto ni arigatou gozaimasu.",
+          "source": "Real airline announcement",
+          "grammar": "The standard opening of every Japanese flight announcement. Underneath the [[keigo]] it is just ありがとうございます.",
+          "extras": [
+            {
+              "word": "ほんじつ",
+              "romaji": "honjitsu",
+              "gloss": "today",
+              "anchor": "the formal word for きょう. Announcements and shops use it; people do not."
+            },
+            {
+              "word": "ごとうじょう",
+              "romaji": "gotoujou",
+              "gloss": "boarding",
+              "anchor": "the word printed on your boarding pass. とうじょう is boarding; ご- is the polite prefix."
+            },
+            {
+              "word": "いただきまして",
+              "romaji": "itadakimashite",
+              "gloss": "receiving (humble)",
+              "anchor": "the same いただきます you say before eating. It means to receive humbly, so here the airline is humbly receiving your custom."
+            },
+            {
+              "word": "まことに",
+              "romaji": "makoto ni",
+              "gloss": "truly, sincerely",
+              "anchor": "the formal version of とても or どうも"
+            }
+          ]
+        },
+        {
+          "speaker": "announce",
+          "en": "This is Captain Yamada.",
+          "kana": "きちょうのやまだでございます。",
+          "romaji": "Kichou no Yamada de gozaimasu.",
+          "source": "Real airline announcement",
+          "grammar": "[role] の [name], the same [[no-linker]] as always. でございます is simply です in [[keigo]].",
+          "extras": [
+            {
+              "word": "きちょう",
+              "romaji": "kichou",
+              "gloss": "captain",
+              "anchor": "the き is the same き as in ひこうき, airplane"
+            },
+            {
+              "word": "でございます",
+              "romaji": "de gozaimasu",
+              "gloss": "is (formal)",
+              "anchor": "です wearing a suit. Same meaning, formal register."
+            }
+          ]
+        },
+        {
+          "speaker": "announce",
+          "en": "We have just departed Seattle.",
+          "kana": "とうきは、ただいまシアトルをしゅっぱついたしました。",
+          "romaji": "Touki wa, tadaima Shiatoru o shuppatsu itashimashita.",
+          "source": "Real airline announcement",
+          "extras": [
+            {
+              "word": "とうき",
+              "romaji": "touki",
+              "gloss": "this aircraft",
+              "anchor": "the き is the same き as in ひこうき. Announcements say とうき where you would say このひこうき."
+            },
+            {
+              "word": "ただいま",
+              "romaji": "tadaima",
+              "gloss": "just now",
+              "anchor": "the formal version of いま"
+            },
+            {
+              "word": "しゅっぱつ",
+              "romaji": "shuppatsu",
+              "gloss": "departure",
+              "anchor": "the partner of とうちゃく, arrival. Both are written on every departure board."
+            },
+            {
+              "word": "いたしました",
+              "romaji": "itashimashita",
+              "gloss": "did (humble)",
+              "anchor": "しました in [[keigo]]"
+            }
+          ]
+        },
+        {
+          "speaker": "announce",
+          "en": "We are scheduled to arrive at Haneda Airport at 4:00 p.m. local time.",
+          "kana": "はねだくうこうには、げんちじかんのごごよじにとうちゃくのよていでございます。",
+          "romaji": "Haneda kuukou ni wa, genchi jikan no gogo yoji ni touchaku no yotei de gozaimasu.",
+          "source": "Real airline announcement",
+          "grammar": "Under the formal wrapping this is the time grammar you already have: ごご plus よじ, with に marking the clock time.",
+          "extras": [
+            {
+              "word": "くうこう",
+              "romaji": "kuukou",
+              "gloss": "airport",
+              "anchor": "くう is air, こう is port. Announcements always say the full はねだくうこう, never bare はねだ."
+            },
+            {
+              "word": "げんちじかん",
+              "romaji": "genchi jikan",
+              "gloss": "local time",
+              "anchor": "げんち is the local place, plus じかん, time"
+            },
+            {
+              "word": "よてい",
+              "romaji": "yotei",
+              "gloss": "schedule, plan",
+              "anchor": "the same よてい as in a day's plans"
+            }
+          ]
+        },
+        {
+          "speaker": "announce",
+          "en": "The flight time will be approximately ten hours.",
+          "kana": "ひこうじかんは、およそじゅうじかんをよていしております。",
+          "romaji": "Hikou jikan wa, oyoso juu-jikan o yotei shite orimasu.",
+          "source": "Real airline announcement",
+          "grammar": "じゅうじかん is the duration counter you know. See [[te-imasu]]: しております is しています in [[keigo]].",
+          "extras": [
+            {
+              "word": "およそ",
+              "romaji": "oyoso",
+              "gloss": "approximately",
+              "anchor": "the formal version of ぐらい"
+            },
+            {
+              "word": "おります",
+              "romaji": "orimasu",
+              "gloss": "am, are (humble)",
+              "anchor": "います in [[keigo]]"
+            }
+          ]
+        },
+        {
+          "speaker": "announce",
+          "en": "Drinks and a meal will be served during the flight.",
+          "kana": "きないでは、おのみものとおしょくじをごよういしております。",
+          "romaji": "Kinai de wa, onomimono to oshokuji o goyoui shite orimasu.",
+          "source": "Real airline announcement",
+          "grammar": "おのみもの and おしょくじ are the same words the crew will use when the cart reaches you.",
+          "extras": [
+            {
+              "word": "きない",
+              "romaji": "kinai",
+              "gloss": "inside the aircraft",
+              "anchor": "き, aircraft, plus ない, inside"
+            },
+            {
+              "word": "ごようい",
+              "romaji": "goyoui",
+              "gloss": "preparation",
+              "anchor": "ようい is to prepare; ご- is the polite prefix"
+            }
+          ]
+        },
+        {
+          "speaker": "announce",
+          "en": "Please sit back and enjoy the flight.",
+          "kana": "どうぞ、ごゆっくりおすごしください。",
+          "romaji": "Douzo, goyukkuri osugoshi kudasai.",
+          "source": "Real airline announcement",
+          "grammar": "The formal cousin of [[te-kudasai]]. ゆっくり means at your leisure, as in ゆっくりおねがいします, please say it slowly.",
+          "extras": [
+            {
+              "word": "おすごしください",
+              "romaji": "osugoshi kudasai",
+              "gloss": "please spend the time",
+              "anchor": "the お～ください request shape, the formal version of ～てください"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1C",
+      "mode": "dialogue",
+      "title": {
+        "en": "Meeting your seatmate",
+        "kana": "となりのひとと"
+      },
+      "partner": "tanaka",
+      "note": "This is Lesson 1 and Lesson 2 almost end to end. Put your own name and job in the blanks and say them out loud. Watch for ています: it turns up three times here.",
+      "turns": [
+        {
+          "speaker": "you",
+          "en": "Hello.",
+          "kana": "こんにちは。",
+          "romaji": "Konnichiwa.",
+          "source": "L1"
+        },
+        {
+          "speaker": "partner",
+          "en": "Hello.",
+          "kana": "こんにちは。",
+          "romaji": "Konnichiwa.",
+          "source": "L1"
+        },
+        {
+          "speaker": "you",
+          "en": "Nice to meet you. I'm ______ . I look forward to getting to know you.",
+          "kana": "はじめまして。わたしは ______ です。どうぞよろしくおねがいします。",
+          "romaji": "Hajimemashite. Watashi wa ______ desu. Douzo yoroshiku onegaishimasu.",
+          "source": "L1",
+          "grammar": "Say your own name in the blank. よろしくおねがいします has no direct English equivalent, so the English above is only an approximation. It is a fixed phrase that closes an introduction, and your handout glosses it as \"Nice to meet you\" or \"I look forward to learning (working) with you.\" はじめまして covers \"nice to meet you\"; よろしくおねがいします is closer to \"please be good to me from here on.\""
+        },
+        {
+          "speaker": "partner",
+          "en": "Nice to meet you. I'm Tanaka. Likewise.",
+          "kana": "はじめまして。たなかです。こちらこそ、よろしくおねがいします。",
+          "romaji": "Hajimemashite. Tanaka desu. Kochirakoso, yoroshiku onegaishimasu.",
+          "source": "L1",
+          "words": [
+            {
+              "word": "こちらこそ",
+              "romaji": "kochirakoso",
+              "gloss": "likewise, same here",
+              "anchor": "こちら, this side, plus こそ for emphasis. Literally it is I who should be saying that. Use it whenever someone thanks or greets you first."
+            }
+          ]
+        },
+        {
+          "speaker": "partner",
+          "en": "Where are you from?",
+          "kana": "おくにはどちらですか。",
+          "romaji": "Okuni wa dochira desu ka.",
+          "source": "L1",
+          "words": [
+            {
+              "word": "どちら",
+              "romaji": "dochira",
+              "gloss": "where, which one",
+              "anchor": "the polite form of どこ. Same family as こちら. See [[kosoado]]. Asking おくにはどこですか is not wrong, just blunter."
+            }
+          ],
+          "alternative": {
+            "kana": "ごしゅっしんはどちらですか。",
+            "romaji": "Goshusshin wa dochira desu ka.",
+            "note": "the more formal version from your handout's advanced table"
+          }
+        },
+        {
+          "speaker": "you",
+          "en": "The US. I live in Seattle.",
+          "kana": "アメリカです。シアトルにすんでいます。",
+          "romaji": "Amerika desu. Shiatoru ni sunde imasu.",
+          "source": "L1",
+          "grammar": "Living somewhere is an ongoing state rather than a one-off action, so Japanese uses すんでいます, not すみます. See [[te-imasu]]. に marks where you live."
+        },
+        {
+          "speaker": "partner",
+          "en": "Is that so.",
+          "kana": "そうなんですか。",
+          "romaji": "Sou nan desu ka.",
+          "source": "L1 あいづち",
+          "words": [
+            {
+              "word": "そうなんですか",
+              "romaji": "sou nan desu ka",
+              "gloss": "is that so, really",
+              "anchor": "a warmer, more surprised version of そうですか. Both are [[aizuchi]]."
+            }
+          ]
+        },
+        {
+          "speaker": "partner",
+          "en": "What do you do for work?",
+          "kana": "おしごとはなんですか。",
+          "romaji": "Oshigoto wa nan desu ka.",
+          "source": "L1",
+          "words": [
+            {
+              "word": "おしごと",
+              "romaji": "oshigoto",
+              "gloss": "work, job",
+              "anchor": "しごと, work, with the [[polite-o]] on the front because it is the other person's job, not yours."
+            }
+          ]
+        },
+        {
+          "speaker": "you",
+          "en": "I'm an engineer at a technology company.",
+          "kana": "テクノロジーきぎょうでエンジニアをしています。",
+          "romaji": "Tekunorojii kigyou de enjinia o shite imasu.",
+          "source": "L1 sample conversation",
+          "words": [
+            {
+              "word": "テクノロジー",
+              "romaji": "tekunorojii",
+              "gloss": "technology",
+              "anchor": "English written in katakana. Sound it out and you will hear the English word."
+            },
+            {
+              "word": "きぎょう",
+              "romaji": "kigyou",
+              "gloss": "company, enterprise",
+              "anchor": "かいしゃ from the textbook is the everyday word for company. きぎょう is the more formal one, used for larger firms."
+            },
+            {
+              "word": "エンジニア",
+              "romaji": "enjinia",
+              "gloss": "engineer",
+              "anchor": "English written in katakana. Sound it out."
+            }
+          ],
+          "grammar": "A long sentence, so take it in pieces. で marks where you do it: see [[de-particle]]. しています is the [[te-imasu]] form of します, which is how Japanese talks about the job you hold. If the full sentence feels like too much, エンジニアです。 on its own is a perfectly good answer, and so are がくせいです and せんせいです."
+        },
+        {
+          "speaker": "partner",
+          "en": "Wow! That's impressive.",
+          "kana": "へえ～！すごいですね。",
+          "romaji": "Hee~! Sugoi desu ne.",
+          "source": "L1 あいづち",
+          "words": [
+            {
+              "word": "ね",
+              "romaji": "ne",
+              "gloss": "isn't it, right?",
+              "anchor": "see [[ne-yo]]. ね invites the other person to agree with you."
+            }
+          ]
+        },
+        {
+          "speaker": "you",
+          "en": "Tanaka-san, where do you work?",
+          "kana": "たなかさんはどちらにおつとめですか。",
+          "romaji": "Tanaka-san wa dochira ni otsutome desu ka.",
+          "source": "L1 polite question table",
+          "grammar": "The polite way to ask where someone works, from your handout's advanced table. おつとめ is the noun form of つとめています in the reply."
+        },
+        {
+          "speaker": "partner",
+          "en": "I work at a bank in Tokyo.",
+          "kana": "とうきょうのぎんこうにつとめています。",
+          "romaji": "Toukyou no ginkou ni tsutomete imasu.",
+          "source": "L1 sample conversation + JBP ぎんこう",
+          "grammar": "つとめています is [[te-imasu]]: つとめます becomes つとめて, then います. に marks the organisation you belong to, and とうきょうのぎんこう uses [[no-linker]]."
+        },
+        {
+          "speaker": "you",
+          "en": "I see.",
+          "kana": "そうですか。",
+          "romaji": "Sou desu ka.",
+          "source": "L1 あいづち"
+        },
+        {
+          "speaker": "partner",
+          "en": "Have you ever been to Japan?",
+          "kana": "にほんへいらっしゃったことがありますか。",
+          "romaji": "Nihon e irasshatta koto ga arimasu ka.",
+          "source": "L1 polite question table",
+          "grammar": "This is the polite form, from the advanced question table in your handout. いらっしゃった is the honorific of いった, used about the other person, never about yourself.",
+          "alternative": {
+            "kana": "にほんにいったことがありますか。",
+            "romaji": "Nihon ni itta koto ga arimasu ka.",
+            "note": "the plainer version, also in your handout, in the basic question table"
+          }
+        },
+        {
+          "speaker": "you",
+          "en": "No, I haven't been yet. This is my first time.",
+          "kana": "いいえ、まだいったことがありません。はじめてです。",
+          "romaji": "Iie, mada itta koto ga arimasen. Hajimete desu.",
+          "source": "L1",
+          "grammar": "～たことがあります means have ever done. Make it negative by changing あります to ありません. まだ adds not yet, which leaves the door open for the future.",
+          "words": [
+            {
+              "word": "まだ",
+              "romaji": "mada",
+              "gloss": "yet, still",
+              "anchor": "pairs with a negative to mean not yet. Without まだ the sentence would just be a flat no."
+            }
+          ],
+          "extras": [
+            {
+              "word": "はじめて",
+              "romaji": "hajimete",
+              "gloss": "the first time",
+              "anchor": "the same はじめ as in はじめまして, which literally means for the first time"
+            }
+          ]
+        },
+        {
+          "speaker": "partner",
+          "en": "Really! You must be looking forward to it.",
+          "kana": "そうなんですか！たのしみですね。",
+          "romaji": "Sou nan desu ka! Tanoshimi desu ne.",
+          "source": "L1 / L5",
+          "words": [
+            {
+              "word": "たのしみ",
+              "romaji": "tanoshimi",
+              "gloss": "something to look forward to",
+              "anchor": "the noun built from たのしい, fun or enjoyable. たのしみです is what you say about something still ahead of you."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1D",
+      "mode": "dialogue",
+      "title": {
+        "en": "Drink and meal service",
+        "kana": "きないサービス"
+      },
+      "partner": "attendant",
+      "note": "Lesson 3 restaurant Japanese, at 35,000 feet. Several lines here are staff-only: you will hear them constantly in Japan but never need to say them.",
+      "turns": [
+        {
+          "speaker": "partner",
+          "en": "Would you like something to drink?",
+          "kana": "おのみものはいかがですか。",
+          "romaji": "Onomimono wa ikaga desu ka.",
+          "source": "L3",
+          "words": [
+            {
+              "word": "いかが",
+              "romaji": "ikaga",
+              "gloss": "how about, would you like",
+              "anchor": "the polite form of どう. どうですか and いかがですか mean the same thing; いかが is what staff use with customers."
+            }
+          ]
+        },
+        {
+          "speaker": "you",
+          "en": "Excuse me. Green tea, please.",
+          "kana": "すみません。おちゃをおねがいします。",
+          "romaji": "Sumimasen. Ocha o onegaishimasu.",
+          "source": "L3"
+        },
+        {
+          "speaker": "partner",
+          "en": "Yes, certainly.",
+          "kana": "はい、かしこまりました。",
+          "romaji": "Hai, kashikomarimashita.",
+          "source": "L3",
+          "words": [
+            {
+              "word": "かしこまりました",
+              "romaji": "kashikomarimashita",
+              "gloss": "certainly, understood",
+              "anchor": "the very polite version of わかりました. Staff say it to customers. You will hear it often and never need to say it."
+            }
+          ]
+        },
+        {
+          "speaker": "partner",
+          "en": "Here is the meal. We have chicken and vegetarian.",
+          "kana": "おしょくじです。チキンとベジタリアンがあります。",
+          "romaji": "Oshokuji desu. Chikin to bejitarian ga arimasu.",
+          "source": "L3 + JBP と",
+          "grammar": "と joins two nouns as a complete list: these are the options, and there are no others.",
+          "words": [
+            {
+              "word": "ベジタリアン",
+              "romaji": "bejitarian",
+              "gloss": "vegetarian",
+              "anchor": "English in katakana, like テクノロジー. Sound it out."
+            }
+          ],
+          "extras": [
+            {
+              "word": "おしょくじ",
+              "romaji": "oshokuji",
+              "gloss": "meal",
+              "anchor": "the polite お- you already use in おちゃ and おなまえ"
+            }
+          ]
+        },
+        {
+          "speaker": "partner",
+          "en": "What would you like for your meal?",
+          "kana": "おしょくじはどうなさいますか。",
+          "romaji": "Oshokuji wa dou nasaimasu ka.",
+          "source": "L3 おのみものはどうなさいますか",
+          "words": [
+            {
+              "word": "なさいます",
+              "romaji": "nasaimasu",
+              "gloss": "to do",
+              "anchor": "the honorific form of します, used about the customer, never about yourself. Your Lesson 3 handout has the same phrase as おのみものはどうなさいますか. Staff-only: you will hear it and answer it, but never say it."
+            }
+          ]
+        },
+        {
+          "speaker": "you",
+          "en": "What is the vegetarian one?",
+          "kana": "ベジタリアンはなんですか。",
+          "romaji": "Bejitarian wa nan desu ka.",
+          "source": "L1 / L3 なんですか",
+          "grammar": "The most useful question shape in the language. [thing] はなんですか asks what something is, and it works for a dish, a sign, a word you did not catch."
+        },
+        {
+          "speaker": "partner",
+          "en": "It's pasta. The chicken is popular, though.",
+          "kana": "パスタです。チキンがにんきですよ。",
+          "romaji": "Pasuta desu. Chikin ga ninki desu yo.",
+          "source": "L3 にんき",
+          "words": [
+            {
+              "word": "にんき",
+              "romaji": "ninki",
+              "gloss": "popular, well liked",
+              "anchor": "taught alongside ゆうめい, famous, in Lesson 3. にんき is about being liked; ゆうめい is about being known."
+            },
+            {
+              "word": "パスタ",
+              "romaji": "pasuta",
+              "gloss": "pasta",
+              "anchor": "English written in katakana"
+            }
+          ]
+        },
+        {
+          "speaker": "you",
+          "en": "Then the chicken, please.",
+          "kana": "じゃあ、チキンをおねがいします。",
+          "romaji": "Jaa, chikin o onegaishimasu.",
+          "source": "L3",
+          "words": [
+            {
+              "word": "じゃあ",
+              "romaji": "jaa",
+              "gloss": "well then, in that case",
+              "anchor": "marks the moment you decide, after hearing something. It appears at exactly this point in your Lesson 3 restaurant dialogue."
+            }
+          ]
+        },
+        {
+          "speaker": "partner",
+          "en": "Certainly. Here you go.",
+          "kana": "かしこまりました。どうぞ。",
+          "romaji": "Kashikomarimashita. Douzo.",
+          "source": "L3"
+        },
+        {
+          "speaker": "you",
+          "en": "Thank you. Thank you for this food.",
+          "kana": "ありがとうございます。いただきます。",
+          "romaji": "Arigatou gozaimasu. Itadakimasu.",
+          "source": "L1 / L3",
+          "grammar": "いただきます has no real English equivalent, so the English above is an approximation. It is not let's eat: it is closer to I gratefully receive this, said before the first bite whether or not anyone else is there.",
+          "words": [
+            {
+              "word": "いただきます",
+              "romaji": "itadakimasu",
+              "gloss": "said before eating",
+              "anchor": "its partner is ごちそうさまでした, said after eating. Your Lesson 3 restaurant dialogue uses both, one at each end of the meal."
+            }
+          ]
+        },
+        {
+          "stage": "Some time later, once the trays have been cleared away."
+        },
+        {
+          "speaker": "partner",
+          "en": "Would you care for coffee?",
+          "kana": "コーヒーはいかがですか。",
+          "romaji": "Koohii wa ikaga desu ka.",
+          "source": "L3"
+        },
+        {
+          "speaker": "you",
+          "en": "I'm fine for now. I'll have some later, thank you.",
+          "kana": "いまはけっこうです。あとでいただきます。ありがとうございます。",
+          "romaji": "Ima wa kekkou desu. Ato de itadakimasu. Arigatou gozaimasu.",
+          "source": "L3 Expression of the Day",
+          "grammar": "Straight from the けっこうです bonus box. Adding ありがとうございます is what makes a refusal sound warm rather than blunt. いただきます here means I will have it, rather than the version said before eating.",
+          "words": [
+            {
+              "word": "けっこうです",
+              "romaji": "kekkou desu",
+              "gloss": "no thank you, I'm fine",
+              "anchor": "a polite refusal. Careful: on its own it can also mean fine, that's good, so the いま は and the tone are doing real work."
+            }
+          ],
+          "extras": [
+            {
+              "word": "あとで",
+              "romaji": "ato de",
+              "gloss": "later, afterwards",
+              "anchor": "the あと you met in しごとのあと, after work, in Lesson 2"
+            }
+          ],
+          "alternative": {
+            "kana": "だいじょうぶです。ありがとうございます。",
+            "romaji": "Daijoubu desu. Arigatou gozaimasu.",
+            "note": "your handout says this is the more everyday way to decline today"
+          }
+        },
+        {
+          "speaker": "you",
+          "en": "Excuse me. A pillow, please.",
+          "kana": "すみません。まくらをおねがいします。",
+          "romaji": "Sumimasen. Makura o onegaishimasu.",
+          "source": "L3 ～をおねがいします",
+          "extras": [
+            {
+              "word": "まくら",
+              "romaji": "makura",
+              "gloss": "pillow",
+              "anchor": "no relative in class yet, but it slots into the ～をおねがいします pattern you know well"
+            }
+          ]
+        },
+        {
+          "speaker": "partner",
+          "en": "Yes, one moment please.",
+          "kana": "はい、ちょっとまってください。",
+          "romaji": "Hai, chotto matte kudasai.",
+          "source": "JBP まってください／ちょっと",
+          "words": [
+            {
+              "word": "まって",
+              "romaji": "matte",
+              "gloss": "wait",
+              "anchor": "the [[te-form]] of まちます, taking the [[te-kudasai]] request shape."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1E",
+      "mode": "dialogue",
+      "title": {
+        "en": "Mid-flight: your Tokyo plans",
+        "kana": "とうきょうのよてい"
+      },
+      "partner": "tanaka",
+      "note": [
+        "Starts at the window, then Lesson 4 transport and Lesson 5 invitations.",
+        "Remember where you agree to meet: it matters later in the trip."
+      ],
+      "turns": [
+        {
+          "stage": "Mount Fuji comes into view. Tanaka-san has the window seat, so the view is past him."
+        },
+        {
+          "speaker": "you",
+          "en": "Excuse me. May I take a picture of the window?",
+          "kana": "すみません。まどのしゃしんをとってもいいですか。",
+          "romaji": "Sumimasen. Mado no shashin o totte mo ii desu ka.",
+          "source": "L4 しゃしんをとってもいいですか",
+          "grammar": "[[te-mo-ii]] asks permission. Build the [[te-form]] first: とります becomes とって, because verbs ending in ります take って. Then add もいいですか. Ask the person whose space you are reaching across, not the crew.",
+          "extras": [
+            {
+              "word": "まど",
+              "romaji": "mado",
+              "gloss": "window",
+              "anchor": "no relative in class yet"
+            }
+          ]
+        },
+        {
+          "speaker": "partner",
+          "en": "Yes, go ahead.",
+          "kana": "はい、どうぞ。",
+          "romaji": "Hai, douzo.",
+          "source": "L4"
+        },
+        {
+          "speaker": "you",
+          "en": "Thank you. That's Mount Fuji, isn't it.",
+          "kana": "ありがとうございます。ふじさんですね。",
+          "romaji": "Arigatou gozaimasu. Fujisan desu ne.",
+          "source": "JBP ふじさん + ね",
+          "words": [
+            {
+              "word": "ふじさん",
+              "romaji": "Fujisan",
+              "gloss": "Mount Fuji",
+              "anchor": "in your textbook vocabulary. The さん here is mountain, not the さん you put after a person's name."
+            }
+          ]
+        },
+        {
+          "speaker": "partner",
+          "en": "That's right. It's famous, isn't it.",
+          "kana": "そうですよ。ゆうめいですね。",
+          "romaji": "Sou desu yo. Yuumei desu ne.",
+          "source": "L3 ゆうめい",
+          "words": [
+            {
+              "word": "ゆうめい",
+              "romaji": "yuumei",
+              "gloss": "famous, well known",
+              "anchor": "the partner of にんき, popular. ゆうめい is about being known; にんき is about being liked. Its opposite, むめい, is in your textbook too."
+            }
+          ],
+          "extras": [
+            {
+              "word": "よ",
+              "romaji": "yo",
+              "gloss": "sentence ending that tells someone something new",
+              "anchor": "see [[ne-yo]]. Both particles appear in this one line: よ tells, ね checks."
+            }
+          ]
+        },
+        {
+          "speaker": "partner",
+          "en": "What will you do in Japan?",
+          "kana": "にほんでなにをしますか。",
+          "romaji": "Nihon de nani o shimasu ka.",
+          "source": "L2",
+          "grammar": "This で marks where the action happens. See [[de-particle]]."
+        },
+        {
+          "speaker": "you",
+          "en": "I'd like to go to Kyoto.",
+          "kana": "きょうとへいきたいです。",
+          "romaji": "Kyouto e ikitai desu.",
+          "source": "L4 ～へいきたいです",
+          "grammar": "[[tai-desu]] says what you want to do. いきます becomes いきたいです."
+        },
+        {
+          "speaker": "partner",
+          "en": "Nice! How will you go?",
+          "kana": "いいですね！なんでいきますか。",
+          "romaji": "Ii desu ne! Nan de ikimasu ka.",
+          "source": "L4",
+          "words": [
+            {
+              "word": "なんで",
+              "romaji": "nan de",
+              "gloss": "by what means",
+              "anchor": "なん, what, plus the transport で. Worth knowing: in casual speech なんで can also mean why, but with a transport verb like いきます it always means by what."
+            }
+          ]
+        },
+        {
+          "speaker": "you",
+          "en": "I'll go by shinkansen.",
+          "kana": "しんかんせんでいきます。",
+          "romaji": "Shinkansen de ikimasu.",
+          "source": "L4",
+          "grammar": "This で is the transport で: by train, by bus, by taxi. See [[de-particle]]."
+        },
+        {
+          "speaker": "partner",
+          "en": "I see. The shinkansen is fast.",
+          "kana": "そうですか。しんかんせんははやいですよ。",
+          "romaji": "Sou desu ka. Shinkansen wa hayai desu yo.",
+          "source": "L2 はやい",
+          "grammar": "よ tells you something you did not know. See [[ne-yo]].",
+          "words": [
+            {
+              "word": "はやい",
+              "romaji": "hayai",
+              "gloss": "fast, quick",
+              "anchor": "careful, this is a second meaning. In Lesson 2 you met はやい as early, in はやいですね about waking at six. Written in kanji they are two different words; in kana they look identical, so the context tells you which one it is. A train is fast; a morning is early."
+            }
+          ]
+        },
+        {
+          "speaker": "you",
+          "en": "I want to eat Japanese food. What do you recommend?",
+          "kana": "わしょくをたべたいです。おすすめはなんですか。",
+          "romaji": "Washoku o tabetai desu. Osusume wa nan desu ka.",
+          "source": "L5 わしょく + L3 おすすめ",
+          "grammar": "[[tai-desu]] says what you want to do: たべます becomes たべたいです.",
+          "words": [
+            {
+              "word": "わしょく",
+              "romaji": "washoku",
+              "gloss": "Japanese food",
+              "anchor": "straight from Lesson 5, which has わしょくをたべにいきませんか. It means Japanese cuisine as a category, as opposed to ようしょく, Western food."
+            }
+          ]
+        },
+        {
+          "speaker": "partner",
+          "en": "Tsukiji is famous.",
+          "kana": "つきじがゆうめいです。",
+          "romaji": "Tsukiji ga yuumei desu.",
+          "source": "L3 ゆうめい",
+          "extras": [
+            {
+              "word": "つきじ",
+              "romaji": "Tsukiji",
+              "gloss": "the Tokyo market district",
+              "anchor": "a place name, like ろっぽんぎ and あさくさ from the textbook"
+            }
+          ]
+        },
+        {
+          "speaker": "you",
+          "en": "Is that so. I'll definitely go and try it!",
+          "kana": "そうなんですか。ぜひ、いってみます！",
+          "romaji": "Sou nan desu ka. Zehi, itte mimasu!",
+          "source": "L5 Expression of the Day",
+          "words": [
+            {
+              "word": "ぜひ",
+              "romaji": "zehi",
+              "gloss": "by all means, definitely",
+              "anchor": "your Lesson 5 expression of the day. It adds warmth and enthusiasm; はい、ぜひ！ is much friendlier than はい alone."
+            },
+            {
+              "word": "いってみます",
+              "romaji": "itte mimasu",
+              "gloss": "I'll go and see, I'll give it a try",
+              "anchor": "the [[te-form]] of いきます, いって, followed by みます, meaning try doing it."
+            }
+          ]
+        },
+        {
+          "speaker": "partner",
+          "en": "Shall we grab tea together in Tokyo?",
+          "kana": "とうきょうでいっしょにおちゃしませんか。",
+          "romaji": "Toukyou de issho ni ocha shimasen ka.",
+          "source": "L5",
+          "grammar": "[[masen-ka]] is an invitation."
+        },
+        {
+          "speaker": "you",
+          "en": "Yes, absolutely!",
+          "kana": "はい、ぜひ！",
+          "romaji": "Hai, zehi!",
+          "source": "L5",
+          "alternative": {
+            "kana": "いいですね！よろこんで。",
+            "romaji": "Ii desu ne! Yorokonde.",
+            "note": "also in your Lesson 5 table, slightly more formal"
+          }
+        },
+        {
+          "speaker": "partner",
+          "en": "Where shall we meet?",
+          "kana": "どこでまちあわせますか。",
+          "romaji": "Doko de machiawasemasu ka.",
+          "source": "L5",
+          "words": [
+            {
+              "word": "まちあわせます",
+              "romaji": "machiawasemasu",
+              "gloss": "to meet up at an arranged place",
+              "anchor": "starts with まち, from まちます, to wait. It means meeting somewhere you agreed on, not bumping into someone by chance."
+            }
+          ]
+        },
+        {
+          "speaker": "you",
+          "en": "How about in front of Tokyo Station?",
+          "kana": "とうきょうえきのまえはどうですか。",
+          "romaji": "Toukyou eki no mae wa dou desu ka.",
+          "source": "L5 + JBP とうきょうえき",
+          "words": [
+            {
+              "word": "とうきょうえき",
+              "romaji": "Toukyou eki",
+              "gloss": "Tokyo Station",
+              "anchor": "えき, station, plus the place name. Your textbook uses とうきょうえきであいます, and Lesson 4 has しんかんせんのとうきょうえき. Name the station: Tokyo has hundreds."
+            },
+            {
+              "word": "まえ",
+              "romaji": "mae",
+              "gloss": "in front of",
+              "anchor": "position words attach with の: えきのまえ, in front of the station. See [[no-linker]]."
+            }
+          ]
+        },
+        {
+          "speaker": "partner",
+          "en": "Sounds good. I'm looking forward to it.",
+          "kana": "いいですね。たのしみです。",
+          "romaji": "Ii desu ne. Tanoshimi desu.",
+          "source": "L5"
+        }
+      ]
+    },
+    {
+      "id": "1F",
+      "mode": "announcement",
+      "partner": "captain",
+      "title": {
+        "en": "Thirty minutes out: the descent announcement",
+        "kana": "こうかのあんない"
+      },
+      "note": [
+        "This is listening practice, not speaking practice.",
+        "Real announcements are in [[keigo]], the formal register, so many of these words will be new. You are not expected to say any of it.",
+        "Read the English, then reveal it and look for the shapes you do know underneath the formal endings.",
+        "One of you can read it aloud if you want a voice in the room.",
+        "This is the one carrying the information you actually want: arrival time, weather and temperature on the ground."
+      ],
+      "turns": [
+        {
+          "speaker": "announce",
+          "en": "Everyone, we will shortly begin our descent.",
+          "kana": "みなさま、とうきはまもなくこうかをかいしいたします。",
+          "romaji": "Minasama, touki wa mamonaku kouka o kaishi itashimasu.",
+          "source": "Real airline announcement",
+          "extras": [
+            {
+              "word": "まもなく",
+              "romaji": "mamonaku",
+              "gloss": "shortly, before long",
+              "anchor": "the formal version of もうすぐ"
+            },
+            {
+              "word": "こうか",
+              "romaji": "kouka",
+              "gloss": "descent",
+              "anchor": "the partner of りりく, takeoff"
+            },
+            {
+              "word": "かいし",
+              "romaji": "kaishi",
+              "gloss": "start, commencement",
+              "anchor": "a ～します noun like べんきょう and かいもの"
+            }
+          ]
+        },
+        {
+          "speaker": "announce",
+          "en": "We are about thirty minutes from Haneda Airport.",
+          "kana": "はねだくうこうまで、あとさんじゅっぷんほどでございます。",
+          "romaji": "Haneda kuukou made, ato sanjuppun hodo de gozaimasu.",
+          "source": "Real airline announcement",
+          "grammar": "まで is the same as far as you use for time and distance. See [[no-linker]] for how the airport name attaches.",
+          "extras": [
+            {
+              "word": "あと",
+              "romaji": "ato",
+              "gloss": "remaining, still to go",
+              "anchor": "the same あと as in あとで, later"
+            },
+            {
+              "word": "ほど",
+              "romaji": "hodo",
+              "gloss": "about, approximately",
+              "anchor": "a formal cousin of ぐらい, in the same family as およそ"
+            }
+          ]
+        },
+        {
+          "speaker": "announce",
+          "en": "The current time in Tokyo is 4:00 p.m.",
+          "kana": "ただいまのとうきょうのじこくは、ごごよじでございます。",
+          "romaji": "Tadaima no Toukyou no jikoku wa, gogo yoji de gozaimasu.",
+          "source": "Real airline announcement",
+          "grammar": "ごご plus よじ, exactly as taught. Note よじ, not よんじ.",
+          "extras": [
+            {
+              "word": "じこく",
+              "romaji": "jikoku",
+              "gloss": "the time on the clock",
+              "anchor": "worth separating from じかん. じかん is a length of time, ten hours; じこく is a point on the clock, four o'clock."
+            }
+          ]
+        },
+        {
+          "speaker": "announce",
+          "en": "The weather at Haneda is clear, with a temperature of 25 degrees.",
+          "kana": "はねだくうこうのてんこうははれ、きおんはにじゅうごどでございます。",
+          "romaji": "Haneda kuukou no tenkou wa hare, kion wa nijuugo do de gozaimasu.",
+          "source": "Real airline announcement",
+          "grammar": "Weather is stated as flat fact. An announcement never adds ね, because nobody can agree with a loudspeaker.",
+          "extras": [
+            {
+              "word": "てんこう",
+              "romaji": "tenkou",
+              "gloss": "weather (formal)",
+              "anchor": "the formal word for てんき, which you learned. Forecasts and announcements use てんこう."
+            },
+            {
+              "word": "はれ",
+              "romaji": "hare",
+              "gloss": "clear, sunny",
+              "anchor": "the first of the weather set: はれ clear, くもり cloudy, あめ rain"
+            },
+            {
+              "word": "きおん",
+              "romaji": "kion",
+              "gloss": "air temperature",
+              "anchor": "き, air, plus おん, warmth. The ど for degrees follows the number."
+            }
+          ]
+        },
+        {
+          "speaker": "announce",
+          "en": "Please use the lavatory in good time.",
+          "kana": "おてあらいのごりようは、おはやめにおねがいいたします。",
+          "romaji": "Otearai no goriyou wa, ohayame ni onegai itashimasu.",
+          "source": "L4 おてあらい + real announcement",
+          "grammar": "おねがいいたします is おねがいします in [[keigo]]. The request underneath is one you make constantly.",
+          "words": [
+            {
+              "word": "おてあらい",
+              "romaji": "otearai",
+              "gloss": "restroom",
+              "anchor": "straight from Lesson 4, おてあらいはどこですか"
+            }
+          ],
+          "extras": [
+            {
+              "word": "ごりよう",
+              "romaji": "goriyou",
+              "gloss": "use",
+              "anchor": "りよう is to use, with the polite ご-. It comes back in the arrival announcement."
+            },
+            {
+              "word": "おはやめに",
+              "romaji": "ohayame ni",
+              "gloss": "early, in good time",
+              "anchor": "built on はやい, early. This is the early sense, not the fast sense."
+            }
+          ]
+        },
+        {
+          "speaker": "announce",
+          "en": "Please fasten your seatbelt.",
+          "kana": "シートベルトをおしめください。",
+          "romaji": "Shiito beruto o oshime kudasai.",
+          "source": "Real airline announcement",
+          "grammar": "The formal お～ください request, the same family as [[te-kudasai]]. Probably the single most recognizable line on any Japanese flight.",
+          "extras": [
+            {
+              "word": "シートベルト",
+              "romaji": "shiito beruto",
+              "gloss": "seatbelt",
+              "anchor": "English in katakana. Sound it out."
+            },
+            {
+              "word": "おしめください",
+              "romaji": "oshime kudasai",
+              "gloss": "please fasten",
+              "anchor": "しめます, to fasten, in the formal request shape"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1G",
+      "mode": "announcement",
+      "partner": "crew",
+      "title": {
+        "en": "After landing: the arrival announcement",
+        "kana": "とうちゃくのあんない"
+      },
+      "note": [
+        "This is listening practice, not speaking practice.",
+        "Real announcements are in [[keigo]], the formal register, so many of these words will be new. You are not expected to say any of it.",
+        "Read the English, then reveal it and look for the shapes you do know underneath the formal endings.",
+        "One of you can read it aloud if you want a voice in the room.",
+        "Note who is speaking. The captain makes the descent announcement; this one, after touchdown, is almost always the cabin crew."
+      ],
+      "turns": [
+        {
+          "speaker": "announce",
+          "en": "Everyone, we have arrived at Haneda Airport.",
+          "kana": "みなさま、はねだくうこうにとうちゃくいたしました。",
+          "romaji": "Minasama, Haneda kuukou ni touchaku itashimashita.",
+          "source": "Real airline announcement",
+          "grammar": "There is no Japanese equivalent of welcome to Tokyo. Arrival is stated as fact. The English announcement on the same flight will say welcome; the Japanese one never does.",
+          "extras": [
+            {
+              "word": "とうちゃく",
+              "romaji": "touchaku",
+              "gloss": "arrival",
+              "anchor": "the partner of しゅっぱつ, departure. Both are on every airport board."
+            },
+            {
+              "word": "いたしました",
+              "romaji": "itashimashita",
+              "gloss": "did (humble)",
+              "anchor": "しました in [[keigo]]"
+            }
+          ]
+        },
+        {
+          "speaker": "announce",
+          "en": "Please remain seated until the seatbelt sign goes off.",
+          "kana": "シートベルトのサインがきえるまで、おせきでおまちください。",
+          "romaji": "Shiito beruto no sain ga kieru made, oseki de omachi kudasai.",
+          "source": "Real airline announcement",
+          "grammar": "まで, until, is the same まで you use for time and distance. おまちください is まってください in [[keigo]].",
+          "extras": [
+            {
+              "word": "サイン",
+              "romaji": "sain",
+              "gloss": "sign",
+              "anchor": "English in katakana"
+            },
+            {
+              "word": "きえる",
+              "romaji": "kieru",
+              "gloss": "to go out, to switch off",
+              "anchor": "used of lights and signs going dark"
+            },
+            {
+              "word": "おまちください",
+              "romaji": "omachi kudasai",
+              "gloss": "please wait",
+              "anchor": "the formal version of まってください, from まちます"
+            }
+          ]
+        },
+        {
+          "speaker": "announce",
+          "en": "Please take care not to leave anything behind.",
+          "kana": "おわすれもののないよう、ごちゅういください。",
+          "romaji": "Owasuremono no nai you, gochuui kudasai.",
+          "source": "Real airline announcement",
+          "extras": [
+            {
+              "word": "おわすれもの",
+              "romaji": "owasuremono",
+              "gloss": "a forgotten belonging",
+              "anchor": "わすれ, to forget, plus もの, thing. Every station and train says this too."
+            },
+            {
+              "word": "ごちゅうい",
+              "romaji": "gochuui",
+              "gloss": "care, attention",
+              "anchor": "the formal noun for exactly what きをつけて means in ordinary speech"
+            }
+          ]
+        },
+        {
+          "speaker": "announce",
+          "en": "Thank you very much for flying with us today.",
+          "kana": "ほんじつはごとうじょういただきまして、まことにありがとうございました。",
+          "romaji": "Honjitsu wa gotoujou itadakimashite, makoto ni arigatou gozaimashita.",
+          "source": "Real airline announcement",
+          "grammar": "The same sentence that opened the flight, now in the past because the flight is over. See [[past-polite]].",
+          "extras": [
+            {
+              "word": "ごとうじょう",
+              "romaji": "gotoujou",
+              "gloss": "boarding",
+              "anchor": "the word on your boarding pass"
+            }
+          ]
+        },
+        {
+          "speaker": "announce",
+          "en": "We look forward to serving you again.",
+          "kana": "またのごりようをこころよりおまちしております。",
+          "romaji": "Mata no goriyou o kokoro yori omachi shite orimasu.",
+          "source": "Real airline announcement",
+          "grammar": "This is the airline's version of please come again. A shop says またおこしください; an airline says this. Same sentiment, different industry.",
+          "extras": [
+            {
+              "word": "またの",
+              "romaji": "mata no",
+              "gloss": "next, another",
+              "anchor": "the また you already use in またこんど"
+            },
+            {
+              "word": "こころより",
+              "romaji": "kokoro yori",
+              "gloss": "sincerely, from the heart",
+              "anchor": "こころ is heart; より here means from"
+            },
+            {
+              "word": "おまちしております",
+              "romaji": "omachi shite orimasu",
+              "gloss": "we are waiting",
+              "anchor": "まちます in full [[keigo]]: humble おまちする plus おります for います"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1H",
+      "mode": "dialogue",
+      "title": {
+        "en": "Saying goodbye and getting off",
+        "kana": "おわかれ"
+      },
+      "partner": "tanaka",
+      "note": "The polite closing set you will reuse every time you leave someone in Japan, then your first question on Japanese soil.",
+      "turns": [
+        {
+          "speaker": "you",
+          "en": "Tanaka-san, thank you for everything.",
+          "kana": "たなかさん、いろいろありがとうございました。",
+          "romaji": "Tanaka-san, iroiro arigatou gozaimashita.",
+          "source": "L1 / JBP",
+          "grammar": "Past tense, because the conversation you are thanking him for has finished. See [[past-polite]].",
+          "extras": [
+            {
+              "word": "いろいろ",
+              "romaji": "iroiro",
+              "gloss": "various things, everything",
+              "anchor": "no relative in class yet. It gestures at all the small kindnesses at once."
+            }
+          ]
+        },
+        {
+          "speaker": "partner",
+          "en": "Likewise. Take care.",
+          "kana": "こちらこそ。きをつけて。",
+          "romaji": "Kochirakoso. Ki o tsukete.",
+          "source": "L1 こちらこそ",
+          "extras": [
+            {
+              "word": "きをつけて",
+              "romaji": "ki o tsukete",
+              "gloss": "take care, be safe",
+              "anchor": "no relative in class yet, but it is the standard thing to say to someone who is leaving or travelling"
+            }
+          ]
+        },
+        {
+          "speaker": "you",
+          "en": "Until next time, please.",
+          "kana": "またこんどおねがいします。",
+          "romaji": "Mata kondo onegaishimasu.",
+          "source": "L5",
+          "words": [
+            {
+              "word": "こんど",
+              "romaji": "kondo",
+              "gloss": "next time",
+              "anchor": "you met it in こんどのどようび, this coming Saturday. こんど can mean this coming or next, and また こんど means let's do it again sometime."
+            }
+          ]
+        },
+        {
+          "speaker": "partner",
+          "en": "Yes, definitely!",
+          "kana": "ええ、ぜひ！",
+          "romaji": "Ee, zehi!",
+          "source": "L5",
+          "words": [
+            {
+              "word": "ええ",
+              "romaji": "ee",
+              "gloss": "yes",
+              "anchor": "a softer, warmer はい. Fine in polite conversation, just less crisp."
+            }
+          ]
+        },
+        {
+          "speaker": "you",
+          "en": "I should be going now.",
+          "kana": "そろそろしつれいします。",
+          "romaji": "Sorosoro shitsurei shimasu.",
+          "source": "JBP そろそろしつれいします",
+          "words": [
+            {
+              "word": "そろそろ",
+              "romaji": "sorosoro",
+              "gloss": "about time to, shortly",
+              "anchor": "your textbook gives it together with しつれいします as the set way to announce you are leaving without seeming abrupt."
+            }
+          ]
+        },
+        {
+          "speaker": "partner",
+          "en": "Thank you. Please come again.",
+          "kana": "ありがとうございました。またおこしください。",
+          "romaji": "Arigatou gozaimashita. Mata okoshi kudasai.",
+          "source": "L3",
+          "speakerOverride": "attendant"
+        },
+        {
+          "stage": "You walk up the jet bridge into the terminal and stop a member of the ground staff."
+        },
+        {
+          "speaker": "you",
+          "en": "Excuse me. Where is immigration?",
+          "kana": "すみません。にゅうこくはどこですか。",
+          "romaji": "Sumimasen. Nyuukoku wa doko desu ka.",
+          "source": "L4 ～はどこですか",
+          "extras": [
+            {
+              "word": "にゅうこく",
+              "romaji": "nyuukoku",
+              "gloss": "immigration, entering a country",
+              "anchor": "the こく is the same word as くに, country, which you use in おくにはどちらですか"
+            }
+          ]
+        },
+        {
+          "speaker": "partner",
+          "en": "Please go straight. Then turn right.",
+          "kana": "まっすぐいってください。それから、みぎにまがってください。",
+          "romaji": "Massugu itte kudasai. Sorekara, migi ni magatte kudasai.",
+          "source": "L4",
+          "speakerOverride": "staff",
+          "grammar": "The same two instructions the attendant gave you when you boarded, with みぎ instead of ひだり. Both are [[te-kudasai]]."
+        },
+        {
+          "speaker": "you",
+          "en": "Understood. Thank you.",
+          "kana": "わかりました。ありがとうございます。",
+          "romaji": "Wakarimashita. Arigatou gozaimasu.",
+          "source": "L4"
+        },
+        {
+          "speaker": "partner",
+          "en": "You're welcome.",
+          "kana": "どういたしまして。",
+          "romaji": "Douitashimashite.",
+          "source": "L4",
+          "speakerOverride": "staff",
+          "words": [
+            {
+              "word": "どういたしまして",
+              "romaji": "douitashimashite",
+              "gloss": "you're welcome",
+              "anchor": "the standard reply to ありがとうございます. Long to say, but it is one fixed block, not four words."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

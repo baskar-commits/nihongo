@@ -155,7 +155,7 @@ function Build-HomePage($RepoRoot, $SiteTitle) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>$SiteTitle</title>
   <style>
-    :root{--bg:#f8f6f1;--card:#fff;--accent:#c0392b;--accent2:#2980b9;--text:#2c3e50;--muted:#7f8c8d;--border:#ddd}
+    :root{--bg:#f8f6f1;--card:#fff;--accent:#c0392b;--accent2:#2980b9;--accent3:#0e7c66;--text:#2c3e50;--muted:#7f8c8d;--border:#ddd}
     *{box-sizing:border-box}
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;padding:18px}
     .container{max-width:860px;margin:0 auto}
@@ -175,18 +175,29 @@ function Build-HomePage($RepoRoot, $SiteTitle) {
     .month-title{font-weight:800;margin-bottom:8px}
     .date{color:var(--muted);font-size:.9rem;margin-left:6px}
     .footer{margin-top:18px;color:var(--muted);font-size:.9rem}
+    .practice{border-left:5px solid var(--accent3)}
+    .practice h2{color:var(--accent3)}
+    .practice .go{display:inline-block;background:var(--accent3);color:#fff;text-decoration:none;font-weight:800;padding:12px 18px;border-radius:10px;margin-top:8px}
+    .practice .go:hover{filter:brightness(.94)}
   </style>
 </head>
 <body>
   <div class="container">
     <header>
       <h1>$SiteTitle</h1>
-      <p>Click ""Start Quiz"" to begin.</p>
+      <p>Weekly quizzes and conversation practice for our Japanese class.</p>
     </header>
 
     <div class="card">
-      <h2>Current</h2>
+      <h2>Current Quiz</h2>
       $latestHtml
+    </div>
+
+    <div class="card practice">
+      <h2>Conversation Practice</h2>
+      <p>Role-play a trip to Japan using only what we have covered in class. Read the English, say it in Japanese out loud &mdash; on your own or with a partner &mdash; then reveal the kana and the romaji to check yourself.</p>
+      <a class="go" href="travel/index.html">Open Conversation Practice</a>
+      <div class="meta">Different from the quizzes: nothing is graded, and you speak instead of clicking.</div>
     </div>
 
     <div class="card">
@@ -197,7 +208,7 @@ function Build-HomePage($RepoRoot, $SiteTitle) {
     </div>
 
     <div class="footer">
-      <div>Use this page each week to start your quiz.</div>
+      <div>Use this page each week to start your quiz, or open Conversation Practice any time.</div>
     </div>
   </div>
 </body>

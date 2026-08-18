@@ -1,0 +1,79 @@
+{
+  "title": "Japan Trip: Conversation Practice",
+  "subtitle": "Easy Conversational Japanese, Lessons 1-5",
+  "scenes": [
+    {
+      "file": "scene-01-plane.json",
+      "id": "scene-01-plane",
+      "order": 1,
+      "title": "On the Plane",
+      "kana": "ひこうきで",
+      "summary": "Boarding in Seattle, through the flight, to arrival at Haneda.",
+      "status": "ready"
+    },
+    {
+      "id": "scene-02-immigration",
+      "order": 2,
+      "title": "Immigration and Customs",
+      "kana": "にゅうこく",
+      "summary": "Purpose of visit, how long you are staying, and getting through customs.",
+      "status": "planned"
+    },
+    {
+      "id": "scene-03-to-the-city",
+      "order": 3,
+      "title": "Getting into the City",
+      "kana": "まちへ",
+      "summary": "Buying a ticket and taking the train or a taxi in from the airport.",
+      "status": "planned"
+    },
+    {
+      "id": "scene-04-hotel",
+      "order": 4,
+      "title": "Hotel Check-in",
+      "kana": "ホテルで",
+      "summary": "Checking in, finding your room, and asking the front desk for help.",
+      "status": "planned"
+    },
+    {
+      "id": "scene-05-directions",
+      "order": 5,
+      "title": "Asking Directions",
+      "kana": "みちをきく",
+      "summary": "Finding a station, a convenience store or a restroom on foot in a strange city.",
+      "status": "planned"
+    },
+    {
+      "id": "scene-06-restaurant",
+      "order": 6,
+      "title": "At a Restaurant",
+      "kana": "レストランで",
+      "summary": "Being seated, ordering, asking what a dish is, and paying at the end.",
+      "status": "planned"
+    },
+    {
+      "id": "scene-07-shopping",
+      "order": 7,
+      "title": "Souvenir Shopping",
+      "kana": "おみやげ",
+      "summary": "Prices, sizes, colours, counting things, and paying by card.",
+      "status": "planned"
+    },
+    {
+      "id": "scene-08-tea-with-tanaka",
+      "order": 8,
+      "title": "Tea with Tanaka-san",
+      "kana": "たなかさんとおちゃ",
+      "summary": "The meeting you arranged on the plane, in front of Tokyo Station.",
+      "status": "planned"
+    },
+    {
+      "id": "scene-09-going-home",
+      "order": 9,
+      "title": "Back to the Airport",
+      "kana": "きこく",
+      "summary": "Checking out, getting back to the airport, and flying home.",
+      "status": "planned"
+    }
+  ]
+}
