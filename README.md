@@ -1,9 +1,11 @@
 ## Japanese class site (GitHub Pages)
 
-A small static site for a beginner Japanese class. Two sections:
+A small static site for a beginner Japanese class. Three sections:
 
 - **Quizzes**: weekly self-check quizzes, one HTML page per week.
-- **Conversation Practice** (`travel/`): a role-played trip to Japan for speaking practice.
+- **Japan Trip** (`travel/`): a role-played trip to Japan for speaking practice.
+- **Practicing with Friends** (`tomodachi/`): six short conversations between four friends,
+  one for every pair.
 
 Everything is plain HTML, CSS and JavaScript. No build step, no framework, no accounts.
 
@@ -22,7 +24,7 @@ scenes.
 
 ---
 
-## Conversation Practice
+## Japan Trip
 
 Open `travel/index.html` (linked from the homepage).
 
@@ -57,6 +59,24 @@ washes over you. Simplifying an announcement would train you to understand somet
 never hear. Their notes say so, and every new word is glossed.
 
 All dialogue is in polite Japanese. Casual forms may be added later as a switch.
+
+---
+
+## Practicing with Friends
+
+Open `tomodachi/index.html`. Same idea, different shape: instead of one learner moving through a
+trip, four friends take turns in pairs. Across the six conversations everyone speaks with
+everyone else, and the running order spreads people out so nobody appears twice in a row where
+that is possible.
+
+Each line is labelled with a speaker rather than with "you", because four people share the page
+and each reads their own lines. The topics are the week just gone, weekends and hobbies,
+studying Japanese, food, places you have been, and making a plan.
+
+This section is **one self-contained file**: all the data is inlined, so it works from a web
+server or as an emailed attachment opened straight off disk. It is generated from
+`conversations.json` and `concepts.json` by `build.py`, which lives outside this repo. To change
+the content, edit the JSON, re-run the build, and copy the result over `tomodachi/index.html`.
 
 ---
 

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Japanese Class Quiz</title>
   <style>
-    :root{--bg:#f8f6f1;--card:#fff;--accent:#c0392b;--accent2:#2980b9;--accent3:#0e7c66;--text:#2c3e50;--muted:#7f8c8d;--border:#ddd}
+    :root{--bg:#f8f6f1;--card:#fff;--accent:#c0392b;--accent2:#2980b9;--accent3:#0e7c66;--accent4:#5b4b8a;--text:#2c3e50;--muted:#7f8c8d;--border:#ddd}
     *{box-sizing:border-box}
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;padding:18px}
     .container{max-width:860px;margin:0 auto}
@@ -29,6 +29,9 @@
     .practice h2{color:var(--accent3)}
     .practice .go{display:inline-block;background:var(--accent3);color:#fff;text-decoration:none;font-weight:800;padding:12px 18px;border-radius:10px;margin-top:8px}
     .practice .go:hover{filter:brightness(.94)}
+    .friends{border-left:5px solid var(--accent4)}
+    .friends h2{color:var(--accent4)}
+    .friends .go{background:var(--accent4)}
   </style>
 </head>
 <body>
@@ -44,10 +47,17 @@
     </div>
 
     <div class="card practice">
-      <h2>Conversation Practice</h2>
+      <h2>Japan Trip</h2>
       <p>Role-play a trip to Japan using only what we have covered in class. Read the English, say it in Japanese out loud &mdash; on your own or with a partner &mdash; then reveal the kana and the romaji to check yourself.</p>
-      <a class="go" href="travel/index.html">Open Conversation Practice</a>
-      <div class="meta">Different from the quizzes: nothing is graded, and you speak instead of clicking.</div>
+      <a class="go" href="travel/index.html">Open Japan Trip</a>
+      <div class="meta">Nothing is graded, and you speak instead of clicking.</div>
+    </div>
+
+    <div class="card friends">
+      <h2>Practicing with Friends</h2>
+      <p>Six short conversations between four friends: how the week went, weekends, food, places they have been, and making a plan. Everyone pairs with everyone across the set.</p>
+      <a class="go" href="tomodachi/index.html">Open Practicing with Friends</a>
+      <div class="meta">Built from Lessons 1 to 11 of the textbook plus the conversation course.</div>
     </div>
 
     <div class="card">
@@ -69,7 +79,7 @@
     </div>
 
     <div class="footer">
-      <div>Use this page each week to start your quiz, or open Conversation Practice any time.</div>
+      <div>Use this page each week to start your quiz, or open either conversation section any time.</div>
     </div>
   </div>
 </body>
