@@ -1,11 +1,12 @@
 ## Japanese class site (GitHub Pages)
 
-A small static site for a beginner Japanese class. Three sections:
+A small static site for a beginner Japanese class. Four sections:
 
 - **Quizzes**: weekly self-check quizzes, one HTML page per week.
 - **Japan Trip** (`travel/`): a role-played trip to Japan for speaking practice.
 - **Practicing with Friends** (`tomodachi/`): six short conversations between four friends,
   one for every pair.
+- **Daily Practice** (`renshuu/`): a short solo set for each day of a trip, said aloud.
 
 Everything is plain HTML, CSS and JavaScript. No build step, no framework, no accounts.
 
@@ -77,6 +78,31 @@ This section is **one self-contained file**: all the data is inlined, so it work
 server or as an emailed attachment opened straight off disk. It is generated from
 `conversations.json` and `concepts.json` by `build.py`, which lives outside this repo. To change
 the content, edit the JSON, re-run the build, and copy the result over `tomodachi/index.html`.
+
+---
+
+## Daily Practice
+
+Open `renshuu/index.html`. Twelve days, fifteen lines each, meant to be said out loud in about
+ten minutes. No partner and no second speaker: each line is a prompt in English and you produce
+the Japanese.
+
+The 180 lines are laid out so that the grammar of the first twelve lessons is covered rather
+than sampled. Across the twelve days you will hit every particle (`を で は が の に へ と`),
+all sixteen members of the これ / この / ここ / こちら family, the counters for objects, people,
+floors, flat things, long things, days and dates, the clock and the days of the week, numbers
+from tens through まん, the full set of question words, and all four endings of both verbs and
+adjectives in the positive and the negative. `validate.py` checks that coverage mechanically, so
+a rewrite cannot quietly drop a pattern.
+
+The page works out **which day it is from the reader's own clock**, measured against the `start`
+date in the data, and opens that day automatically. Outside the date range it falls back to the
+list of all days. That means one bookmarked URL always shows the right thing, with no server
+logic and nothing to configure.
+
+Like the friends section this is **one self-contained file**, generated from `days.json` and
+`concepts.json` by its own `build.py`. Days carry a theme, a short note, and lines drawing on
+Lessons 1 to 12 plus the conversation course.
 
 ---
 
