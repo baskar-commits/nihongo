@@ -355,14 +355,23 @@ function wireTurns(root){
 }
 
 function wireChips(root){
-  root.querySelectorAll(".cchip").forEach(btn => {
-    btn.onclick = ev => {
+  root.querySelectorAll(".cchip[data-concept]").forEach(btn=>{
+    if(btn.dataset.wired) return;
+    btn.dataset.wired="1";
+    btn.onclick=ev=>{
       ev.stopPropagation();          // never trigger the card's reveal
-      const key = btn.dataset.concept;
-      const host = btn.closest(".detail") || btn.closest(".note") || btn.parentElement;
-      const open = host.querySelector('[data-panel="' + key + '"]');
-      if (open) { open.remove(); return; }
-      host.insertAdjacentHTML("beforeend", conceptPanelHtml(key));
+      const key=btn.dataset.concept;
+      // A chip inside an open panel belongs to that panel, not to the whole card.
+      const host=btn.closest(".cpanel")||btn.closest(".detail")||btn.closest(".note")||btn.closest(".body")||btn.parentElement;
+      // Only toggle a panel this chip itself opened, not one further up the card.
+      const open=host.querySelector(':scope > [data-panel="'+key+'"]');
+      if(open){ open.remove(); return; }
+      // Concepts cross-reference each other, so stop one opening inside itself.
+      for(let a=host; a; a=a.parentElement){
+        if(a.dataset && a.dataset.panel===key) return;
+      }
+      host.insertAdjacentHTML("beforeend",conceptPanelHtml(key));
+      wireChips(host.lastElementChild);   // the panel just opened has chips of its own
     };
   });
 }
